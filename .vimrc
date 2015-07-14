@@ -1,24 +1,18 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'gmarik/Vundle.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'kchmck/vim-coffee-script'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'fatih/vim-go'
+Plug 'wting/rust.vim'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'fatih/vim-go'
-Plugin 'wting/rust.vim'
-Plugin 'scrooloose/nerdtree'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " remap
 " map <M-n> <left>
