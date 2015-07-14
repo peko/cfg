@@ -21,14 +21,26 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " remap
-
+" map <M-n> <left>
 
 " line numbers
-
 set nu
 
-" colors
+" Nerdtree
+map <C-b> :NERDTreeToggle<CR>
 
+" EаsyMotion
+" nmap <tab>i <Plug>(easymotion-lineforward)
+" nmap <tab>n <Plug>(easymotion-linebackward)
+" nmap <tab>e <Plug>(easymotion-j)
+" nmap <tab>o <Plug>(easymotion-k)
+
+nmap t <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
+
+autocmd BufNewFile,BufRead *.iced set filetype=coffee
+
+" colors
 let g:solarized_termcolors=256
 set t_Co=256
 syntax enable

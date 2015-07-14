@@ -40,6 +40,8 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+export TERM=xterm-256color
+
 export GOROOT=/home/peko/Tools/go
 export PATH=$GOROOT/bin:$HOME/Tools/postgres/9.4/bin:$PATH
 export GOPATH=$GOROOT/gopath
