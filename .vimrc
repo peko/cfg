@@ -15,7 +15,18 @@ Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " remap
-" map <M-n> <left>
+" set langmap=hn,je,ko,li
+nnoremap <A-n> <left>
+nnoremap <A-e> <down>
+nnoremap <A-o> <up>
+nnoremap <A-i> <right>
+
+" esc to tab
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+inoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>
 
 " line numbers
 set nu
@@ -31,6 +42,7 @@ map <C-b> :NERDTreeToggle<CR>
 
 nmap t <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
+
 
 autocmd BufNewFile,BufRead *.iced set filetype=coffee
 
