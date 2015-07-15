@@ -1,0 +1,45 @@
+[
+    // standart cursor movement
+	{ "keys": ["alt+e"], "command": "move", "args": {"by": "lines"     , "forward": true } },
+	{ "keys": ["alt+i"], "command": "move", "args": {"by": "characters", "forward": true } },
+	{ "keys": ["alt+n"], "command": "move", "args": {"by": "characters", "forward": false} },
+	{ "keys": ["alt+o"], "command": "move", "args": {"by": "lines"     , "forward": false} },
+	
+	// inline by word movement
+	{ "keys": ["alt+ctrl+n"], "command": "move", "args": {"by": "words"    , "forward": false} },
+	{ "keys": ["alt+ctrl+i"], "command": "move", "args": {"by": "word_ends", "forward": true } },
+
+	// { "keys": ["ctrl+alt+e"], "command": "select_lines", "args": {"forward": true } },
+	// { "keys": ["ctrl+alt+o"], "command": "select_lines", "args": {"forward": false} },
+	
+	// page scroll
+	{ "keys": ["ctrl+e"], "command": "scroll_lines", "args": {"amount": -8.0} },
+	{ "keys": ["ctrl+o"], "command": "scroll_lines", "args": {"amount":  8.0} },
+	
+	{ "keys": ["ctrl+n"]      , "command": "move_to", "args": {"to": "bol", "extend": false} },
+	{ "keys": ["ctrl+i"]      , "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["ctrl+shift+n"], "command": "move_to", "args": {"to": "bol", "extend": true } },
+	{ "keys": ["ctrl+shift+i"], "command": "move_to", "args": {"to": "eol", "extend": true } },
+	
+	// move selection up down"
+	{ "keys": ["ctrl+alt+e"], "command": "swap_line_down" },
+	{ "keys": ["ctrl+alt+o"], "command": "swap_line_up"   },
+	
+	// select horizontal and vertical
+	{ "keys": ["shift+alt+i"], "command": "move"        , "args": {"extend": true, "by": "characters", "forward": true } },
+	{ "keys": ["shift+alt+n"], "command": "move"        , "args": {"extend": true, "by": "characters", "forward": false} },
+	{ "keys": ["alt+shift+о"], "command": "select_lines", "args": {"forward": false} },
+	{ "keys": ["alt+shift+е"], "command": "select_lines", "args": {"forward": true } },
+
+	{ "keys": ["shift+tab", "<character>"], "command": "easy_motion", "args": {"select_text": true} },
+	{ "keys": ["shift+tab", "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": true} },
+	{ "keys": ["tab"      , "<character>"], "command": "easy_motion", "args": {"select_text": false} },
+	{ "keys": ["tab"      , "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": false} },
+
+	// block cursor for training
+    { "keys": ["up"   ], "command": "none" },
+    { "keys": ["down" ], "command": "none" },
+    { "keys": ["left" ], "command": "none" },
+    { "keys": ["right"], "command": "none" },
+
+]
