@@ -35,6 +35,43 @@
 	{ "keys": ["shift+tab", "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": true} },
 	{ "keys": ["tab"      , "<character>"], "command": "easy_motion", "args": {"select_text": false} },
 	{ "keys": ["tab"      , "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": false} },
+    
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    // standart cursor movement
+	{ "keys": ["alt+е"], "command": "move", "args": {"by": "lines"     , "forward": true } },
+	{ "keys": ["alt+и"], "command": "move", "args": {"by": "characters", "forward": true } },
+	{ "keys": ["alt+н"], "command": "move", "args": {"by": "characters", "forward": false} },
+	{ "keys": ["alt+о"], "command": "move", "args": {"by": "lines"     , "forward": false} },
+	
+	// inline by word movement
+	{ "keys": ["alt+ctrl+н"], "command": "move", "args": {"by": "words"    , "forward": false} },
+	{ "keys": ["alt+ctrl+и"], "command": "move", "args": {"by": "word_ends", "forward": true } },
+
+	// { "keys": ["ctrl+alt+е"], "command": "select_lines", "args": {"forward": true } },
+	// { "keys": ["ctrl+alt+о"], "command": "select_lines", "args": {"forward": false} },
+	
+	// page scroll
+	{ "keys": ["ctrl+е"], "command": "scroll_lines", "args": {"amount": -8.0} },
+	{ "keys": ["ctrl+о"], "command": "scroll_lines", "args": {"amount":  8.0} },
+	
+	{ "keys": ["ctrl+н"]      , "command": "move_to", "args": {"to": "bol", "extend": false} },
+	{ "keys": ["ctrl+и"]      , "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["ctrl+shift+н"], "command": "move_to", "args": {"to": "bol", "extend": true } },
+	{ "keys": ["ctrl+shift+и"], "command": "move_to", "args": {"to": "eol", "extend": true } },
+	
+	// move selection up down"
+	{ "keys": ["ctrl+alt+е"], "command": "swap_line_down" },
+	{ "keys": ["ctrl+alt+о"], "command": "swap_line_up"   },
+	
+	// select horizontal and vertical
+	{ "keys": ["shift+alt+и"], "command": "move"        , "args": {"extend": true, "by": "characters", "forward": true } },
+	{ "keys": ["shift+alt+н"], "command": "move"        , "args": {"extend": true, "by": "characters", "forward": false} },
+	{ "keys": ["alt+shift+о"], "command": "select_lines", "args": {"forward": false} },
+	{ "keys": ["alt+shift+е"], "command": "select_lines", "args": {"forward": true } },
+
+    /////////////////////////////////////////
 
 	// block cursor for training
     { "keys": ["up"   ], "command": "none" },
