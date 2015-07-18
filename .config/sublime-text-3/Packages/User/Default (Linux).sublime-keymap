@@ -8,9 +8,7 @@
     //    Z  X  M  C  V  K  L  ,  .  /
     
     // RIGHT HOME
-
-    // Cursor movements and selections HJKL -> NEOI
-    
+ 
     // aN - left
     // aE - down
     // aO - up
@@ -20,6 +18,18 @@
     // asE - select down
     // asO - select up
     // asI - select down
+    
+    // RIGHT SATELLITES
+    
+    // aY - 
+
+    // aF - 'F'ind
+    // aU - 'U'ndo
+    // aP - 'P'aste
+    // a; - 
+
+    // aK - goto 'K'ey      (EasyMotion)
+    // aL - se'L'ect to key (EasyMotion)
 
     // standart cursor movement
 	{ "keys": ["alt+n"], "command": "move", "args": {"by": "characters", "forward": false} },
@@ -81,15 +91,7 @@
 	{ "keys": ["shift+alt+i"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
 	{ "keys": ["shift+alt+и"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
  
-    // RIGHT SATELITES
-    
-    // aF - 'F'ind
-    // aU - 'U'ndo
-    // aP - 'P'aste
-    // a; - 
-
-    // aK -
-    // aL - 
+    // SATELLITES
 
 	// { "keys": ["ctrl+;"], "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
 	{ "keys": ["alt+f"], "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
@@ -115,14 +117,25 @@
 	{ "keys": ["alt+p"], "command": "paste" },
 	{ "keys": ["alt+п"], "command": "paste" },
 
+    // EASY MOTION
+	// Cyrilics have no sense here, plugin do not know current layout 
+	{ "keys": ["alt+k", "<character>"], "command": "easy_motion", "args": {"select_text": false} },
+	{ "keys": ["alt+k", "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": false} },
+	{ "keys": ["alt+l", "<character>"], "command": "easy_motion", "args": {"select_text": true} },
+	{ "keys": ["alt+l", "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": true} },
 
     // LEFT HOME
+        
     // aA - 
-    // aS - 'S'kip add next
+    // aS ~ 'S'kip add next
     // aH - 
-    // aT - selec'T' and add nex'T'
+    // aT ~ selec'T' and add nex'T'
+    
+    // LEFT SATELLITES
+    
+    // aG - 
 
-    // aQ
+    // aQ -
     // aD - 'D'uplicate line
     // aR - 'R'emove line
     // aW - 'W'rite
@@ -185,14 +198,15 @@
 	// { "keys": ["ctrl+m"], "command": "move_to", "args": {"to": "brackets"} },
 	// { "keys": ["ctrl+shift+j"], "command": "expand_selection", "args": {"to": "indentation"} },
 	// { "keys": ["ctrl+shift+a"], "command": "expand_selection", "args": {"to": "tag"} },
-
-    ////////////////////////////////////
-
-    // easy motion
-	{ "keys": ["shift+tab", "<character>"], "command": "easy_motion", "args": {"select_text": true} },
-	{ "keys": ["shift+tab", "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": true} },
-	{ "keys": ["tab"      , "<character>"], "command": "easy_motion", "args": {"select_text": false} },
-	{ "keys": ["tab"      , "enter"      ], "command": "easy_motion", "args": {"character": "enter", "select_text": false} },
+    
+    // ESC -> Tab
+	{ "keys": ["tab"], "command": "single_selection"                    , "context": [{ "key": "num_selections"       , "operator": "not_equal", "operand": 1 } ] },
+	{ "keys": ["tab"], "command": "clear_fields"                        , "context": [{ "key": "has_next_field"       , "operator": "equal", "operand": true } ] },
+	{ "keys": ["tab"], "command": "clear_fields"                        , "context": [{ "key": "has_prev_field"       , "operator": "equal", "operand": true } ] },
+	{ "keys": ["tab"], "command": "hide_panel", "args": {"cancel": true}, "context": [{ "key": "panel_visible"        , "operator": "equal", "operand": true } ] },
+	{ "keys": ["tab"], "command": "hide_overlay"                        , "context": [{ "key": "overlay_visible"      , "operator": "equal", "operand": true } ] },
+	{ "keys": ["tab"], "command": "hide_popup"                          , "context": [{ "key": "popup_visible"        , "operator": "equal", "operand": true } ] },
+	{ "keys": ["tab"], "command": "hide_auto_complete"                  , "context": [{ "key": "auto_complete_visible", "operator": "equal", "operand": true } ] },
  
     /////////////////////////////////////////
 
@@ -201,5 +215,4 @@
     { "keys": ["down" ], "command": "unbound" },
     { "keys": ["left" ], "command": "unbound" },
     { "keys": ["right"], "command": "unbound" },
-
 ]
