@@ -25,14 +25,18 @@ fi
 
 export TERM=xterm-256color
 
+if [ -d "$HOME/Tools/go" ] ; then
+    export GOROOT=/home/peko/Tools/go
+    export GOPATH=$GOROOT/gopath
+    export PATH=$GOROOT/bin:$PATH
+fi
 
-export GOROOT=/home/peko/Tools/go
-export GOPATH=$GOROOT/gopath
-export PATH=$GOROOT/bin:$PATH
+if [ -d "$HOME/Tools/Nim" ] ; then
+    export NIMROOT=/home/peko/Tools/Nim
+    export PATH=$NIMROOT/bin:~/.nimble/bin:$PATH
+fi
 
-export NIMROOT=/home/peko/Tools/Nim
-export PATH=$NIMROOT/bin:~/.nimble/bin:$PATH
-
-export POSTGRES=$HOME/Tools/postgres/9.4/bin
-export PATH=$POSTGRES:$PATH
-
+if [ -d "$HOME/Tools/postgres" ] ; then
+    export POSTGRES=$HOME/Tools/postgres/9.4/bin
+    export PATH=$POSTGRES:$PATH
+fisu

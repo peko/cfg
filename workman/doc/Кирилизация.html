@@ -1,0 +1,622 @@
+<html><head><title>Кирилизация</title></head><body><pre><div align=right><form action=/unixhelp/fonty.txt><select name=format><OPTION VALUE="_Contents">Содержание<OPTION VALUE="_with-big-pictures.html">Fine HTML<OPTION VALUE="_with-big-pictures.html">Printed version<OPTION VALUE="_Ascii.txt">txt(Word,КПК)<OPTION VALUE="">Lib.ru html</select><input type=submit value=go></form></div><pre>
+<ul><a name=0></a><h2>Кирилизация</h2></ul>
+
+<ul><a name=1></a><h2>Где лежат раскладки клавиатур в Xorg с xkbd</h2></ul>
+Файл, с раскладками, который включается в /etc/X11/xorg.conf
+    Option         "XkbLayout" "us,ru(phonetic)"
+    Option         "XkbOptions" "grp:alt_shift_toggle,grp_led:scroll"
+
+называется
+  /usr/share/X11/xkb/symbols/ru
+
+(Раньше он назывался
+  /etc/X11/xkb/symbols/pc/ru
+
+
+За  основу  взял  xkblayout  "us(intl)"  -  скопировал его как symbols/myit,
+заменил acute на grave и убрал оттуда обработку кавычек  и  тильды,  там  же
+сменил переключатель группы с alt на win - include "level3(lwin_switch)".  В
+xorg.conf стоит "XkbOptions" "grp:shifts_toggle,grp:rwin_switch,grp_led:scroll".
+ Получилось:  рус/лат  переключается  шифтами, временное переключение правой
+клавишей win, итальянские ударения печатаются с левым win.
+
+<ul><a name=2></a><h2>Реконфигурация кирилицы в Debian</h2></ul>
+
+ apt-get install console-cyrillic
+ dpkg-reconfigure locales
+
+
+<ul><a name=3></a><h2>Как оживить кирилицу в xterm в условиях победы ru_RU.UTF8</h2></ul>
+
+В файле ~/.Xdefaults прописать
+xterm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-koi8-r
+
+<ul><a name=4></a><h2>Как установить truetype фонты</h2></ul>
+
+<a href=http://corefonts.sourceforge.net/>http://corefonts.sourceforge.net/</a>
+
+<ul><a name=5></a><h2>Переназначение раскладки на ходу</h2></ul>
+
+setxkbmap -rules xfree86 -model pc105 -layout us,ru -option \
+ "grp:ctrl_shift_toggle,grp_led:scroll" -variant ",winkeys"
+
+  или так:
+
+setxkbmap -layout us,ru(phonetic) -option "grp:ctrl_shift_toggle,grp_led:scroll"
+
+В качестве переключателей можно назначать следующие клавиши:
+/usr/share/X11/xkb/rules/xfree86.lst
+grp Group Shift/Lock behavior
+grp:switch R-Alt switches group while pressed.
+grp:lswitch Left Alt key switches group while pressed.
+grp:lwin_switch Left Win-key switches group while pressed.
+grp:rwin_switch Right Win-key switches group while pressed.
+grp:win_switch Both Win-keys switch group while pressed.
+grp:rctrl_switch Right Ctrl key switches group while pressed.
+grp:toggle Right Alt key changes group.
+grp:lalt_toggle Left Alt key changes group.
+grp:caps_toggle CapsLock key changes group.
+grp:shift_caps_toggle Shift+CapsLock changes group.
+grp:alt_caps_toggle Alt+CapsLock changes group.
+grp:shifts_toggle Both Shift keys together change group.
+grp:alts_toggle Both Alt keys together change group.
+grp:ctrls_toggle Both Ctrl keys together change group.
+grp:ctrl_shift_toggle Ctrl+Shift changes group.
+grp:ctrl_alt_toggle Alt+Ctrl changes group.
+grp:alt_shift_toggle Alt+Shift changes group.
+grp:menu_toggle Menu key changes group.
+grp:lwin_toggle Left Win-key changes group.
+grp:rwin_toggle Right Win-key changes group.
+grp:lshift_toggle Left Shift key changes group.
+grp:rshift_toggle Right Shift key changes group.
+grp:lctrl_toggle Left Ctrl key changes group.
+grp:rctrl_toggle Right Ctrl key changes group.
+
+
+<ul><a name=6></a><h2>Оживление кирилицы в MAN</h2></ul>
+
+Если несмотря на LANG=ru_RU.UTF-8
+man выдает вместо русского "персидский" шрифт, то
+
+
+В файле /etc/man.conf
+строку      NROFF /usr/bin/nroff -Tascii -c -mandoc
+заменить на NROFF /usr/bin/nroff -Tlatin1 -c -mandoc
+
+а в пользовательском окружении взвести переменную
+export MANPAGER="iconv -c -f KOI8-R -t UTF-8 | /usr/bin/less -isr"
+
+
+<ul><a name=7></a><h2>Русская клавиатура в RedHat 8++ через kde-переключатель</h2></ul>
+
+
+  1. control center от kde раскладки
+  2. в параметрах xkb (другая закладка там же) -- клавиша переключения
+  3. нажать "применить". появляется индикатор, переключение не работает
+  4. Переходим в настройку HotKey, в самом низу есть пункт "переключение
+  раскладок", по умолчанию Ctrl-Alt-K. Жмем "поменять", нажимаем
+  выбранную комбинацию. В комбинации Ctrl+Shift надо  нажать сначала шифт,
+   потом контрол.
+  5. "применить".
+ <a href=http://www.livejournal.com/community/ru_linux/55918.html>Origin: http://www.livejournal.com/community/ru_linux/55918.html</a>
+
+Also avalable Package: xxkb
+
+  Description: Keyboard state indicator and switcher for xkb
+
+<ul><a name=8></a><h2>Русская клавиатура в RedHat 8++, Mandrake 9, Debian 8++...</h2></ul>
+
+В  свежих  версиях  Linux'а  кирилизация  уже  проведена, остается ее только
+активировать (это не всегда легко) Итак:
+
+В файле /etc/X11/XF86Config-4  # яверты. Для йцукенг - убрать phonetic
+
+Section "InputDevice"
+	Identifier  "Keyboard0"
+	Driver      "keyboard"
+        Option      "CoreKeyboard"
+	Option "XkbRules" "xfree86"
+	Option "XkbModel" "pc104"
+        Option     "XkbLayout" "us,ru(phonetic)"
+#       Option     "XkbVariant"  "base"
+#       Option     "XkbVariant"  "winkeys"
+        Option     "XkbOptions"  "grp:alt_shift_toggle,grp_led:scroll"
+EndSection
+
+<ul><a name=9></a><h2>Русская клавиатура в X11 в Redhat 8.0 и 9.0</h2></ul>
+<a href=http://www.inp.nsk.su/~baldin/Cyrillic-HOWTO-russian-beta/Cyrillic-HOWTO-russian.html>Origin: http://www.inp.nsk.su/~baldin/Cyrillic-HOWTO-russian-beta/Cyrillic-HOWTO-russian.html</a>
+
+Настроечный файл X-сервера ................... /etc/X11/XF86Config
+в настройках клавиатуры должно быть следующее:
+                                               Option	"XkbRules"    "xfree86"
+  тип клавиатуры ............................. Option	"XkbModel"    "pc105"
+  русская раскладка ..........................if  [ LRH 8.0 ]
+                                               Option  "XkbLayout"   "ru"
+  русская раскладка ..........................else if  [ LRH 9.0 ]
+                                               Option  "XkbLayout"   "su,ru"
+  KOI8-R (/usr/X11R6/lib/X11/xkb/symbols.dir)  Option 	"XkbVariant"  "phonetic"
+  правый ALT - переключение русский/латинский  Option  "XkbOptions"  "grp:toggle"
+
+Интернационализация .......................... /etc/sysconfig/i18n
+                        должно быть .......... LANG="ru_RU.UTF-8"
+
+                         В этом файле   /usr/X11R6/lib/X11/xkb/compat/iso9995
+                         надо поставить       indicator "Scroll Lock" {
+       Тогда будет гореть лампочка Sroll-Lock
+       при включенном русском режиме.
+
+    Здесь - все настройки клавиатуры /usr/X11R6/lib/X11/xkb  - взять из LRH 8.0
+                  skra
+
+<ul><a name=10></a><h2> * ЗАСАДА С ЛОКАЛЬЮ В Redhat 7.3</h2></ul>
+
+<ul><a name=11></a><h2>Консольные приложения (чисто текстовые)</h2></ul>
+
+Для  корректной  работы  текстовых  приложеный должна быть выставлена локаль
+ru_RU.KOI8-R или ru_RU.koi8r. Оба варианта включают показы  русских  букв  в
+ls, обеспечивают сортировку по алфавиту в кодировке koi8.
+
+Установка: в /etc/profile или в ~/.profile или ~/.bashrc
+
+export     LANG=ru_RU.KOI8-R
+export LC_CTYPE=ru_RU.KOI8-R
+
+    или
+
+export LANG=ru_RU.koi8r
+export LC_CTYPE=ru_RU.koi8r
+
+<ul><a name=12></a><h2>KDE-приложения (X-овые)</h2></ul>
+
+Для корректной работы KDE эти установки НЕ ПОДХОДЯТ!
+Для KDE программ локаль _должна_ быть выставлена в
+
+export     LANG=ru_RU.KOI8-R.KOI8-R
+export LC_CTYPE=ru_RU.KOI8-R
+
+<ul><a name=13></a><h2>Персональный Emacs (это личное, М.М.)</h2></ul>
+
+LC_CTYPE=                     Rk       дает вводить,        считает буквами
+LC_CTYPE=ru_RU.koi8r          Rk    не дает вводить, иногда считает буквами
+LC_CTYPE=ru_RU.KOI8-R         Rk    не дает вводить, иногда считает буквами
+LC_CTYPE=ru_RU.KOI8-R.KOI8-R  Rk       дает вводить, иногда считает буквами
+
+Мораль: командный файл запускающий Rk должен перед вызовом emacs'a исполнить
+
+unset LANG
+unset LC_CTYPE
+
+<ul><a name=14></a><h2>Русская раскладка клавиатуры в RedHat 7.3</h2></ul>
+
+В файле /etc/X11/XF86Config-4
+
+Section "InputDevice"
+	Identifier  "Keyboard0"
+	Driver      "keyboard"
+        Option      "CoreKeyboard"
+	Option "XkbRules" "xfree86"
+	Option "XkbModel" "pc101"
+        Option     "XkbLayout"   "ru"           # русская раскладка
+        Option     "XkbVariant"  "phonetic"     # раскладка qwerty/яверты
+#       Option     "XkbVariant"  "base"         # раскладка qwerty/йцукенг
+#       Option     "XkbVariant"  "winkeys"
+        Option     "XkbOptions"  "grp:alt_shift_toggle"
+EndSection
+
+<ul><a name=15></a><h2> * ДЛЯ СТАРЫХ ВЕРСИЙ Linux и properitary Unix - HP, Solaris...</h2></ul>
+
+<ul><a name=16></a><h2>Как подключить русские фонты к компьютеру с X11</h2></ul>
+
+1. Создаем каталог cyrfonts. Копируем туда   файлы *.bdf или *.pcf
+
+   mkdir cyrfonts
+   cp *.bdf *.pcf cyrfonts
+
+     Замечание: предпочтительно добыть фонты в формате PCF а не
+BDF  Проблема  в  том,  приложение  заказывает  размер   фонта,
+которого  у  X  или  FONT-сервера  нет, то FONT-сервер пытается
+скалировать и в случае .BDF погибает и убивает все, что под ним
+запущено. Конвертировать bdf-фонты можно командой bdftopcf.
+
+2. В  каталоге   с   фонтами   создаем  оглавление  фонтов  для
+X-server'а : fonts.dir
+
+   cd cyrfonts
+   mkfontdir
+
+3. Указываем X-server'у, чтоб он брал фонты из нашего каталога
+
+   xset +fp $HOME/cyfonts
+   xset fp rehash
+
+4. Пользуемся русскими фонтами.
+
+   xterm -fn koi9x15
+   mailtool -fn koi6x10
+
+   и т.д.
+
+
+<ul><a name=17></a><h2>Чтобы русские фонты включались и находились по умолчанию</h2></ul>
+
+5. До запуска X-Windows установить переменную окружения FONTPATH
+
+   Если у вас
+
+FONTPATH=$HOME/cyrfonts: export FONTPATH   #  для  /bin/sh или bash или ksh
+
+setenv FONTPATH $HOME/cyrfonts: # для  C-Shell  /bin/csh  или  tcsh
+
+
+6. Или скопировать фонты в директорию со стандартными фонтами.
+
+   cp *.bdf /usr/lib/X11/fonts/misc
+   cd /usr/lib/X11/fonts/misc
+   mkfontdir
+   xset fp rehash
+
+7. Если у вас XFree86, то добавить строчку в файл /etc/X11/XF86Config
+
+      FontPath	"/home/yourname/cyrfonts/"
+
+8. Установить фонт по умолчанию в своем .Xdefaults  файле.
+
+   Добавить в файл .Xdefaults такие строчки:
+
+font.name:              koi9x15
+icon.font.name:         koi6x10
+
+XTerm*font:             koi6x10
+XTerm*VT100*font1:	koi6x10
+XTerm*VT100*font2:	koi8x13
+XTerm*VT100*font3:	misc16
+XTerm*VT100*font4:	misc24
+XTerm*VT100*font5:	demos8x14
+XTerm*VT100*font6:	demos8x16
+
+emacs.font:	        koi9x15
+emacs.default_font:	koi9x15
+
+<ul><a name=18></a><h2>Если у вас SunOs 4.1.1 и, соответственно, NeWS</h2></ul>
+
+Тогда   вся   вышеописанная  процедура  не  сработает.  У  NeWS
+совершенно собственный формат фонтов.
+
+1. Преобразуем фонты в формат NeWS
+
+convertfont *.bdf
+
+2. Создаем оглавление для NeWS server'а
+bldfamily
+
+3. Подключаем фонты в точности, как в стандартном X11
+
+xset +fp `pwd`     # Дополняем каталог, подключаем фонты.
+xset  fp rehash    # Чтоб сервер перезачитал каталоги с фонтами
+
+все.
+
+Еще можно в файл Synonims.list воткнуть строчку с aliaсами.
+Иначе фонты будут браться только по имени файлов.
+
+<ul><a name=19></a><h2>Редактирование фонтов.</h2></ul>
+
+Некоторые комплектты X-Windows имеют редактор фонтов. Он может называться
+xfed, fontedit, xfd. Если у вас такового нет, попробуйте найти исходники.
+
+xfed font.bdf
+
+convertfont -v font    получаем   font.vfp
+fontedit font.vfp
+
+затем  convertfont  -b ?? font.vfp   и получаем font.ff
+
+<ul><a name=20></a><h2>Подключение русской клавиатуры в X-Windows</h2></ul>
+
+Достаньте  файлы  с  раскладкой  клавиатуры. (Их можно найти во
+многих местах, в частности <a href=../CYRILLIC/xmodmap>здесь</a>). Выполните команду
+
+   xmodmap   файл-с-раскладкой.xmm
+
+Переключатель рус/лат - клавиша CapsLock
+Чтобы отключить русскую клавиатуру, выполнитте команду
+
+   xmodmap   default.xmm
+
+<ul><a name=21></a><h2>Подключение русской клавиатуры в XFree86 3--й версии</h2></ul>
+
+<!--
+ Anthony Dragunov <Anthony.Dragunov@p111.f1.n5010.z2.fidonet.org>
+-->
+
+ XF86Config:
+
+ Section Keyboard
+ LeftAlt      Meta
+ AltGr        ModeShift
+ Right_Ctl    ModeLock
+ ScrollLock   ScrollLock
+ EndSection
+
+Вешает  переключатель  на  правый Ctrl, при этом еще и лампочка
+CapsLock будет загораться.
+<!--
+В XF86Config РАСКОМЕНТИРОВАЛ Xkbdisable, ЗАКОМЕНТИРОВАЛ ВСЕ СТРОКИ С
+Xkb,
+СДЕЛАЛ mkfontdir, ПРОПИСАЛ Fontpath (НА ПЕРВОМ МЕСТЕ ПУТЬ К РУССКИМ
+ФОНТАМ), И НАПИСАЛ
+LeftAlt Meta
+RightAlt ModeShift
+ScrollLock ModeLock
+RightCtl Control
+пЕРЕКЛЮЧЕНИЕ У МЕНЯ ОСУЩЕСТВЛЯЕТСЯ С ПОМОЩЬЮ КЛАВИШИ ScrollLock, ЧТО
+НЕУДОБНО ПРИ РАБОТЕ С Wordom.
+я ПОЛАГАЛ, ЧТО ЕСЛИ Я НАПИШУ RightCtl ModeLock, ТО ПЕРЕКЛЮЧЕНИЕ БУДЕТ
+ЧЕРЕЗ ПРАВЫЙ КОНТРОЛ. нО ЭТОГО НЕ ПРОИЗОШЛО.
+-->
+
+<ul><a name=22></a><h2>Переключатель кирилицы в XFree86 3.2.2</h2></ul>
+
+В свежей версии Xfree_3.3.2
+переключатель кирилицы встроенный с раздачи, раскладка йцукен
+переключатель задается в /etc/X11/XFconfig
+
+ Section "Keyboard"
+ #    XkbDisable
+    Protocol        "Standard"
+    XkbRules        "xfree86"
+    XkbModel        "pc101"
+    XkbLayout       "us"
+    XkbOptions      "grp:shift_toggle"
+ EndSection
+
+ Варианты переключателей:
+   grp                   Group Shift/Lock behavior
+   grp:switch            Right Alt switches group while pressed
+   grp:toggle            Right Alt changes  group
+   grp:shift_toggle      Both Shift keys together change group
+   grp:ctrl_shift_toggle Control+Shift changes group
+   grp:ctrl_alt_toggle   Alt+Control changes group
+
+<ul><a name=23></a><h2>Подключение русской клавиатуры в OpenWindows на SUN</h2></ul>
+
+Возьмите   файл  с  раскладкой  для  SUNа  (например  у  меня),
+поместите в своем домашнем  каталоге  под  именем  .keytable  и
+запустите openwin. Переключатель рус/лат - клавиша правый AltGraph
+
+<ul><a name=24></a><h2>Подключение русской клавиатуры в DT/CDE HP-UX</h2></ul>
+
+keymap_ed -i 1101
+
+<ul><a name=25></a><h2>Чтоб bash воспринимал русские буквы с клавиатуры</h2></ul>
+
+Вписать в $HOME/.inputrc строки
+set meta-flag on
+set convert-meta off
+set output-meta on
+
+Или вписать в .profile строки
+LC_CTYPE=iso_8859_1  export LC_CTYPE
+LC_LOCALE=iso_8859_1 export LC_LOCALE
+LESS="-e -r"         export LESS # чтоб лесс показывал русские буквы
+
+<ul><a name=26></a><h2>Где все лежит</h2></ul>
+
+        <a href=../CYRILLIC/>См. каталог русификации</a>
+
+<ul><a name=27></a><h2>Если что-то не получилось.</h2></ul>
+
+1. Если у вас Solaris 2.3, то:
+
+Во всех "родных" (которые не X11) Sun'овских программах русских
+букв не будет. Как то: textedit, cmdtool, mailtool
+
+2.  Поставьте  свежий  Solaris  2.5 или 2.4. Если не можете, то
+используйте вместо них emacs, xterm, xedit.
+
+3. Или  разбирайтесь  самостоятельно  с  такими  понятиями  как
+ctype, LC_LOCALE, LC_CTYPE, -lc_basic_locale , NLS, and so on.
+
+хотя все же можете попробовать:
+
+LC_LOCALE=iso_8859_1 export LC_LOCALE
+LC_CTYPE=iso_8859_1  export LC_CTYPE
+LANG=iso_8859_1      export LANG
+
+<ul><a name=28></a><h2>Русификация Netscape</h2></ul>
+
+В   Netscape  3  уже  реализован  encoding  koi8-r.  Достаточно
+установить комплект фонтов koi8-r (заалиасенные as  iso8859-1),
+и  виндовские,  заалиасенные  as  Family  (Mswin)-*-iso8859-1 А
+затем выбрать Доцумент енцодинг кои8-р  и  поставить  для  него
+русские фонты.
+
+<b>Чтоб отправляемая почта уходила с полем charset=koi8-r</b>
+
+Вставить в .Xdefaults строчки:
+
+Netscape*defaultCharset:                koi8-r
+Netscape*localeCharset*C:               koi8-r
+Netscape*localeCharset*koi8-r:          koi8-r
+Netscape*localeCharset*koi8-u:          koi8-r
+Netscape*localeCharset*ru:              koi8-r
+Netscape*localeCharset*ru_SU:           koi8-r
+Netscape*localeCharset*ru_SU.KOI8-R:    koi8-r
+
+<ul><a name=29></a><h2>А еще я умею русифицировать, но не написал инструкции:</h2></ul>
+
+Системная консоль Linux - подключение русских шрифтов на экране
+и переключателя клавиатуры на правый ALT.
+
+<ul><a name=30></a><h2>Кирилизация Applixware</h2></ul>
+
+       Applixware  -  огромный  (140Mb) оффисный пакет под Unix
+(Соларис/AIX/Linux/SCO/...), в котором есть все, что полагается
+-    вордпроцессор,    электронные    таблицы,    image-editor,
+веб-броузер, html-редактор, почтовый клиент и т.д.
+       Пользоваться им не собираюсь, мне достаточно Winword-6 в
+WABI 2.2b
+
+Кирилизацию Applixware описал Виктор Колосов <kolosov@iris1.itep.ru>
+<a href=http://triton.itep.ru/ru/skynet/system.html>http://triton.itep.ru/ru/skynet/system.html</a>
+>   Простой и очевидный способ добавления TTF-шрифтов в Applix-e - через меню,
+>   сожалению, приводит к заметной на глаз кривизне букв при печати
+>   (для TTF). Поэтому там описано как то же самое сделать через PostScript.
+
+ From: Василий Егошин <wasa@nica.ru>
+
+     По-моему  на  этой  страничке все слишком сложно.  Я проще
+поступил: с помощью  Applix'овского  фонт-инсталлера  прикрутил
+виндовские ttf'ы и на этом в принципе и все :) И отображается и
+печатается все на ура. (Причем обмен с вордом через rtf  -  без
+проблем).
+     Единственное неудобство - ttf'ы должны быть параграфовские
+- с юникодными работать не  будет,  т.к.  там  русские  символы
+начинаются с кодов 400 (вроде бы).
+
+<ul><a name=31></a><h2>UTF8 по-русски в netscape 4.72</h2></ul>
+
+Edit -> preferences -> fonts
+  "1) Use my default fonts,overriding document specified fonts"
+For encoding: Unicode-2-0
+  Variable fonts: helvetica >= 18     Allow scaling NO
+  Fixed fonts:    fixed     >= 18     Allow scaling NO
+
+Ok
+
+View -> Encoding: Latin1
+
+        <b>Настройки кирилизаии в linux RedHat 7+
+
+Кириллизация  в  современных  версиях  RedHat боле-менее имеется встроенная,
+остается ее включить.
+
+
+  /etc/sysconfig/i18n
+
+# задает русский LANG для дефолтного пользовательского окружения
+# шрифт на консоли
+LANG="ru_RU.koi8r"
+LC_ALL="ru_RU.koi8r"
+LINGUAS="ru_RU.koi8r"
+#SYSFONT="koi8-8x16"
+SYSFONT="cyr-sun16"
+SYSFONTACM="koi8-r"
+
+ /etc/sysconfig/keyboard
+
+# задает раскладку клавиатуры
+KEYTABLE="ru"
+# KEYTABLE="ru_win"
+
+ .profile
+
+# алиас "ru" включает/выключает русский LANG в shell'е
+alias ru='if [ -z "$LANG" ] ; then export LANG=ru_RU.koi8r LC_CTYPE=ru_RU.koi8r ; else unset LANG LC_CTYPE ; fi ; echo "LANG=$LANG\nLC_CTYPE=$LC_CTYPE\n" ;'
+
+ <b>Осталось научиться включать русскую раскладку в X-windows</b>
+
+<ul><a name=32></a><h2>Кирилизация Slackware 9, 10</h2></ul>
+
+<a href=http://mls.by.ru/>Origin: http://mls.by.ru/</a>
+ Для русификации иксов необходимо установить еще 3      пакета.
+     <a href=http://www.tvmurman.com/ftp/tmp/cabextract-0.6-i386-1dl.tgz>cabextract-0.6-i386-1dl.tgz</a>
+     freetype2-2.1.4rc2-i386-4dl.tgz
+     webfonts-1.0-i386-3dl.tgz
+     Общий объем порядка 4-х мегабайт.
+     Если пакеты не ставятся - развернуть их в ручную.
+     С установкой третьего: Скопируйте
+     архив webfonts.tar.gz из пакета пакета в директорию /usr/share/webfonts,
+     и запустите
+     скрипт ./sh doinst.sh.
+
+     Полная русификация 9 Slackware.(Д.Каледин, И.Трофимов)
+     Необходимо:
+     1. Содержимое файла /etc/rc.d/rc.font
+     setfont Cyr_a8x16
+     mapscrn koi2alt
+     for n in 1 2 3 4 5 6; do
+     echo -ne "\033(K" > /dev/tty$n
+     done
+
+     2. Содержимое файла /etc/rc.d/rc.keymap
+     loadkeys ru-ms.map
+
+     3. /etc/profile.d/lang.sh
+     export LC_ALL=
+     export LANG=ru_RU.KOI8-R
+     export LC_NUMERIC=C
+     export LC_TIME=ru_RU.KOI8-R
+     export LC_COLLATE=ru_RU.KOI8-R
+     export LC_MONETARY=ru_RU.KOI8-R
+     export LC_MESSAGES=ru_RU.KOI8-R
+     export LC_PAPER=ru_RU.KOI8-R
+     export LC_NAME=ru_RU.KOI8-R
+     export LC_ADDRESS=ru_RU.KOI8-R
+     export LC_TELEPHONE=ru_RU.KOI8-R
+     export LC_MEASUREMENT=ru_RU.KOI8-R
+     export LC_IDENTIFICATION=ru_RU.KOI8-R
+     Можно просто поставить LC_ALL=ru_RU.KOi8-R, но
+     тогда в старой Слакваре не все программы работали корректно,
+     в частности LICQ.
+
+     4. /usr/share/locale
+     Денис рекомендует в файле locale.alias заменить секцию russian на:
+     russian ru
+     ru ru_RU
+     ru_RU ru_RU.KOI8-R
+     Но работает и так.
+
+     5. /etc/X11
+     В файле XF86Config поменялась установка раскладок клавиатуры:
+     Section "InputDevice"
+     Identifier "Keyboard0"
+     Driver "keyboard"
+     Option "AutoRepeat" "500 30"
+     Option "XkbRules" "xfree86"
+     Option "XkbModel" "pc105"
+     Option "XkbLayout" "us,ru(winkeys)"
+     Option "XkbOptions" "grp:ctrl_shift_toggle,grp_led:scroll"
+     EndSection
+     us,ru - актуально
+
+     6. там же
+     Прописать пути к truetype шрифтам, перейти в каталог со шрифтами,
+     удалить старый fonts.cache-1  и выполнить /usr/X11R6/bin/fc-cache
+
+<ul><a name=33></a><h2>Русские буквы в LaTeX</h2></ul>
+
+\usepackage[koi8-r]{inputenc}
+\usepackage[russian]{babel}
+
+
+<ul><a name=34></a><h2>Что сделать, чтобы работал copy-paste в Emacs</h2></ul>
+
+1. Поставить локаль:
+
+export LANG="C"
+export LC_CTYPE="ru_RU.KOI8-R"
+export LC_COLLATE="ru_RU.KOI8-R"
+export LC_TIME="C"
+
+(локаль нужна для корректной работы cut-n-paste,
+а export LANG="C" нужен, чтобы системные сообщения
+и меню были по-английски).
+
+2. Добавить в .emacs
+(set-language-environment 'cyrillic-KOI8)
+(set-selection-coding-system 'x-ctext-with-extensions)
+
+Origin: http://www.livejournal.com/users/tiphareth/545870.html
+
+<ul><a name=35></a><h2>Русские имена файлов в Gnome 2.14</h2></ul>
+
+ /etc/environment:
+
+                          G_FILENAME_ENCODING="@locale"
+                          G_BROKEN_FILENAMES=1
+
+<pre><hr noshade><small>Популярность: <b>6</b>, Last-modified: Fri, 02 Jan 2009 13:05:51 GMT
+</small>
+
+</body></html>
