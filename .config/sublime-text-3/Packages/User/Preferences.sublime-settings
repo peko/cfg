@@ -1,5 +1,6 @@
 {
-	"font_face": "PragmataPro",
+    "font_face": "PragmataPro",
+    // "font_face": "Terminus (TTF)",
 	"font_size": 10,
 	"ignored_packages":
 	[
