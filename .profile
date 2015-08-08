@@ -40,3 +40,6 @@ if [ -d "$HOME/Tools/postgres" ] ; then
     export POSTGRES=$HOME/Tools/postgres/9.4/bin
     export PATH=$POSTGRES:$PATH
 fi
+
+zsh $HOME/workman/Linux/ubuntu/xkb-set.sh
+

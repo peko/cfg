@@ -6,8 +6,8 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 // static char font[] = "PragmataPro:pixelsize=11.5:antialias=false:autohint=false";
-static char font[] = "PragmataPro:size=10.5";
-static int borderpx = 2;
+static char font[] = "PragmataPro:size=12.5";
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:

@@ -14,7 +14,7 @@
 
 char *tzargentina = "America/Buenos_Aires";
 char *tzutc = "UTC";
-char *tzberlin = "Europe/Berlin";
+char *tzberlin = "Russia/Moscow";
 
 static Display *dpy;
 
