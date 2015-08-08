@@ -1,0 +1,166 @@
+--- dwm.c.orig	2013-05-29 01:13:58.166181253 +0200
++++ dwm.c	2013-05-29 01:15:27.202845771 +0200
+@@ -41,9 +41,6 @@
+ #include <pango/pango.h>
+ #include <pango/pangoxft.h>
+ #include <pango/pango-font.h>
+-#ifdef XINERAMA
+-#include <X11/extensions/Xinerama.h>
+-#endif /* XINERAMA */
+ 
+ /* macros */
+ #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
+@@ -259,8 +256,6 @@ static int textnw(const char *text, unsi
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
+-static void toggletag(const Arg *arg);
+-static void toggleview(const Arg *arg);
+ static void unfocus(Client *c, Bool setfocus);
+ static void unmanage(Client *c, Bool destroyed);
+ static void unmapnotify(XEvent *e);
+@@ -1219,17 +1214,6 @@ initfont(const char *fontstr) {
+ 	pango_layout_set_font_description(dc.plo, dc.pfd);
+ }
+ 
+-#ifdef XINERAMA
+-static Bool
+-isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info) {
+-	while(n--)
+-		if(unique[n].x_org == info->x_org && unique[n].y_org == info->y_org
+-		&& unique[n].width == info->width && unique[n].height == info->height)
+-			return False;
+-	return True;
+-}
+-#endif /* XINERAMA */
+-
+ void
+ keypress(XEvent *e) {
+ 	unsigned int i;
+@@ -1970,42 +1954,6 @@ togglefloating(const Arg *arg) {
+ }
+ 
+ void
+-toggletag(const Arg *arg) {
+-	unsigned int i, newtags;
+-
+-	if(!selmon->sel)
+-		return;
+-	newtags = selmon->sel->tags ^ (arg->ui & TAGMASK);
+-	if(newtags) {
+-		selmon->sel->tags = newtags;
+-		if(newtags == ~0) {
+-			selmon->prevtag = selmon->curtag;
+-			selmon->curtag = 0;
+-		}
+-		if(!(newtags & 1 << (selmon->curtag - 1))) {
+-			selmon->prevtag = selmon->curtag;
+-			for (i=0; !(newtags & 1 << i); i++);
+-			selmon->curtag = i + 1;
+-		}
+-		selmon->sel->tags = newtags;
+-		selmon->lt[selmon->sellt] = selmon->lts[selmon->curtag];
+-		focus(NULL);
+-		arrange(selmon);
+-	}
+-}
+-
+-void
+-toggleview(const Arg *arg) {
+-	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
+-
+-	if(newtagset) {
+-		selmon->tagset[selmon->seltags] = newtagset;
+-		focus(NULL);
+-		arrange(selmon);
+-	}
+-}
+-
+-void
+ unfocus(Client *c, Bool setfocus) {
+ 	if(!c)
+ 		return;
+@@ -2086,76 +2034,13 @@ Bool
+ updategeom(void) {
+ 	Bool dirty = False;
+ 
+-#ifdef XINERAMA
+-	if(XineramaIsActive(dpy)) {
+-		int i, j, n, nn;
+-		Client *c;
+-		Monitor *m;
+-		XineramaScreenInfo *info = XineramaQueryScreens(dpy, &nn);
+-		XineramaScreenInfo *unique = NULL;
+-
+-		for(n = 0, m = mons; m; m = m->next, n++);
+-		/* only consider unique geometries as separate screens */
+-		if(!(unique = (XineramaScreenInfo *)malloc(sizeof(XineramaScreenInfo) * nn)))
+-			die("fatal: could not malloc() %u bytes\n", sizeof(XineramaScreenInfo) * nn);
+-		for(i = 0, j = 0; i < nn; i++)
+-			if(isuniquegeom(unique, j, &info[i]))
+-				memcpy(&unique[j++], &info[i], sizeof(XineramaScreenInfo));
+-		XFree(info);
+-		nn = j;
+-		if(n <= nn) {
+-			for(i = 0; i < (nn - n); i++) { /* new monitors available */
+-				for(m = mons; m && m->next; m = m->next);
+-				if(m)
+-					m->next = createmon();
+-				else
+-					mons = createmon();
+-			}
+-			for(i = 0, m = mons; i < nn && m; m = m->next, i++)
+-				if(i >= n
+-				|| (unique[i].x_org != m->mx || unique[i].y_org != m->my
+-				    || unique[i].width != m->mw || unique[i].height != m->mh))
+-				{
+-					dirty = True;
+-					m->num = i;
+-					m->mx = m->wx = unique[i].x_org;
+-					m->my = m->wy = unique[i].y_org;
+-					m->mw = m->ww = unique[i].width;
+-					m->mh = m->wh = unique[i].height;
+-					updatebarpos(m);
+-				}
+-		}
+-		else { /* less monitors available nn < n */
+-			for(i = nn; i < n; i++) {
+-				for(m = mons; m && m->next; m = m->next);
+-				while(m->clients) {
+-					dirty = True;
+-					c = m->clients;
+-					m->clients = c->next;
+-					detachstack(c);
+-					c->mon = mons;
+-					attach(c);
+-					attachstack(c);
+-				}
+-				if(m == selmon)
+-					selmon = mons;
+-				cleanupmon(m);
+-			}
+-		}
+-		free(unique);
+-	}
+-	else
+-#endif /* XINERAMA */
+-	/* default monitor setup */
+-	{
+-		if(!mons)
+-			mons = createmon();
+-		if(mons->mw != sw || mons->mh != sh) {
+-			dirty = True;
+-			mons->mw = mons->ww = sw;
+-			mons->mh = mons->wh = sh;
+-			updatebarpos(mons);
+-		}
++	if(!mons)
++		mons = createmon();
++	if(mons->mw != sw || mons->mh != sh) {
++		dirty = True;
++		mons->mw = mons->ww = sw;
++		mons->mh = mons->wh = sh;
++		updatebarpos(mons);
+ 	}
+ 	if(dirty) {
+ 		selmon = mons;
