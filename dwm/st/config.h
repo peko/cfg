@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 // static char font[] = "PragmataPro:pixelsize=11.5:antialias=false:autohint=false";
-static char font[] = "PragmataPro:size=12.5";
+static char font[] = "Terminus:size=12";
 static int borderpx = 0;
 
 /*
