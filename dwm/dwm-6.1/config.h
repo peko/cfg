@@ -67,7 +67,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]    = { "gnome-terminal", NULL };
 static const char *prtscrcmd[]  = { "scrot", "/home/peko/Pictures/%Y.%m.%d-%H%M%S-$wx$h.png", "--quality", "100", "-u",  NULL };
-static const char *explorefs[]  = { "caja", "--no-desktop",  NULL };
+static const char *explorefs[]  = { "nemo", "--no-desktop",  NULL };
 static const char *sublimecmd[] = { "subl", NULL };
 static const char *browsercmd[] = { "google-chrome",  NULL };
 static const char *telegramcmd[] = { "/home/peko/Tools/Telegram/Telegram",  NULL };
@@ -84,6 +84,7 @@ static Key keys[] = {
 	{ 0,                            XK_Print,  spawn,          {.v = prtscrcmd  } },
 	
 	{ MODKEY,                       XK_h,      spawn,          SHCMD("htop") },
+	{ MODKEY,                       XK_c,      spawn,          SHCMD("tty-clock -s -c -C 0") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("less +F /home/peko/.xsession-errors") },
 	{ MODKEY,                       XK_y,      spawn,          SHCMD("ping ya.ru") },
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
