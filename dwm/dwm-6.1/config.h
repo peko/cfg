@@ -59,19 +59,19 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "mate-terminal", "-e", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "gnome-terminal", "-e", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]    = { "mate-terminal", NULL };
+static const char *termcmd[]    = { "gnome-terminal", NULL };
 static const char *prtscrcmd[]  = { "scrot", "/home/peko/Pictures/%Y.%m.%d-%H%M%S-$wx$h.png", "--quality", "100", "-u",  NULL };
 static const char *explorefs[]  = { "caja", "--no-desktop",  NULL };
 static const char *sublimecmd[] = { "subl", NULL };
 static const char *browsercmd[] = { "google-chrome",  NULL };
 static const char *telegramcmd[] = { "/home/peko/Tools/Telegram/Telegram",  NULL };
-static const char *teleclicmd[] = { "mate-terminal", "--working-directory=/home/peko/Tools/telegram-cli/","-e", "./bin/telegram-cli",  NULL };
+static const char *teleclicmd[] = { "gnome-terminal", "--working-directory=/home/peko/Tools/telegram-cli/","-e", "./bin/telegram-cli",  NULL };
 
 
 static Key keys[] = {
