@@ -72,6 +72,9 @@ static const char *sublimecmd[] = { "subl", NULL };
 static const char *browsercmd[] = { "google-chrome",  NULL };
 static const char *telegramcmd[] = { "/home/peko/Tools/Telegram/Telegram",  NULL };
 static const char *teleclicmd[] = { "mate-terminal", "--working-directory=/home/peko/Tools/telegram-cli/","-e", "./bin/telegram-cli",  NULL };
+static const char *upvol[]   = { "amixer", "set", "Master", "3+",     NULL };
+static const char *downvol[] = { "amixer", "set", "Master", "3-",     NULL };
+static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 
 
 static Key keys[] = {
