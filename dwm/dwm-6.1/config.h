@@ -92,6 +92,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = teleclicmd  } },
 
+	{ 0,                            0x1008ff11,spawn,          {.v = upvol       } },// using xev to get keys
+	{ 0,                            0x1008ff11,spawn,          {.v = mutevol     } },// 
+	{ 0,                            0x1008ff13,spawn,          {.v = downvol     } },// 
+
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
 	// { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
