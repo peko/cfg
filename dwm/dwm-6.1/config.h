@@ -86,9 +86,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
 	{ 0,                            XK_Print,  spawn,          {.v = prtscrcmd  } },
 	
-	{ MODKEY,                       XK_h,      spawn,          SHCMD("htop") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("less +F /home/peko/.xsession-errors") },
+	{ MODKEY,                       XK_h,      spawn,          SHCMD("htop")       },
 	{ MODKEY,                       XK_y,      spawn,          SHCMD("ping ya.ru") },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("wavemon")    },
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = teleclicmd  } },
 
