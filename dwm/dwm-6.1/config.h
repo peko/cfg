@@ -89,7 +89,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("less +F /home/peko/.xsession-errors") },
 	{ MODKEY,                       XK_h,      spawn,          SHCMD("htop")       },
 	{ MODKEY,                       XK_y,      spawn,          SHCMD("ping ya.ru") },
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("wavemon")    },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("wavemon")    },  // wireless connection strength monitor
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("wicd-curse") },  // wired and wireless connection manager
+
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = teleclicmd  } },
 

@@ -1,0 +1,30 @@
+Подрубаем wifi
+
+    > wifi-menu
+
+Грузим клавиатуру с http://github.com/peko/workman-layout
+
+    > elinks
+    > loadkeys workman
+
+Разбиваем жесткий диск, делаем загрузочным раздел
+
+    > cfdisk
+        sda1 / bootable
+        sda2 swap
+
+Созадем файловую систему
+
+    > mkfs.ext4 /dev/sda1  
+    > mkswap /dev/sda2
+    > swapon
+
+Монтируем раздел, заливаем базовую структуру
+
+    > mount /dev/sda1 /mnt
+    > mkdir /mnt/boot
+    > mkdir /mnt/home
+    > pacstrap /mnt base base-devel
+
+
+
