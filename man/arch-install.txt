@@ -93,7 +93,19 @@
 
         > pacman -Ss xf86-video
 
-    Ставим
+    Ставим xorg и декстоп
 
-        > pacman -S xf86-video-intel xorg-server xorg-server-utils xorg-apps xorg-xinit dwm
+        > pacman -S xf86-video-intel xorg-server xorg-server-utils xorg-apps xorg-xinit 
+        > pacman -S dwm dmenu
 
+    Прописываем DWM
+
+        > echo exec dwm > ~/.xinitrc
+
+    Запускаем Х
+
+        > startx
+
+    Раскладку 
+
+        setxkbmap -variant workman
