@@ -90,13 +90,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      spawn,          SHCMD("htop")       },
 	{ MODKEY,                       XK_y,      spawn,          SHCMD("ping ya.ru") },
 	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("wavemon")    },  // wireless connection strength monitor
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("wicd-curse") },  // wired and wireless connection manager
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("wicd-curses") },  // wired and wireless connection manager
 
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = teleclicmd  } },
 
 	{ 0,                            0x1008ff11,spawn,          {.v = downvol   } },// using xev to get keys
-	{ 0,                            0x1008ff12,spawn,          {.v = mutevol   } },// 
+	{ 0,                            0x1008ff12,spawn,          {.v = SHCMD("alsamixer") },// 
+	{ MODKEY,                       XK_v,      spawn,          {.v = SHCMD("alsamixer") },// 
 	{ 0,                            0x1008ff13,spawn,          {.v = upvol     } },// 
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
