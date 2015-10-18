@@ -26,5 +26,10 @@
     > mkdir /mnt/home
     > pacstrap /mnt base base-devel
 
+CLI workman
 
+    > cp workman-arch.map /usr/share/kbd/keymaps/i386
+    > vim /etc/vconsole.conf
+      KEYMAP=workman-arch
+    
 
