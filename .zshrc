@@ -80,3 +80,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
