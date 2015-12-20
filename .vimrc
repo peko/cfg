@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+
+
 Plug 'gmarik/Vundle.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'kchmck/vim-coffee-script'
@@ -14,13 +16,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Lokaltog/vim-powerline'
 
 call plug#end()
-
-" remap
-" set langmap=hn,je,ko,li
-nnoremap <A-n> <left>
-nnoremap <A-e> <down>
-nnoremap <A-o> <up>
-nnoremap <A-i> <right>
 
 " esc to tab
 nnoremap <Tab> <Esc>
@@ -56,4 +51,24 @@ colorscheme solarized
 
 " powerline
 let g:Powerline_symbols = 'fancy'
+
+
+" remap
+"set langmap=hn,je,ko,li
+"sed -n l
+execute "set <M-n>=\en"
+execute "set <M-e>=\ee"
+execute "set <M-o>=\eo"
+execute "set <M-i>=\ei"
+
+nnoremap <M-n> <left>
+nnoremap <M-e> <down>
+nnoremap <M-o> <up>
+nnoremap <M-i> <right>
+inoremap <M-n> <left>
+inoremap <M-e> <down>
+inoremap <M-o> <up>
+inoremap <M-i> <right>
+
+
 
