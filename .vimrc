@@ -1,21 +1,16 @@
 call plug#begin('~/.vim/plugged')
 
-
-
-Plug 'gmarik/Vundle.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'kchmck/vim-coffee-script'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'fatih/vim-go'
-Plug 'wting/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Lokaltog/vim-powerline'
 
 call plug#end()
+
+" powerline
+let g:Powerline_symbols = 'fancy'
 
 " esc to tab
 nnoremap <Tab> <Esc>
@@ -48,10 +43,6 @@ set t_Co=256
 syntax enable
 set background=dark
 colorscheme solarized
-
-" powerline
-let g:Powerline_symbols = 'fancy'
-
 
 " remap
 "set langmap=hn,je,ko,li
