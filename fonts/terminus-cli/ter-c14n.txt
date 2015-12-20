@@ -2003,91 +2003,91 @@ X
 ++---133-0x85-'…'-
         
         
- X      
- X      
- X      
- X      
- XXXX   
         
-  X   X 
-  XX  X 
-  X X X 
-  X  XX 
-  X   X 
+        
+        
+        
+        
+        
+        
+        
+X  X  X 
+X  X  X 
+        
         
 ++---134-0x86-'†'-
         
         
-        
-        
-  XXXX  
- X    X 
- X    X 
- XXXXXX 
- XX  XX 
- XXX XX 
- XXXXXX 
-        
+   X    
+   X    
+ XXXXX  
+   X    
+   X    
+   X    
+   X    
+   X    
+   X    
+   X    
         
         
 ++---135-0x87-'‡'-
         
         
-        
-        
- X   X  
-  XXX   
- X   X  
-XX X XX 
- X   X  
-  XXX   
- X   X  
-        
+   X    
+   X    
+ XXXXX  
+   X    
+   X    
+   X    
+   X    
+ XXXXX  
+   X    
+   X    
         
         
 ++---136-0x88-'ˆ'-
         
         
         
-     X  
-    X   
-   X    
-  X     
- XXXXXX 
-     X  
-    X   
-   X    
-  X     
+   XXX  
+  X   X 
+ X      
+XXXXX   
+ X      
+XXXXX   
+ X      
+  X   X 
+   XXX  
         
         
 ++---137-0x89-'‰'-
         
         
-        
-        
-        
-     X  
-      X 
- XXXXXXX
-X     X 
-x    X  
-        
-        
+ X  X   
+X X X   
+ X X    
+   X    
+  X     
+  X     
+ X      
+ X X X  
+X X X X 
+X  X X  
         
         
 ++---138-0x8a-'Š'-
         
         
-        
-        
-        
-        
- X   X  
-  X X   
-   X    
-  X X   
- X   X  
-        
+  XX    
+ X X    
+X  X    
+X  XXX  
+X  X  X 
+X  X  X 
+X  X  X 
+X  X  X 
+X  X  X 
+X  XXX  
         
         
 ++---139-0x8b-'‹'-
