@@ -43,3 +43,5 @@ fi
 
 zsh $HOME/workman/Linux/ubuntu/xkb-set.sh
 
+xrandr --output LVDS1 --off
+
