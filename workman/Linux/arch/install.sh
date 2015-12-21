@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # patch creation
-# diff -rupN /usr/share/X11/xkb/ new/ > xkb_ru.patch
+# diff -rup /usr/share/X11/xkb/ xkb/ > xkb_ru.patch
 
 # applying patch
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
