@@ -1437,12 +1437,6 @@
         </variant>
         <variant>
           <configItem>
-            <name>workman</name>
-            <description>English (Workman)</description>
-          </configItem>
-        </variant>
-        <variant>
-          <configItem>
             <name>workman-intl</name>
             <description>English (Workman, international with dead keys)</description>
            </configItem>
@@ -4357,15 +4351,6 @@
             <description>Mari</description>
             <languageList>
               <iso639Id>chm</iso639Id>
-            </languageList>
-          </configItem>
-        </variant>
-        <variant>
-          <configItem>
-            <name>workman</name>
-            <description>Russian (Workman)</description>
-            <languageList>
-              <iso639Id>rus</iso639Id>
             </languageList>
           </configItem>
         </variant>
