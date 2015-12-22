@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>My ~linux configs — configuration hints</title>
+<title>my linux configs — configuration hints</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -117,6 +117,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="http://tiddlywiki.com" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/AnimationDuration</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -163,7 +165,11 @@ Error message and password prompt
 
 <li>distributives</li>
 
+<li>fonts</li>
+
 <li>tools</li>
+
+<li>vim</li>
 
 <li>workman</li>
 
@@ -177,6 +183,9 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20151221232811952" modified="20151221232909444" title="$:/config/AnimationDuration">
+<pre>0</pre>
+</div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.9">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -5894,10 +5903,10 @@ Error message and password prompt
 <div created="20151221224540379" modified="20151221224545595" title="$:/SiteSubtitle">
 <pre>configuration hints</pre>
 </div>
-<div created="20151221224459647" modified="20151221224532744" title="$:/SiteTitle">
-<pre>My ~linux configs</pre>
+<div created="20151221224459647" modified="20151222024538595" title="$:/SiteTitle">
+<pre>my linux configs</pre>
 </div>
-<div modified="20151221231800741" title="$:/state/showeditpreview">
+<div modified="20151221233305744" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
 <div modified="20151221231935496" title="$:/state/tab--1963855381">
@@ -5906,7 +5915,7 @@ Error message and password prompt
 <div modified="20151221231937405" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div list="$:/ControlPanel workman tools distributives arch [[arch installation]]" title="$:/StoryList">
+<div list="$:/ControlPanel vim fonts workman tools distributives arch [[arch installation]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6056,12 +6065,12 @@ Error message and password prompt
 <pre>* [[arch installation]]
 * [[arch workman]]</pre>
 </div>
-<div created="20151221224827874" modified="20151221231245457" tags="arch" title="arch installation">
-<pre>! Подключаем wifi
+<div created="20151221224827874" modified="20151221232610560" tags="arch" title="arch installation">
+<pre>!! Подключаем wifi
 
     &gt; wifi-menu
 
-! Грузим cli layout
+!! Грузим cli layout
 
 * http://github.com/peko/workman-layout
 * http://github.com/peko/my-linux-configs
@@ -6069,38 +6078,38 @@ Error message and password prompt
     &gt; elinks /lynx / w3m
     &gt; loadkeys workman
 
-! Разбиваем жесткий диск, делаем загрузочным раздел
+!! Разбиваем жесткий диск, делаем загрузочным раздел
 
     &gt; cfdisk
         sda1 / bootable
         sda2 swap
 
-! Созадем файловую систему
+!! Созадем файловую систему
 
     &gt; mkfs.ext4 /dev/sda1  
     &gt; mkswap /dev/sda2
     &gt; swapon
 
-! Монтируем раздел, заливаем базовую структуру
+!! Монтируем раздел, заливаем базовую структуру
 
     &gt; mount /dev/sda1 /mnt
     &gt; mkdir /mnt/boot
     &gt; mkdir /mnt/home
     &gt; pacstrap /mnt base base-devel
 
-! CLI workman
+!! CLI workman
 
 &gt; # cp workman-arch.map /usr/share/kbd/keymaps/i386
 &gt; # ls /usr/share/kbd/consolefonts
 &gt; # showconsoefont
 &gt; setfont Cyr_a8x14
 &gt; vim /etc/vconsole.conf
-&gt;&gt; KEYMAP=workman-arch
-&gt;&gt; FONT=Cyr_a8x14
+KEYMAP=workman-arch
+FONT=Cyr_a8x14
 
-!Xorg workman
+!! Xorg workman
 
-    cat &gt; /etc/X11/xorg.conf.d/00.keyboard.conf
+    &gt; cat &gt; /etc/X11/xorg.conf.d/00.keyboard.conf
 
 `Section &quot;InputClass&quot;
         Identifier &quot;system-keyboard&quot;
@@ -6109,30 +6118,92 @@ Error message and password prompt
         Option &quot;XkbModel&quot; &quot;pc104&quot;
         Option &quot;XkbVariant&quot; &quot;workman&quot;
 EndSection`
+ctrl+d
 
-ctrl+d</pre>
+!! Must have tools
+zsh htop clang/llvm mc vim</pre>
 </div>
 <div created="20151221224659448" modified="20151221225309745" title="distributives">
 <pre>* [[arch]]
 * [[ubuntu]]</pre>
 </div>
-<div created="20151221231406546" modified="20151221231712949" tags="" title="tools">
-<pre>! layout managers
+<div created="20151221235057392" modified="20151221235120514" tags="" title="fonts">
+<pre>!! Terminus</pre>
+</div>
+<div created="20151221231406546" modified="20151221235913955" tags="" title="tools">
+<pre>!! must have
+* htop
+* mc
+* vim
+* clang
+
+!! layout managers
 * [[dwm]]
 * [[dvtm]] / abudako
 * [[tmux]] / byobu
 
-! frame buffer tools
-* [[fbv]] 
+!! frame buffer tools
+* [[fbv]] просмотр изображений
+* [[mplayer]] проигрывание видео 
 
-! editors
+!! editors
 * [[vim]]
 </pre>
 </div>
-<div created="20151221231718968" modified="20151221231857749" tags="" title="workman">
+<div created="20151221235917333" modified="20151222001350280" tags="" title="vim">
+<pre>! Общая настройка .vimrc
+!! ESC-&gt;TAB
+
+``nnoremap &lt;Tab&gt; &lt;Esc&gt;
+vnoremap &lt;Tab&gt; &lt;Esc&gt;gV
+onoremap &lt;Tab&gt; &lt;Esc&gt;
+inoremap &lt;Tab&gt; &lt;Esc&gt;`^
+inoremap &lt;Leader&gt;&lt;Tab&gt; &lt;Tab&gt;``
+
+! Плагины
+!!plugged
+Менеджер плагинов
+
+``call plug#begin(&quot;~./vim/plugged&quot;)
+Plug(&quot;...&quot;)
+call plug#end()``
+
+!! easymotion/vim-easymotion
+быстрый переход на символ
+
+!! bling/vim-airline
+Красиваый статус-лайн
+
+!! kien/ctrlp.vim
+Быстрый дырявый поиск файлов
+
+!! terryma/vim-multiple-cursors
+Sublime-like курсоры
+
+!! scrooloose/nerdtree
+Файловое дерево
+
+!! bling/vim-bufferline
+Список буфферов
+</pre>
+</div>
+<div created="20151221231718968" modified="20151221234811166" tags="arch" title="workman">
 <pre>! VT / CLI
+
 !! Установка
-!! инструменты
+
+Добавление новой расскладки в VT/CLI заключается в добавлени нового лайаута в ''/usr/share/kbd/keymaps/i386''
+
+`./workman/Linux/arch/cli/workman-arch.map` 
+
+Автозапуск раскладки: ''/etc/vconsole.conf''
+
+`KEYMAP=workman-arch
+FONT=ter-c12n`
+
+Доступные шрифты можно посмотреть в ''/usr/share/kbd/consolefonts/''
+
+!! Инструменты
 
 ! X11
 !! Установка
