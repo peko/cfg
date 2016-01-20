@@ -26,6 +26,32 @@
     > mkdir /mnt/home
     > pacstrap /mnt base base-devel
 
+fstab
+
+    genfstab -p /mnt >> /mnt/etc/fstab
+
+
+
+Generate an fstab file (use -U or -L to define by UUID or labels):
+# genfstab -p /mnt >> /mnt/etc/fstab
+Change root into the new system:
+# arch-chroot /mnt
+Set the hostname:
+# echo computer_name > /etc/hostname
+Set the time zone:
+# ln -s /usr/share/zoneinfo/zone/subzone /etc/localtime
+Uncomment the needed locales in /etc/locale.gen, then generate them with:
+# locale-gen
+Set locale preferences in /etc/locale.conf and possibly $HOME/.config/locale.conf:
+# echo LANG=your_locale > /etc/locale.conf
+Add console keymap and font preferences in /etc/vconsole.conf.
+Configure the network for the newly installed environment: see Network configuration and Wireless network configuration.
+Configure /etc/mkinitcpio.conf if additional features are needed. Create a new initial RAM disk with:
+# mkinitcpio -p linux
+Set the root password:
+# passwd
+
+
 CLI workman
 
     > cp workman-arch.map /usr/share/kbd/keymaps/i386
@@ -46,4 +72,3 @@ Section "InputClass"
         Option "XkbVariant" "workman"
 EndSection
 ctrl+d
-
