@@ -65,13 +65,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]    = { "urxvt", NULL };
+static const char *termcmd[]    = { "termite", NULL };
 static const char *prtscrcmd[]  = { "scrot", "/home/peko/Pictures/%Y.%m.%d-%H%M%S-$wx$h.png", "--quality", "100", "-u",  NULL };
 static const char *explorefs[]  = { "caja", "--no-desktop",  NULL };
 static const char *sublimecmd[] = { "subl", NULL };
 static const char *browsercmd[] = { "google-chrome",  NULL };
 static const char *telegramcmd[] = { "/home/peko/Tools/Telegram/Telegram",  NULL };
-static const char *teleclicmd[] = { "rxvt", "--working-directory=/home/peko/Tools/telegram-cli/","-e", "./bin/telegram-cli",  NULL };
+static const char *teleclicmd[] = { "termite", "--working-directory=/home/peko/Tools/telegram-cli/","-e", "./bin/telegram-cli",  NULL };
 static const char *upvol[]   = { "amixer", "set", "Master", "3+",     NULL };
 static const char *downvol[] = { "amixer", "set", "Master", "3-",     NULL };
 static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
