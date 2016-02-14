@@ -6,7 +6,7 @@
 # set quiet
 
 ## Use auto-indentation.
-# set autoindent
+set autoindent
 
 ## Back up files to the current filename plus a tilde.
 # set backup
@@ -55,7 +55,7 @@ set const
 # set matchbrackets "(<[{)>]}"
 
 ## Use the blank line below the titlebar as extra editing space.
-# set morespace
+set morespace
 
 ## Enable mouse support, if available for your system.  When enabled,
 ## mouse clicks can be used to place the cursor, set the mark (with a
@@ -89,7 +89,7 @@ set const
 # set operatingdir ""
 
 ## Remember the cursor position in each file for the next editing session.
-# set poslog
+set poslog
 
 ## Preserve the XON and XOFF keys (^Q and ^S).
 # set preserve
@@ -126,13 +126,13 @@ set const
 ## will jump to that beginning (either forwards or backwards).  If the
 ## cursor is already at that position, it will jump to the true
 ## beginning of the line.
-# set smarthome
+set smarthome
 
 ## Use smooth scrolling as the default.
 set smooth
 
 ## Enable soft line wrapping (AKA full-line display).
-# set softwrap
+set softwrap
 
 ## Use this spelling checker instead of the internal one.  This option
 ## does not properly have a default value.
@@ -145,7 +145,7 @@ set smooth
 set tabsize 4
 
 ## Convert typed tabs to spaces.
-# set tabstospaces
+set tabstospaces
 
 ## Save automatically on exit; don't prompt.
 # set tempfile
@@ -161,7 +161,7 @@ set tabsize 4
 ## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
 ## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
 ## The default when in a UTF-8 locale:
-# set whitespace "»·"
+set whitespace "»·"
 ## The default otherwise:
 # set whitespace ">."
 
@@ -172,10 +172,10 @@ set tabsize 4
 
 ## Paint the interface elements of nano.
 ## This is an example; by default there are no colors.
-#set titlecolor brightwhite,blue
-#set statuscolor brightwhite,green
-#set keycolor green
-#set functioncolor yellow
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,green
+set keycolor green
+set functioncolor yellow
 
 
 ## Setup of syntax coloring.
@@ -235,19 +235,33 @@ include "/usr/share/nano/*.nanorc"
 ## Set this if your backspace key sends Del most of the time.
 # bind Del backspace all
 
-bind M-N left  main
-bind M-E down  main
-bind M-O up    main
-bind M-I right main
+## MOVEMENT
 
-bind ^N prevword   main
-bind ^E nextpage   main
-bind ^O prevpage   main
-bind ^I nextword   main
+bind M-N left  all
+bind M-E down  all
+bind M-O up    all
+bind M-I right all
+
+bind ^N prevword   all
+bind ^E nextpage   all
+bind ^O prevpage   all
+bind ^I nextword   all
+
+bind M-. end      all
+bind M-, home     all
+bind ^. beginpara all
+bind ^, endpara   all
+
+## EDIT
+
+bind M-R cut all
+
+##  MISC 
 
 # save
-bind M-S writeout main
-bind M-F whereis  main
+bind M-S writeout    main
+bind M-F whereis     main
+bind ^F  searchagain main
 
 bind M-Q exit main
 
@@ -258,4 +272,6 @@ bind M-P uncut    all
 bind M-X cut      all
 
 bind M-U undo all
+bind ^U  redo all
+
 
