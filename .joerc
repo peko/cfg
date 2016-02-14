@@ -795,6 +795,18 @@ ltarw		^[ n
 uparw		^[ o
 dnarw		^[ e
 
+
+nextword	^I
+prevword	^N
+upslide,upslide,upslide,upslide,upslide,upslide,upslide    ^O
+dnslide,dnslide,dnslide,dnslide,dnslide,dnslide,dnslide    ^E
+
+undo            ^[ u
+redo            ^u
+
+savenow         ^[ s
+exsave          ^[ q
+
  Sample if/then/else macro
  if,"char==65",then,"it's an A",else,"it's not an a",endif	^[ q
 
@@ -930,9 +942,9 @@ execmd		^[ ^X		Prompt for command to execute
 finish		^[ ^I		Complete word in document
 finish		^[ ^M		Complete word: used to be math
 mwind!,mfit,jump,bol		^[ SP
-isrch		^[ s		Forward incremental search
-isrch		^[ S		Forward incremental search
-isrch		^[ ^S		Forward incremental search
+ isrch		^[ s		Forward incremental search
+ isrch		^[ S		Forward incremental search
+ isrch		^[ ^S		Forward incremental search
 notmod		^[ ~		Not modified
 mwind,mfit,prevw,nxterr		^[ =		To next error
  parserr		^[ e		Parse errors in current buffer
@@ -953,7 +965,7 @@ tomarkk		^[ K		Go to end of marked block
 upslide		^[ w		Scroll up one line
 upslide		^[ ^W		Scroll up one line
 upslide		^[ W		Scroll up one line
-upslide,upslide,upslide,upslide		MWUP
+upslide,upslide,upslide,upslide	o	MWUP
 yank		^[ y		Undelete text
 yankpop		^[ ^Y		Undelete text
 yank		^[ Y		Undelete text
@@ -965,9 +977,9 @@ insc		^@		Ctrl-space used to insert a space
 nbuf		^[ v		Next buffer
 nbuf		^[ V		Next buffer
 nbuf		^[ ^V		Next buffer
-pbuf		^[ u		Prev buffer
-pbuf		^[ U		Prev buffer
-pbuf		^[ ^U		Prev buffer
+ pbuf		^[ u		Prev buffer
+ pbuf		^[ U		Prev buffer
+ pbuf		^[ ^U		Prev buffer
  query		^[ q		Quoted insert
  byte		^[ n		Goto byte
  col		^[ c		Goto column
@@ -1001,7 +1013,7 @@ quote		^Q
 
 backs		^?		Backspace
 backs		^H
-backw		^O		Backspace word
+ backw		^O		Backspace word
 bknd		^K '		Shell window
 blkcpy		^K C		Copy marked block
 blkcpy		^K ^C
@@ -1034,7 +1046,7 @@ deleol		^J		Delete to end of line
 dellin		^Y		Delete entire line
 delw		^W		Delete word to right
 dnarw		.kd		Go down
-dnarw		^N
+ dnarw		^N
 dnarw		^[ O B
 dnarw		^[ [ B
  dnarw		^# B
@@ -1046,7 +1058,7 @@ eof		^K ^V
 eof		^K v
 eol		.kH		Go to end of line
 eol		.@7
-eol		^E
+ eol		^E
 exsave		^K X		Save and exit
 exsave		^K ^X
 exsave		^K x
@@ -1143,9 +1155,9 @@ shell4		.k4
 :prompt			Prompt windows
 :inherit main
 if,"byte>size",then,complete,complete,else,delch,endif	^D
-complete	^I
+ complete	^I
 dnarw,eol	.kd		Go down
-dnarw,eol	^N
+ dnarw,eol	^N
 dnarw,eol	^[ O B
 dnarw,eol	^[ [ B
  dnarw,eol	^# B
@@ -1183,7 +1195,7 @@ bofmenu		^K u
 bolmenu		.kh
 bolmenu		^A
 dnarwmenu	.kd
-dnarwmenu	^N
+ dnarwmenu	^N
 dnarwmenu	^[ [ B
 dnarwmenu	^[ O B
  dnarwmenu ^# B
@@ -1192,7 +1204,7 @@ eofmenu		^K V
 eofmenu		^K ^V
 eofmenu		^K v
 eolmenu		.kH
-eolmenu		^E
+ eolmenu		^E
 ltarwmenu	.kl
 ltarwmenu	^B
 ltarwmenu	^[ [ D
@@ -1212,11 +1224,11 @@ rtarwmenu	^[ [ C
  rtarwmenu ^# C
 rtarwmenu	^[ O C
 rtn		SP
-rtn		^I
+ rtn		^I
 rtn		^K H
 rtn		^K h
 rtn		^K ^H
-tabmenu		^I
+ tabmenu		^I
 uparwmenu	.ku
 uparwmenu	^P
 uparwmenu	^[ [ A
@@ -1238,7 +1250,7 @@ type		^@ TO ÿ
 :inherit main
 ""		^C		Abort
 ""		^D		Eof
-"	"	^I		Tab
+	"	"	^I		Tab
 ""		^H		Backspace
 ""		^M		Return
 ""		^?		Backspace
@@ -1256,8 +1268,8 @@ type		^@ TO ÿ
 ""		^A		BOL for bash
 ""		^C		Abort
 ""		^D		Eof
-""		^E		EOL for bash
-"	"	^I		Tab
+ ""		^E		EOL for bash
+	"	"	^I		Tab
 ""		^H		Backspace
 ""		^M		Return
 ""		^?		Backspace
