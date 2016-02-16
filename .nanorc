@@ -31,7 +31,7 @@ set autoindent
 
 ## Constantly display the cursor position in the statusbar.  Note that
 ## this overrides "quickblank".
-set const
+# set const
 
 ## Use cut-to-end-of-line by default.
 # set cut
@@ -74,7 +74,7 @@ set morespace
 # set nofollow
 
 ## Don't display the helpful shortcut lists at the bottom of the screen.
-# set nohelp
+set nohelp
 
 ## Don't add newlines to the ends of files.
 # set nonewlines
@@ -102,7 +102,7 @@ set poslog
 
 ## Do quick statusbar blanking.  Statusbar messages will disappear after
 ## 1 keystroke instead of 26.  Note that "const" overrides this.
-# set quickblank
+set quickblank
 
 ## The email-quote string, used to justify email-quoted paragraphs.
 ## This is an extended regular expression if your system supports them,
@@ -167,7 +167,7 @@ set whitespace "»·"
 
 ## Detect word boundaries more accurately by treating punctuation
 ## characters as parts of words.
-# set wordbounds
+set wordbounds
 
 
 ## Paint the interface elements of nano.
@@ -177,51 +177,8 @@ set statuscolor brightwhite,green
 set keycolor green
 set functioncolor yellow
 
-
-## Setup of syntax coloring.
-##
-## Format:
-##
-## syntax "short description" ["filename regex" ...]
-##
-## The "none" syntax is reserved; specifying it on the command line is
-## the same as not having a syntax at all.  The "default" syntax is
-## special: it takes no filename regexes, and applies to files that
-## don't match any other syntax's filename regexes.
-##
-## color foreground,background "regex" ["regex"...]
-## or
-## icolor foreground,background "regex" ["regex"...]
-##
-## "color" will do case-sensitive matches, while "icolor" will do
-## case-insensitive matches.
-##
-## Valid colors: white, black, red, blue, green, yellow, magenta, cyan.
-## For foreground colors, you may use the prefix "bright" to get a
-## stronger highlight.
-##
-## To use multi-line regexes, use the start="regex" end="regex"
-## [start="regex" end="regex"...] format.
-##
-## If your system supports transparency, not specifying a background
-## color will use a transparent color.  If you don't want this, be sure
-## to set the background color to black or white.
-##
-## All regexes should be extended regular expressions.
-##
-## If you wish, you may put your syntax definitions in separate files.
-## You can make use of such files as follows:
-##
-## include "/path/to/syntax_file.nanorc"
-##
-## Unless otherwise noted, the name of the syntax file (without the
-## ".nanorc" extension) should be the same as the "short description"
-## name inside that file.  These names are kept fairly short to make
-## them easier to remember and faster to type using nano's -Y option.
-##
-## To include all existing syntax definitions, you can do:
-include "/usr/share/nano/*.nanorc"
-
+include "/usr/share/nano/c.nanorc"
+include "/usr/share/nano/nanorc.nanorc"
 
 ## Key bindings.
 ## See nanorc(5) for more details on this.
@@ -249,29 +206,29 @@ bind ^I nextword   all
 
 bind M-. end      all
 bind M-, home     all
-bind ^. beginpara all
-bind ^, endpara   all
+# bind ^. beginpara all
+# bind ^, endpara   all
 
-## EDIT
+## SAVE
 
-bind M-R cut all
-
-##  MISC 
-
-# save
 bind M-S writeout    main
 bind M-F whereis     main
 bind ^F  searchagain main
 
 bind M-Q exit main
 
-# mark
+## MARK / BUFFER
+
 bind M-M mark     all
 bind M-C copytext all
 bind M-P uncut    all
 bind M-X cut      all
+bind M-R cut      all
 
 bind M-U undo all
 bind ^U  redo all
 
+bind f1 help all
 
+bind M-. indent   all
+bind M-, unindent all
