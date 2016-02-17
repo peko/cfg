@@ -70,6 +70,7 @@ editor_simple_statusbar=0
 editor_check_new_line=0
 editor_show_right_margin=0
 editor_group_undo=0
+editor_state_full_filename=0
 editor_ask_filename_before_edit=0
 nice_rotating_dash=1
 mcview_remember_file_position=0
@@ -80,12 +81,8 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 ignore_ftp_chattr_errors=true
-skin=modarin256
-
-editor_state_full_filename=0
+skin=default
 filepos_max_saved_entries=1024
-
-editor_wordcompletion_collect_entire_file=false
 
 [Layout]
 message_visible=1
@@ -97,9 +94,9 @@ menubar_visible=1
 free_space=1
 horizontal_split=0
 vertical_equal=1
-left_panel_size=44
+left_panel_size=87
 horizontal_equal=1
-top_panel_size=24
+top_panel_size=1
 
 [Misc]
 timeformat_recent=%b %e %H:%M
@@ -114,14 +111,8 @@ clipboard_paste=
 
 [Colors]
 base_color=
-linux=
-color_terminals=
-
-xterm=
-
-rxvt-unicode-256color=
-
 xterm-termite=
+color_terminals=
 
 [Panels]
 show_mini_info=true
@@ -143,28 +134,8 @@ torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
 
-simple_swap=false
-
-[HotlistConfig]
-expanded_view_of_groups=0
-
-[FindFile]
-file_case_sens=true
-file_shell_pattern=true
-file_find_recurs=true
-file_skip_hidden=false
-file_all_charsets=false
-content_use=true
-content_case_sens=true
-content_regexp=false
-content_first_hit=false
-content_whole_words=false
-content_all_charsets=false
-ignore_dirs_enable=true
-ignore_dirs=
-
 [Panelize]
-Find *.orig after patching=find . -name \\*.orig -print
-Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Find rejects after patching=find . -name \\*.rej -print
-Modified git files=git ls-files --modified
+Изменённые файлы под контролем git=git ls-files --modified
+Найти корректуры, отвергнутые командой patch=find . -name \\*.rej -print
+Найти оригиналы (*.orig) после команды patch=find . -name \\*.orig -print
+Найти программы с установленными SUID/SGID битами=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
