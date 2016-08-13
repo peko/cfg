@@ -232,3 +232,5 @@ bind f1 help all
 
 bind M-. indent   all
 bind M-, unindent all
+
+# bind ^L tofiles insert

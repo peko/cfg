@@ -81,7 +81,8 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 ignore_ftp_chattr_errors=true
-skin=default
+skin=dark
+
 filepos_max_saved_entries=1024
 
 [Layout]
@@ -94,7 +95,7 @@ menubar_visible=1
 free_space=1
 horizontal_split=0
 vertical_equal=1
-left_panel_size=87
+left_panel_size=72
 horizontal_equal=1
 top_panel_size=1
 
@@ -111,8 +112,12 @@ clipboard_paste=
 
 [Colors]
 base_color=
-xterm-termite=
+linux=
 color_terminals=
+
+xterm-256color=
+
+xterm-termite=
 
 [Panels]
 show_mini_info=true
@@ -127,6 +132,7 @@ reverse_files_only=true
 auto_save_setup_panels=false
 navigate_with_arrows=false
 panel_scroll_pages=true
+panel_scroll_center=false
 mouse_move_pages=true
 filetype_mode=true
 permission_mode=false
@@ -134,8 +140,24 @@ torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
 
+simple_swap=false
+
+[FindFile]
+file_case_sens=true
+file_shell_pattern=true
+file_find_recurs=true
+file_skip_hidden=false
+file_all_charsets=false
+content_case_sens=true
+content_regexp=false
+content_first_hit=false
+content_whole_words=false
+content_all_charsets=false
+ignore_dirs_enable=true
+ignore_dirs=
+
 [Panelize]
-Изменённые файлы под контролем git=git ls-files --modified
-Найти корректуры, отвергнутые командой patch=find . -name \\*.rej -print
-Найти оригиналы (*.orig) после команды patch=find . -name \\*.orig -print
-Найти программы с установленными SUID/SGID битами=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Find *.orig after patching=find . -name \\*.orig -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Find rejects after patching=find . -name \\*.rej -print
+Modified git files=git ls-files --modified
