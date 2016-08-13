@@ -10,7 +10,7 @@ Plug 'Lokaltog/vim-powerline'
 call plug#end()
 
 " powerline
-" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 " esc to tab
 nnoremap <Tab> <Esc>
