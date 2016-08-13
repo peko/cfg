@@ -95,7 +95,7 @@ menubar_visible=1
 free_space=1
 horizontal_split=0
 vertical_equal=1
-left_panel_size=72
+left_panel_size=64
 horizontal_equal=1
 top_panel_size=1
 
@@ -143,7 +143,7 @@ select_flags=6
 simple_swap=false
 
 [FindFile]
-file_case_sens=true
+file_case_sens=false
 file_shell_pattern=true
 file_find_recurs=true
 file_skip_hidden=false
