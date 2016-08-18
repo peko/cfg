@@ -80,12 +80,36 @@ http://github.com/peko/cfg
     > grub-install /dev/sda
     > grub-mkconfig -o /boot/grub/grub.cfg
 
+vt workman
+    
+    > cp workman-arch.map /usr/share/kbd/keymaps/i386
+    > vim /etc/vconsole.conf
+      KEYMAP=workman-arch
+      FONT=Cyr_a8x14
+
 Выходим, размонтируемся
 
     > exit
     > sync; umount -R /mnt
+    > reboot
+    
+After reboot
 
-workman 
+Setup locale
+
+    List
+    
+    > localectl list-locales
+    
+    Set
+    
+    > localectl set-locale LANG=ru_RU.UTF-8
+    
+    or
+    
+    > echo "LANG=ru_RU.UTF-8" > /etc/locale.conf 
+
+workman
 
 vt
 
