@@ -27,7 +27,7 @@ http://github.com/peko/cfg
 
     > mkfs.ext4 /dev/sda1  
     > mkswap /dev/sda2
-    > swapon
+    > swapon /dev/sda2
 
 Монтируем раздел, заливаем базовую структуру
 
