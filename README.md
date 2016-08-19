@@ -112,7 +112,8 @@ Setup locale
 
 xorg / x11
 
-    > pacman -S xorg-server xorg-server-utils xorg-apps
+    > pacman -S xorg-server xorg-xinit xorg-server-utils xorg-apps
+    > echo "exec dwm" > ~/.xinitr
     
     find video card
     
@@ -125,6 +126,19 @@ xorg / x11
     google and install
     
     > pacman -S xf86-video-[ati/nvidia/etc]
+
+
+Звук
+
+    > pacman -S alsa-utils pulseaudio mocp
+    > alsamixer (unmute)
+    > speaker-test
+    
+
+Прочее
+
+  > pacman -S zsh mc tmux vim
+  > pacman -S clang gdb gcc cmake
 
 
 workman
@@ -153,14 +167,3 @@ EndSection
 ctrl+d
 
 
-Звук
-
-    > pacman -S alsa-utils pulseaudio mocp
-    > alsamixer (unmute)
-    > speaker-test
-    
-
-Прочее
-
-  > pacman -S zsh mc tmux vim
-  > pacman -S clang gdb gcc cmake
