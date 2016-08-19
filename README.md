@@ -109,6 +109,24 @@ Setup locale
     
     > echo "LANG=ru_RU.UTF-8" > /etc/locale.conf 
 
+
+xorg / x11
+
+    > pacman -S xorg-server xorg-server-utils xorg-apps
+    
+    find video card
+    
+    > lspci
+    
+    list drivers
+    
+    > pacman -Ss xf86-video
+
+    google and install
+    
+    > pacman -S xf86-video-[ati/nvidia/etc]
+
+
 workman
 
 vt
@@ -123,7 +141,7 @@ vt
 
 X11
 
-    cat > /etc/X11/xorg.conf.d/00.keyboard.conf 
+    > cat > /etc/X11/xorg.conf.d/00.keyboard.conf 
 
 Section "InputClass"
         Identifier "system-keyboard"
@@ -134,13 +152,15 @@ Section "InputClass"
 EndSection
 ctrl+d
 
+
 Звук
 
     > pacman -S alsa-utils pulseaudio mocp
     > alsamixer (unmute)
     > speaker-test
     
+
 Прочее
 
   > pacman -S zsh mc tmux vim
-
+  > pacman -S clang gdb gcc cmake
