@@ -1,0 +1,93 @@
+:include /etc/joe/joerc
+
+:windows		Bindings common to all windows
+
+   /////////////
+  ///WORKMAN///
+ /////////////
+ 
+ cursor movement
+ ---------------
+
+:delete ^[ N
+:delete ^[ E
+:delete ^[ O
+:delete ^[ I
+
+ltarw ^[ N
+dnarw ^[ E
+uparw ^[ O
+rtarw ^[ I
+
+:delete ^[ n
+:delete ^[ e
+:delete ^[ o
+:delete ^[ i
+
+ltarw ^[ n
+dnarw ^[ e
+uparw ^[ o
+rtarw ^[ i
+
+ nextword ^i
+ prevword ^n
+
+ ...............................................................................
+
+:main	          Text editing window
+:inherit windows
+
+ selection
+ ---------
+
+:delete ^N
+:delete ^E
+:delete ^O
+:delete ^I
+
+ltarw,rtarw,begin_marking,ltarw,toggle_marking	^[ ^N    Mark left
+dnarw,uparw,begin_marking,dnarw,toggle_marking	^[ ^E    Mark down
+uparw,dnarw,begin_marking,uparw,toggle_marking  ^[ ^O    Mark up
+rtarw,ltarw,begin_marking,rtarw,toggle_marking  ^[ ^I    Mark right Xterm
+
+ upslide,upslide,upslide,upslide,upslide ^O
+ dnslide,dnslide,dnslide,dnslide,dnslide ^E
+
+undo ^[ u
+redo ^U
+
+savenow ^[ s
+exsave  ^[ q
+
+ ...............................................................................
+
+:prompt         Prompt windows
+:inherit main
+ 
+ ...............................................................................
+
+:menu           Selection menus
+:inherit windows
+
+:query          Single-key query window
+:inherit windows
+
+ ...............................................................................
+
+:querya         Single-key query window for quoting
+type        ^@ TO ÿ
+
+ ...............................................................................
+
+:querysr        Search & replace query window
+type        ^@ TO ÿ
+
+ ...............................................................................
+
+:shell          Input to shell windows
+:inherit main
+
+ ...............................................................................
+
+:vtshell		Input to ANSI shell windows
+:inherit main
