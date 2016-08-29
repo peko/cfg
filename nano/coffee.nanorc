@@ -12,17 +12,27 @@ color brightblue "\<(and|by|class|do|extends|for|function|if|isnt|is|in|instance
 color brightblue "\<(switch|this|throw|try|typeof|until|undefined|var|void|while|when|with)\>"
 color brightblue "(->|=|\.\.|<|>|\|\|&&|!)"
 
+## iced
+color brightred "\<(await|defer)\>"
+
 ## Type specifiers and special types.
-color magenta "\<(Array|Boolean|Date|Enumerator|Error|Function|Math)\>"
+color magenta "\<(Array|Boolean|Date|Enumerator|Error|Function|Math|console|process)\>"
 color magenta "\<(Number|Object|RegExp|String)\>"
 color magenta "\<(true|yes|on|false|off|no)\>"
 
 ## Strings.
 color green "L?\"(\\"|[^"])*\""
 color green "L?'(\'|[^'])*'"
+color brightgreen "#\{.*?\}"
+
+## Regex
+color green "/.*?/"
 
 ## Escapes.
 color red "\\[0-7][0-7]?[0-7]?|\\x[0-9a-fA-F]+|\\[bfnrt'"\?\\]"
 
 ## Comments.
-color cyan "#\ .*$"
+color cyan "#[^{]*$"
+
+## Shabang
+color brightred "^#!.*$"
