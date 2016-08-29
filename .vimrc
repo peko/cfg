@@ -61,5 +61,7 @@ inoremap <M-e> <down>
 inoremap <M-o> <up>
 inoremap <M-i> <right>
 
+" Workman Cyrilics map
+set langmap=яq,дd,рr,шw,бb,жj,фf,уu,пp,аa,сs,чh,тt,гg,ыy,нn,еe,оo,иi,зz,хx,мm,цc,вv,кk,лl
 
 

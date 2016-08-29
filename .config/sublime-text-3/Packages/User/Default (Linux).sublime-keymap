@@ -216,6 +216,10 @@
 	{ "keys": ["tab"], "command": "hide_auto_complete"                  , "context": [{ "key": "auto_complete_visible", "operator": "equal", "operand": true } ] },
  
     /////////////////////////////////////////
+    
+    { "keys": ["alt+h"], "command": "switch_file_deluxe", "args": {"extensions": [".cpp", ".cxx", ".cc", ".c", ".h", ".hpp", ".hxx"]} },
+    
+    /////////////////////////////////////////
 
 	// block cursor for training
     { "keys": ["up"   ], "command": "unbound" },

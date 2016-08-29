@@ -179,6 +179,8 @@ set functioncolor yellow
 
 include "/usr/share/nano/c.nanorc"
 include "/usr/share/nano/nanorc.nanorc"
+include "/usr/share/nano/python.nanorc"
+include "~/cfg/nano/coffee.nanorc"
 
 ## Key bindings.
 ## See nanorc(5) for more details on this.
@@ -234,3 +236,4 @@ bind M-. indent   all
 bind M-, unindent all
 
 # bind ^L tofiles insert
+
