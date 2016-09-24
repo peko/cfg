@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]    = { "termite", NULL };
+static const char *termcmd[]    = { "urxvt", NULL };
 static const char *prtscrcmd[]  = { "scrot", "/home/peko/Pictures/%Y.%m.%d-%H%M%S-$wx$h.png", "--quality", "100", "-u",  NULL };
 static const char *explorefs[]  = { "caja", "--no-desktop",  NULL };
 static const char *sublimecmd[] = { "subl", NULL };
@@ -95,10 +95,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = teleclicmd  } },
 
-	{ 0,                            0x1008ff11,spawn,          {.v = downvol   } },// using xev to get keys
-	{ 0,                            0x1008ff12,spawn,          {.v = SHCMD("alsamixer") },// 
-	{ MODKEY,                       XK_v,      spawn,          {.v = SHCMD("alsamixer") },// 
-	{ 0,                            0x1008ff13,spawn,          {.v = upvol     } },// 
+	// { 0,                            0x1008ff11,spawn,          {.v = downvol   } },// using xev to get keys
+	// { 0,                            0x1008ff12,spawn,          {.v = SHCMD("alsamixer") },// 
+	// { MODKEY,                       XK_v,      spawn,          {.v = SHCMD("alsamixer") },// 
+	// { 0,                            0x1008ff13,spawn,          {.v = upvol     } },// 
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
