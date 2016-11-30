@@ -1,7 +1,7 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/SpaceCadet.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"font_face": "Terminus",
-	"font_size": 15,
+	"font_size": 17,
 	"ignored_packages":
 	[
 		"Markdown",

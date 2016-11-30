@@ -1,0 +1,6 @@
+[ 1115.526950] pcieport 0000:00:1d.2: PCIe Bus Error: severity=Corrected, type=Data Link Layer, id=00ea(Transmitter ID)
+[ 1115.527126] pcieport 0000:00:1d.2:   device [8086:9d1a] error status/mask=00001000/00002000
+[ 1115.527254] pcieport 0000:00:1d.2:    [12] Replay Timer Timeout
+[ 1124.585266] pcieport 0000:00:1d.2: PCIe Bus Error: severity=Corrected, type=Data Link Layer, id=00ea(Transmitter ID)
+[ 1124.585443] pcieport 0000:00:1d.2:   device [8086:9d1a] error status/mask=00001000/00002000
+[ 1124.585568] pcieport 0000:00:1d.2:    [12] Replay Timer Timeout
