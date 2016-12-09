@@ -36,18 +36,18 @@
 	{ "keys": ["alt+н"], "command": "move", "args": {"by": "characters", "forward": false} },
 	{ "keys": ["alt+e"], "command": "move", "args": {"by": "lines"     , "forward": true } },
 	{ "keys": ["alt+е"], "command": "move", "args": {"by": "lines"     , "forward": true } },
-	{ "keys": ["alt+o"], "command": "move", "args": {"by": "lines"     , "forward": false} },
-	{ "keys": ["alt+о"], "command": "move", "args": {"by": "lines"     , "forward": false} },
-	{ "keys": ["alt+i"], "command": "move", "args": {"by": "characters", "forward": true } },
-	{ "keys": ["alt+и"], "command": "move", "args": {"by": "characters", "forward": true } },
+	{ "keys": ["alt+u"], "command": "move", "args": {"by": "lines"     , "forward": false} },
+	{ "keys": ["alt+у"], "command": "move", "args": {"by": "lines"     , "forward": false} },
+	{ "keys": ["alt+o"], "command": "move", "args": {"by": "characters", "forward": true } },
+	{ "keys": ["alt+о"], "command": "move", "args": {"by": "characters", "forward": true } },
 
 	// movements in search contexts
-	{ "keys": ["alt+o"], "command": "find_prev", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
-	{ "keys": ["alt+о"], "command": "find_prev", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
+	{ "keys": ["alt+u"], "command": "find_prev", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
+	{ "keys": ["alt+у"], "command": "find_prev", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
 	{ "keys": ["alt+e"], "command": "find_next", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
 	{ "keys": ["alt+е"], "command": "find_next", "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"  } ] },
-	{ "keys": ["alt+o"], "command": "find_prev", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
-	{ "keys": ["alt+о"], "command": "find_prev", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
+	{ "keys": ["alt+u"], "command": "find_prev", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
+	{ "keys": ["alt+у"], "command": "find_prev", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
 	{ "keys": ["alt+e"], "command": "find_next", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
 	{ "keys": ["alt+е"], "command": "find_next", "context": [{"key": "overlay_visible", "operator": "equal", "operand": true } ] },
 	
@@ -66,30 +66,30 @@
 	{ "keys": ["ctrl+alt+н"], "command": "move_to", "args": {"to": "bol", "extend": false} },
 	{ "keys": ["ctrl+alt+e"], "command": "swap_line_down"                                  },
 	{ "keys": ["ctrl+alt+е"], "command": "swap_line_down"                                  },
-	{ "keys": ["ctrl+alt+o"], "command": "swap_line_up"                                    },
-	{ "keys": ["ctrl+alt+о"], "command": "swap_line_up"                                    },
-	{ "keys": ["ctrl+alt+i"], "command": "move_to", "args": {"to": "eol", "extend": false} },
-	{ "keys": ["ctrl+alt+и"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["ctrl+alt+u"], "command": "swap_line_up"                                    },
+	{ "keys": ["ctrl+alt+у"], "command": "swap_line_up"                                    },
+	{ "keys": ["ctrl+alt+o"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["ctrl+alt+о"], "command": "move_to", "args": {"to": "eol", "extend": false} },
 
 	// multicursor select, bol, eol select
 	{ "keys": ["ctrl+shift+n"], "command": "move_to"     , "args": {"to": "bol", "extend": true } },
 	{ "keys": ["ctrl+shift+н"], "command": "move_to"     , "args": {"to": "bol", "extend": true } },
 	{ "keys": ["ctrl+shift+e"], "command": "select_lines", "args": {"forward": true             } },
 	{ "keys": ["ctrl+shift+е"], "command": "select_lines", "args": {"forward": true             } },
-	{ "keys": ["ctrl+shift+o"], "command": "select_lines", "args": {"forward": false            } },
-	{ "keys": ["ctrl+shift+о"], "command": "select_lines", "args": {"forward": false            } },
-	{ "keys": ["ctrl+shift+i"], "command": "move_to"     , "args": {"to": "eol", "extend": true } },
-	{ "keys": ["ctrl+shift+и"], "command": "move_to"     , "args": {"to": "eol", "extend": true } },
+	{ "keys": ["ctrl+shift+u"], "command": "select_lines", "args": {"forward": false            } },
+	{ "keys": ["ctrl+shift+у"], "command": "select_lines", "args": {"forward": false            } },
+	{ "keys": ["ctrl+shift+o"], "command": "move_to"     , "args": {"to": "eol", "extend": true } },
+	{ "keys": ["ctrl+shift+о"], "command": "move_to"     , "args": {"to": "eol", "extend": true } },
 	
 	// select horizontal and vertical
 	{ "keys": ["shift+alt+n"], "command": "move", "args": {"extend": true, "by": "characters", "forward": false }},
 	{ "keys": ["shift+alt+н"], "command": "move", "args": {"extend": true, "by": "characters", "forward": false }},
 	{ "keys": ["shift+alt+e"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": true  }},
 	{ "keys": ["shift+alt+е"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": true  }},
-	{ "keys": ["shift+alt+o"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": false }},
-	{ "keys": ["shift+alt+о"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": false }},
-	{ "keys": ["shift+alt+i"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
-	{ "keys": ["shift+alt+и"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
+	{ "keys": ["shift+alt+u"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": false }},
+	{ "keys": ["shift+alt+у"], "command": "move", "args": {"extend": true, "by": "lines"     , "forward": false }},
+	{ "keys": ["shift+alt+o"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
+	{ "keys": ["shift+alt+о"], "command": "move", "args": {"extend": true, "by": "characters", "forward": true  }},
  
     // SATELLITES
 
@@ -108,12 +108,12 @@
     { "keys": ["alt+л"], "command": "expand_selection", "args": {"to": "line"} },
 
     // { "keys": ["ctrl+z"], "command": "undo" },
-    { "keys": ["alt+u"], "command": "undo" },
-    { "keys": ["alt+у"], "command": "undo" },
+    // { "keys": ["alt+u"], "command": "undo" },
+    // { "keys": ["alt+у"], "command": "undo" },
 
     // { "keys": ["ctrl+shift+z"], "command": "undo" },
-    { "keys": ["alt+shift+u"], "command": "redo" },
-    { "keys": ["alt+shift+у"], "command": "redo" },
+    // { "keys": ["alt+shift+u"], "command": "redo" },
+    // { "keys": ["alt+shift+у"], "command": "redo" },
 
 	// { "keys": ["ctrl+v"], "command": "paste" },
 	{ "keys": ["alt+p"], "command": "paste" },
@@ -222,8 +222,8 @@
     /////////////////////////////////////////
 
 	// block cursor for training
-    { "keys": ["up"   ], "command": "unbound" },
-    { "keys": ["down" ], "command": "unbound" },
-    { "keys": ["left" ], "command": "unbound" },
-    { "keys": ["right"], "command": "unbound" },
+    // { "keys": ["up"   ], "command": "unbound" },
+    // { "keys": ["down" ], "command": "unbound" },
+    // { "keys": ["left" ], "command": "unbound" },
+    // { "keys": ["right"], "command": "unbound" },
 ]

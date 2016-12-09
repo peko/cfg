@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -38,13 +40,15 @@ values."
      ;; ----------------------------------------------------------------
      helm
      auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      c-c++
      shaders
      git
      markdown
      org
+     keyboard-layout
+     themes-megapack
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -61,13 +65,13 @@ values."
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and uninstall any
-   ;; unused packages as well as their unused dependencies.
-   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
-   ;; them if they become unused. `all' installs *all* packages supported by
-   ;; Spacemacs and never uninstall them. (default is `used-only')
+   ;; Defines the behaviour of Spacemacs when installing packages. Possible
+   ;; values are `used-only', `used-but-keep-unused' and `all'. `used-only'
+   ;; installs only explicitly used packages and uninstall any unused packages
+   ;; as well as their unused dependencies. `used-but-keep-unused' installs only
+   ;; the used packages but won't uninstall them if they become unused. `all'
+   ;; installs *all* packages supported by Spacemacs and never uninstall them.
+   ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
@@ -292,25 +296,13 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  ;; spaces
-  (setq c-basic-offset 4)
-
-  ;; workman bindings
-  (global-set-key (kbd "M-n") 'backward-char)
-  (global-set-key (kbd "M-i") 'forward-char)
-  (global-set-key (kbd "M-e") 'next-line)
-  (global-set-key (kbd "M-o") 'previous-line)
-  (global-set-key (kbd "M-s") 'save-buffer)
-  (global-set-key (kbd "C-e") 'forward-page)
-  (global-set-key (kbd "C-o") 'backward-page)
-  (global-set-key (kbd "M-u") 'undo)
-
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
 executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq c-basic-offset 4)
   )
 
 (defun dotspacemacs/user-config ()
@@ -320,7 +312,103 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  )
+
+  ;; Workman layout hjkl -> neoqi
+  (setq-default evil-escape-key-sequence "tn")
+  ;; (define-key evil-motion-state-map "M-n" 'evil-backward-char)
+  ;; (define-key evil-motion-state-map "M-e" 'evil-next-line)
+  ;; (define-key evil-motion-state-map "M-o" 'evil-previous-line)
+  ;; (define-key evil-motion-state-map "M-i" 'evil-forward-char)
+
+  ;; undo redo
+  (global-set-key (kbd "M-d") 'undo-tree-undo)
+  (global-set-key (kbd "M-r") 'undo-tree-redo)
+
+  ;; (global-set-key (kbd "M-n") 'evil-backward-char)
+  ;; (global-set-key (kbd "M-e") 'evil-next-line)
+  ;; (global-set-key (kbd "M-o") 'evil-forward-char)
+  ;; (global-set-key (kbd "M-u") 'evil-previous-line)
+
+  ;; buffers
+  (global-set-key (kbd "M-[") 'previous-buffer)
+  (global-set-key (kbd "M-]") 'next-buffer)
+  (global-set-key (kbd "M-s") 'save-buffer)
+
+  ;; movements
+  (global-set-key (kbd "M-n") 'left-char)
+  (global-set-key (kbd "M-e") 'evil-next-line)
+  (global-set-key (kbd "M-o") 'right-char)
+  (global-set-key (kbd "M-u") 'evil-previous-line)
+  ;; dsable old M-i because of muscle memory
+  (global-set-key (kbd "M-i" ) nil)
+
+  ;; Трансляция workman
+  (loop
+   for from across "ядршбжфупасчтгынеоизхмцвклЯДРШБЖФУПАСЧТГЫНЕОИЗХМЦВКЛ"
+   for to   across "qdrwbjfupashtgyneoizxmcvklQDRWBJFUPASHTGYNEOIZXMCVKL"
+   do
+   (eval `(define-key key-translation-map (kbd ,(concat "C-" (string from))) (kbd ,(concat "C-" (string to)))))
+   (eval `(define-key key-translation-map (kbd ,(concat "M-" (string from))) (kbd ,(concat "M-" (string to))))))
+
+  ;; https://www.emacswiki.org/emacs/GnuEmacsRussification
+  (progn
+    (quail-define-package
+     "cyrillic-workman" "Cyrillic" "WRU" nil
+     "Custom phonetic workman layout"
+     nil t t t t nil nil nil nil nil t)
+    ;; qdrw bj fup;[]\ | ядршбжфуп;[]\
+    ;; asht gy neoi'   | асчтгынеои'
+    ;; zxmc v kl,./    | зхмцвкл,./
+    (quail-define-rules
+        ("q" ?я) ("d" ?д) ("r" ?р) ("w" ?ш) ("b" ?б) ("j" ?ж) ("f" ?ф) ("u" ?у) ("p" ?п)
+        ("a" ?а) ("s" ?с) ("h" ?ч) ("t" ?т) ("g" ?г) ("y" ?ы) ("n" ?н) ("e" ?е) ("o" ?о) ("i" ?и)
+        ("z" ?з) ("x" ?х) ("m" ?м) ("c" ?ц) ("v" ?в) ("k" ?к) ("l" ?л)
+        ;; caps
+        ("Q" ?Я) ("D" ?Д) ("R" ?Р) ("W" ?Ш) ("B" ?Б) ("J" ?Ж) ("F" ?Ф) ("U" ?У) ("P" ?П)
+        ("A" ?А) ("S" ?С) ("H" ?Ч) ("T" ?Т) ("G" ?Г) ("Y" ?Ы) ("N" ?Н) ("E" ?Е) ("O" ?О) ("I" ?И)
+        ("Z" ?З) ("X" ?Х) ("M" ?М) ("C" ?Ц) ("V" ?В) ("K" ?К) ("L" ?Л)
+        ;; alt-grаy keys
+        ("A-n" ?э) ("A-e" ?ё) ("A-t" ?ъ) ("A-m" ?ь) ("A-w" ?щ)
+        ))
+
+  ;; move line up and down
+  (defun move-line-up ()
+    (interactive)
+    (transpose-lines 1)
+    (forward-line -2))
+  (defun move-line-down ()
+    (interactive)
+    (forward-line 1)
+    (transpose-lines 1)
+    (forward-line -1))
+
+  (global-set-key (kbd "C-M-u") 'move-line-up)
+  (global-set-key (kbd "C-M-e") 'move-line-down)
+
+  (global-set-key (kbd "C-S-u") 'evil-mc-make-cursor-move-prev-line)
+  (global-set-key (kbd "C-S-e") 'evil-mc-make-cursor-move-next-line)
+
+  ;; STATES: normal ins fe visual replace operator motion emacs
+  ;; ORG MODE
+  ;; Remove default org M-neou bindings
+  (dolist (m '(normal insert))
+    (dolist (k '("M-n" "M-e" "M-o" "M-u" "n" "e" "o" "u"))
+      (eval `(evil-define-key ',m evil-org-mode-map (kbd ,k) nil))))
+
+  (defun workman-org-movements ()
+    (interactive)
+    (define-key org-mode-map (kbd "M-e") nil)
+    (define-key org-mode-map (kbd "C-M-n") 'org-metaleft)
+    (define-key org-mode-map (kbd "C-M-e") 'org-metadown)
+    (define-key org-mode-map (kbd "C-M-o") 'org-metaright)
+    (define-key org-mode-map (kbd "C-M-u") 'org-metaup))
+  (add-hook 'org-mode-hook #'(workman-org-movements))
+
+  ;; Cmake
+  (setq helm-make-build-dir "build")
+
+  ;; end
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -336,7 +424,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smeargle orgit org-projectile pcache org-present org org-pomodoro alert log4e gntp org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot glsl-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor disaster company-statistics company-c-headers company cmake-mode clang-format auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
+    (zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme sourcerer-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump disaster define-word company-web company-tern company-statistics company-c-headers column-enforce-mode coffee-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
