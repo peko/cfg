@@ -1,0 +1,211 @@
+
+Установка arch linux
+
+* Первая загрузка с диска
+** Интернет
+
+   Подключаем интернет после загрузки wifi или ethernet
+
+*** wifi
+   
+     > wifi-menu
+
+*** ethernet
+    
+     > dhcpcd
+
+** workman
+
+   Настраиваем раскладку, скачиваем с гитхаба
+
+   http://github.com/peko/workman-layout
+   http://github.com/peko/cfg
+
+     > elinks
+     > loadkeys workman
+
+** Жесткий диск
+
+*** Разбиваем жесткий диск, делаем загрузочным раздел
+  
+    оставляем под своп удвоенную оперативную память
+
+      > cfdisk
+      
+        sda1 / bootable (type 83)
+        sda2 swap       (type 82) 
+
+*** Созадем файловую систему
+
+      > mkfs.ext4 /dev/sda1  
+      > mkswap /dev/sda2
+      > swapon /dev/sda2
+
+*** Монтируем раздел, заливаем базовую структуру
+
+      > mount /dev/sda1 /mnt
+      > mkdir /mnt/boot
+      > mkdir /mnt/home
+      > pacstrap /mnt base base-devel
+
+*** Прописываем разметку жесткого диска
+
+      > genfstab -p /mnt > /mnt/etc/fstab
+
+*** Проверяем, что основнои раздел и своп прописались
+
+      > cat /mnt/etc/fstab
+
+        /dev/sda1  /     ext4  rw,relatime,data=ordered    0 1
+        /dev/sda2  none  swap  defaults                    0 0
+
+** Настройка системы
+*** Заходим под установленную ситему
+
+      > arch-chroot /mnt
+
+*** Устанавливаем host
+    
+      > echo arch > /etc/hostname
+
+*** Устанавливаем таймзону
+
+      > cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+
+*** Генерируем локаль
+
+      > locale-gen
+
+*** Создаем рамдиск с образами
+
+      > mkinitcpio -p linux
+
+*** Устанавливаем пароль руту
+    
+      > passwd
+
+*** Ставим пекеджи с grub и wifi тулзами
+    
+      > pacman -S grub dialog wpa_supplicant
+
+*** Устанавливаем grub
+
+      > grub-install /dev/sda
+      > grub-mkconfig -o /boot/grub/grub.cfg
+
+*** vt workman
+    
+      > cp workman-arch.map /usr/share/kbd/keymaps/i386
+      > vim /etc/vconsole.conf
+        KEYMAP=workman-arch
+        FONT=Cyr_a8x14
+
+*** Выходим, размонтируемся
+
+      > exit
+      > sync; umount -R /mnt
+      > reboot
+    
+* Первая загрузка
+
+** Setup locale
+              
+     List
+    
+     > localectl list-locales
+    
+     Set
+    
+     > localectl set-locale LANG=ru_RU.UTF-8
+    
+     or
+    
+     > echo "LANG=ru_RU.UTF-8" > /etc/locale.conf 
+     
+** xorg / x11
+
+     > pacman -S xorg-server xorg-xinit xorg-server-utils xorg-apps
+     > echo "exec dwm" > ~/.xinitr
+    
+     find video card
+    
+     > lspci
+    
+     list drivers
+    
+     > pacman -Ss xf86-video
+
+     google and install
+    
+     > pacman -S xf86-video-[ati/nvidia/etc]
+
+** Звук
+
+     > pacman -S alsa-utils pulseaudio mocp
+     > alsamixer (unmute)
+     > speaker-test
+    
+** TODO Авто старт сети
+   Здесь неплохо бы добавить авто страт wifi
+   Иначе каждый раз после ребута
+
+*** ethernet
+
+   > sudo dhcpcd
+
+*** wifi 
+    
+    > sudo netctl start <tab>
+
+    или
+
+    > sudo wifi-menu
+   
+    Настройки wifi сетей можно найти в /etc/netctl
+
+* Полезности
+ 
+** Окружение  
+
+  | zsh + oh-my-zsh | Продвинутый шелл                  |
+  | mc              | Файловый менеджер                 |
+  | tmux            | Продвинутый монитор процессов     |
+  | vim & emacs     | Лучшие текстовые порцессоры       |
+  | yaourt          | продвинутый пекедж-менеджер с AUR |
+
+   > pacman -S zsh mc tmux vim
+
+** разработка
+
+   > pacman -S clang gdb gcc cmake
+
+* workman
+
+  Скрипты установки раскладки присутствуют папке workman
+
+** vt
+   
+   Консоль
+
+   > cp workman-arch.map /usr/share/kbd/keymaps/i386
+   # ls /usr/share/kbd/consolefonts
+   # showconsoefont
+   # setfont Cyr_a8x14
+   > vim /etc/vconsole.conf
+   
+   KEYMAP=workman-arch
+   FONT=Cyr_a8x14 
+
+** X11
+
+   > cat > /etc/X11/xorg.conf.d/00.keyboard.conf 
+
+  Section "InputClass"
+          Identifier "system-keyboard"
+          MatchIsKeyboard "on"
+          Option "XkbLayout" "us"
+          Option "XkbModel" "pc104"
+          Option "XkbVariant" "workman"
+  EndSection
+  
+  ctrl+d
