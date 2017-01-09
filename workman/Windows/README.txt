@@ -1,1 +1,0 @@
-Microsft Keyboard Layout Creator (MKLC) can be download here:http://msdn.microsoft.com/en-us/goglobal/bb964665To build installator:Menu > Project > Build DLL & Setup PackageTo repalace Caps Lock with Back Space use registry file.s

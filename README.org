@@ -163,6 +163,12 @@
    
     Настройки wifi сетей можно найти в /etc/netctl
 
+* Разное
+  - USB распознавание устройств
+    https://wiki.archlinux.org/index.php/Mkinitcpio#HOOKS 
+    > /etc/mkinitcpio.conf
+    В HOOKS добавить usb usbinput
+
 * Полезности
  
 ** Окружение  

@@ -1,0 +1,197 @@
+
+  ///////////////////////////
+ // ERGO KEYOBOARD LAYOUT //
+///////////////////////////
+
+
+// Level 3 - cursor
+// ┌────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬────────┐
+// │ `  │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ ─   │ =   │ BS     │
+// │ ~  │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   │        │
+// ├────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬─────┤
+// │       │     │     │     │     │     │     │ BSP │  ↑  │ DEL │     │     │     │     │
+// │       │     │     │     │     │     │     │     │     │     │     │     │     │     │
+// ├───────┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─────┤
+// │ LV3     ┃     ┃     ┃     ┃     ┃     │ HOM ┃  ←  ┃  ↓  ┃  →  ┃ END ┃     │Enter    │
+// │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃     │         │
+// ├─────────┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴──┬──┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴─────────┤
+// │Shift       │     │     │     │     │     │     │ PGU │ ESC │ PGD │     │ Shift      │
+// │            │     │     │     │     │     │     │     │     │     │     │            │
+// ├──────┬─────┼─────┼─────┼─────┴─────┴─────┴─────┴─────┼─────┼─────┼─────┼────────────┤
+// │Ctrl  │Fn   │Win  │Alt  │ TAB                         │AltGr│Menu │Ctrl │            │
+// │      │     │     │     │                             │     │     │     │            │
+// └──────┴─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴────────────┘
+
+partial alphanumeric_keys
+xkb_symbols "cursor" {
+    
+    key.type[group1]="FOUR_LEVEL";
+
+    // key  <AD01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+
+    //  key <AD06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    key  <AD07> { [ NoSymbol, NoSymbol, BackSpace, NoSymbol] };
+    key  <AD08> { [ NoSymbol, NoSymbol,        Up, NoSymbol] };
+    key  <AD09> { [ NoSymbol, NoSymbol,    Delete, NoSymbol] };
+    // key  <AD10> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD11> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD12> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+
+    ////////////////////////////////////////////////////////////////////
+    
+    //  key <CAPS> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    //  key <AC05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+     key <AC06> { [ NoSymbol, NoSymbol,     Home, NoSymbol ] };
+    key  <AC07> { [ NoSymbol, NoSymbol,     Left, NoSymbol ] };
+    key  <AC08> { [ NoSymbol, NoSymbol,     Down, NoSymbol ] };
+    key  <AC09> { [ NoSymbol, NoSymbol,    Right, NoSymbol ] };
+    key  <AC10> { [ NoSymbol, NoSymbol,      End, NoSymbol ] };
+    // key <AC11> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    ///////////////////////////////////////////////////////////////////
+
+    // key  <AB01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    //  Key <AB05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    
+    // key  <AB06> { [ NoSymbol, NoSymbol,  NoSymbol, NoSymbol ] };
+    key  <AB07> { [ NoSymbol, NoSymbol,   Page_Up, NoSymbol ] };
+    key  <AB08> { [ NoSymbol, NoSymbol,    Escape, NoSymbol ] };
+    key  <AB09> { [ NoSymbol, NoSymbol, Page_Down, NoSymbol ] };
+    //  key <AB10> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    ///////////////////////////////////////////////////////////////////
+    
+    key <SPCE> { [ NoSymbol, NoSymbol, Tab, NoSymbol ] }; // " "
+
+    // modificators
+    include "ergo(left_level3)"
+};
+
+// Level 3 - symbols
+// ┌────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬────────┐
+// │ `  │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ ─   │ =   │ BS     │
+// │ ~  │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   │        │
+// ├────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬─────┤
+// │       │     │     │     │     │     │     │     │     │     │     │ Lv4 │     │     │
+// │       │     │     │     │     │     │     │     │     │     │     │     │     │     │
+// ├───────┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─────┤
+// │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃ Lv3 │Enter    │
+// │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃     │         │
+// ├─────────┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴──┬──┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴─────────┤
+// │Shift       │     │     │     │     │     │     │     │     │     │     │ Shift      │
+// │            │     │     │     │     │     │     │     │     │     │     │            │
+// ├──────┬─────┼─────┼─────┼─────┴─────┴─────┴─────┴─────┼─────┼─────┼─────┼────────────┤
+// │Ctrl  │Fn   │Win  │Alt  │ tab                         │AltGr│Menu │Ctrl │            │
+// │      │     │     │     │                             │     │     │     │            │
+// └──────┴─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴────────────┘
+
+partial alphanumeric_keys
+xkb_symbols "mouse" {
+    
+    key.type[group1]="FOUR_LEVEL";
+
+    // first row
+    // key  <AD01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+
+    //  key <AD06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD07> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD08> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD09> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    // key  <AD10> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD11> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    //  key <AD12> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+
+    ////////////////////////////////////////////////////////////////////
+    
+    //  key <CAPS> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    //  key <AC05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    //  key <AC06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC07> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC08> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC09> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AC10> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    //  key <AC11> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    ///////////////////////////////////////////////////////////////////
+
+    // key  <AB01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    //  Key <AB05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    
+    // key  <AB06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB07> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB08> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key  <AB09> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    //  key <AB10> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+
+    ///////////////////////////////////////////////////////////////////
+    
+    // key <SPCE> { [ NoSymbol, NoSymbol, Tab, NoSymbol ] }; // " "
+};
+
+
+// level 4 MOUSE
+// ┌────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬────────┐
+// │ `  │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ ─   │ =   │ BS     │
+// │ ~  │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   │        │
+// ├────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬─────┤
+// │esc    │     │     │     │     │     │     │   ↖ │   ↑ │   ↗ │     │     │     │     │
+// │       │     │     │     │     │     │     │     │     │     │     │     │     │     │
+// ├───────┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─────┤
+// │AltGr    ┃     ┃     ┃     ┃     ┃     │     ┃   ← ┃     ┃   → ┃     ┃     │Enter    │
+// │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃     │         │
+// ├─────────┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴──┬──┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴─────────┤
+// │Shift       │     │     │     │     │     │     │   ↙ │   ↓ │   ↘ │     │ Shift      │
+// │            │     │     │     │     │     │     │     │     │     │     │            │
+// ├──────┬─────┼─────┼─────┼─────┴─────┴─────┴─────┴─────┼─────┼─────┼─────┼────────────┤
+// │Ctrl  │Fn   │Win  │Alt  │                             │Alt  │Menu │Ctrl │            │
+// │      │     │     │     │                             │     │     │     │            │
+// └──────┴─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴────────────┘
+
+// LEVEL MODIFIERS
+
+// based on /usr/share/X11/xkb/symbols/level3
+
+partial modifier_keys
+xkb_symbols "left_level3" {
+    key <CAPS> {
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    include "level3(modifier_mapping)"
+};
+
+
+partial modifier_keys
+xkb_symbols "right_level3" {
+    key <AC11> {
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    include "level3(modifier_mapping)"
+};
