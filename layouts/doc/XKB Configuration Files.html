@@ -1,0 +1,1572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0079)http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053300000000000000 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style id="stndz-style"></style>
+<title>XKB Configuration Files</title>
+<meta name="description" content="XKB Configuration Files">
+<meta name="keywords" content="xkb">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta name="Generator" content="jLaTeX2HTML v2002-2-1 JA patch-2.0">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="./XKB Configuration Files_files/xkb.css">
+
+<link rel="next" href="http://www.charvolant.org/~doug/xkb/html/node6.html">
+<link rel="previous" href="http://www.charvolant.org/~doug/xkb/html/node4.html">
+<link rel="up" href="http://www.charvolant.org/~doug/xkb/html/xkb.html">
+<link rel="next" href="http://www.charvolant.org/~doug/xkb/html/node6.html">
+</head>
+
+<body>
+
+<div class="navigation"><!--Navigation Panel-->
+<a name="tex2html161" href="http://www.charvolant.org/~doug/xkb/html/node6.html">
+<img width="37" height="24" align="BOTTOM" border="0" alt="next" src="./XKB Configuration Files_files/next.png"></a> 
+<a name="tex2html157" href="http://www.charvolant.org/~doug/xkb/html/xkb.html">
+<img width="26" height="24" align="BOTTOM" border="0" alt="up" src="./XKB Configuration Files_files/up.png"></a> 
+<a name="tex2html151" href="http://www.charvolant.org/~doug/xkb/html/node4.html">
+<img width="63" height="24" align="BOTTOM" border="0" alt="previous" src="./XKB Configuration Files_files/prev.png"></a> 
+<a name="tex2html159" href="http://www.charvolant.org/~doug/xkb/html/node1.html">
+<img width="65" height="24" align="BOTTOM" border="0" alt="contents" src="./XKB Configuration Files_files/contents.png"></a>  
+<br>
+<b> Next:</b> <a name="tex2html162" href="http://www.charvolant.org/~doug/xkb/html/node6.html">XKB Programs</a>
+<b> Up:</b> <a name="tex2html158" href="http://www.charvolant.org/~doug/xkb/html/xkb.html">An Unreliable Guide to</a>
+<b> Previous:</b> <a name="tex2html152" href="http://www.charvolant.org/~doug/xkb/html/node4.html">Choosing an XKB Configuration</a>
+ &nbsp; <b>  <a name="tex2html160" href="http://www.charvolant.org/~doug/xkb/html/node1.html">Contents</a></b> 
+<br>
+<br></div>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul class="ChildLinks">
+<li><a name="tex2html163" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00051000000000000000">Basics</a>
+</li><li><a name="tex2html164" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00052000000000000000">Key Codes</a>
+</li><li><a name="tex2html165" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053000000000000000">Symbols</a>
+<ul>
+<li><a name="tex2html166" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053100000000000000">Handling Groups</a>
+</li><li><a name="tex2html167" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053200000000000000">Handling Levels</a>
+</li><li><a name="tex2html168" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053300000000000000">Handling Modifiers</a>
+</li><li><a name="tex2html169" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053400000000000000">Control Keys</a>
+</li><li><a name="tex2html170" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053500000000000000">Special Characters</a>
+<ul>
+<li><a name="tex2html171" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053510000000000000">Dead Keys</a>
+</li><li><a name="tex2html172" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053520000000000000">ISO Keys</a>
+</li><li><a name="tex2html173" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053530000000000000">X11 Control Keys</a>
+</li><li><a name="tex2html174" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053540000000000000">X<small>KB</small> Control Keys</a>
+</li><li><a name="tex2html175" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00053550000000000000">Composition Keys</a>
+</li></ul>
+</li></ul>
+<br>
+</li><li><a name="tex2html176" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00054000000000000000">Types</a>
+</li><li><a name="tex2html177" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00055000000000000000">Compatibility Maps</a>
+</li><li><a name="tex2html178" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00056000000000000000">Geometry</a>
+</li><li><a name="tex2html179" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00057000000000000000">Directory Files</a>
+</li><li><a name="tex2html180" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00058000000000000000">Grouping Components</a>
+<ul>
+<li><a name="tex2html181" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00058100000000000000">Semantics</a>
+</li><li><a name="tex2html182" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00058200000000000000">Key Maps</a>
+</li><li><a name="tex2html183" href="http://www.charvolant.org/~doug/xkb/html/node5.html#SECTION00058300000000000000">Rules</a>
+</li></ul></li></ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00050000000000000000">
+X<small>KB</small> Configuration Files</a>
+</h1>
+
+<p>
+Working through the X<small>KB</small> configuration files is a bit of a chore.
+In most cases you don't have to.
+There are perfectly adequate pre-packaged configuration files
+already present.
+Before you even <span class="textit">think</span> of wading through this section,
+have a look at section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node4.html#Sec:Easy">3.1</a>.
+
+</p><p>
+However, at the end of the day, you may have to roll your own.
+Or you may have to understand what's in the files so that
+you can pick one.
+
+</p><p>
+The main files are in the <tt>keycodes</tt>, <tt>types</tt>,
+<tt>compat</tt>, <tt>symbols</tt> and <tt>geometry</tt>
+subdirectories, corresponding to the components of the same
+name.
+The <tt>keymap</tt>, <tt>rules</tt> and <tt>semantics</tt>
+subdirectories contain ways of grouping the main components together
+into neat bundles.
+
+</p><p>
+
+</p><h2><a name="SECTION00051000000000000000">
+Basics</a>
+</h2>
+
+<p>
+X<small>KB</small> configuration files are all structured in a similar way.
+A single configuration file contains information on a group of
+similar items.
+The file can contain a number of <span class="textit">variants</span> that contain
+variations on a theme.
+
+</p><p>
+Each variant has the following syntax: a set of options, a type and
+a name, followed by the variant information in braces and a semi-colon.
+The type describes the sort of information present, eg. 
+<tt>xkb_symbols</tt> for <span class="textbf">symbols</span> configuration.
+The name is enclosed in quotes and contains the variant name, eg.
+<tt>"pc102"</tt> -- see section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node4.html#Sec:Setup">3</a>
+
+</p><p>
+Within each variant is actual configuration information.
+This information uses whatever keywords and information is appropriate
+to the type at hand.
+It is also possible to include information from other
+files and variants.
+There are two ways of including information: you can
+<span class="textit">include</span> or <span class="textit">augment</span>.
+If you include, using the syntax <tt>include "<span class="textit">file(variant)</span>"</tt>
+-- note the lack of a semi-colon -- then the information from the
+included file overrides any configuration information that already
+exists.
+If you augment, using the syntax <tt>augment "<span class="textit">file(variant)</span>"</tt>
+then the information is only added if it doesn't override something
+that already exists.
+In both cases, the <span class="textit">file</span> argument is assumed to come from
+the same base directory as the type, eg. <span class="textbf">symbols</span>
+files come from the <tt>symbols</tt> directory.
+
+</p><p>
+The configuration file syntax also allows inheritance of information
+wherever possible. 
+Contexts and groupings are enclosed in braces.
+Information from parent contexts are inherited.
+For example, in a <span class="textbf">geometry</span> file, the top level of
+some geometry might have <tt>shape.cornerRadius = 1;</tt> to set
+the level of corner roundness.
+This piece of shape information is inherited by any defined shapes,
+although it can be overridden for a particular shape.
+
+</p><p>
+<br></p><p></p>
+<div align="CENTER"><a name="227"></a>
+<table>
+<caption><strong>Table 1:</strong>
+Variant Options</caption>
+<tbody><tr><td>
+<div align="CENTER">
+<table cellpadding="3" border="1" align="CENTER">
+<tbody><tr><td align="LEFT">Option</td>
+<td align="LEFT" valign="TOP" width="300">Description</td>
+</tr>
+<tr><td align="LEFT"><tt>default</tt></td>
+<td align="LEFT" valign="TOP" width="300">Marks this as the default variant in the
+configuration file, for use when no variant is specified.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node4.html#Sec:Setup">3</a> 
+There is a suspicion that the default entry should be
+the first entry in a file.</td>
+</tr>
+<tr><td align="LEFT"><tt>partial</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates that this bit of configuration
+is only partial and needs to be included into a more complete
+configuration.</td>
+</tr>
+<tr><td align="LEFT"><tt>hidden</tt></td>
+<td align="LEFT" valign="TOP" width="300">A variant that can only be used within the
+configuration file.
+Used for providing useful common includes.</td>
+</tr>
+<tr><td align="LEFT"><tt>alphanumeric_keys</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates a partial symbol map with alphanumeric keys.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Symbols">4.3</a>.</td>
+</tr>
+<tr><td align="LEFT"><tt>modifier_keys</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates a partial symbol map with modifier keys.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Symbols">4.3</a>.</td>
+</tr>
+<tr><td align="LEFT"><tt>keypad_keys</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates a partial symbol map with keypad keys.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Symbols">4.3</a>.</td>
+</tr>
+<tr><td align="LEFT"><tt>function_keys</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates a partial symbol map with function keys.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Symbols">4.3</a>.</td>
+</tr>
+<tr><td align="LEFT"><tt>alternate_group</tt></td>
+<td align="LEFT" valign="TOP" width="300">Indicates a partial symbol map with keys for an alternate group.
+See section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Symbols">4.3</a>.</td>
+</tr>
+</tbody></table>
+</div>
+
+<a name="Tab:Options"></a></td></tr>
+</tbody></table>
+</div><p></p>
+<br>
+
+<p>
+The options set the various levels of visibility and function
+that each variant shows.
+The options are summarised in table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Options">1</a>.
+The <tt>*_keys</tt> options are used in the <span class="textbf">symbols</span>
+component and are used to provide hints as to what partial
+symbol maps contain.
+
+</p><p>
+
+</p><h2><a name="SECTION00052000000000000000">
+Key Codes</a>
+</h2>
+
+<p>
+The key codes files map a keyboard's scan codes onto useful 
+symbolic forms.
+These files are the first point of contact between a keyboard
+and the X<small>KB</small> system.
+After that, things tend to become keyboard independent, focusing
+on the sorts of symbols that you want to produce and the 
+behaviour that you want out of the keys.
+
+</p><p>
+The basic structure of a key codes map is something like:
+
+</p><p>
+</p><pre>xkb_keycodes "basic" {
+
+    minimum= 8;
+    maximum= 255;
+
+    &lt;TLDE&gt; =  49;
+    &lt;AE01&gt; =  10;
+    &lt;AE02&gt; =  11;
+...
+    indicator 1 = "Caps Lock";
+    indicator 2 = "Num Lock";
+...
+    alias &lt;AE00&gt; = &lt;TLDE&gt;;
+};
+</pre>
+
+<p>
+The <tt>xkb_keycodes "basic"</tt> gives the type of the component 
+(key code map) and the variant name (<span class="textit">basic</span>).
+
+</p><p>
+Following that, the <tt>minimum</tt> and <tt>maximum</tt> lines give
+the minimum and maximum key codes that the keyboard generated.
+If not all the key codes are used, that's not a problem.
+
+</p><p>
+The lines of the form <tt>&lt;AE01&gt; = 49;</tt> map a keyboard key code
+(49 in this case) onto a symbolic key name (<tt>&lt;AE01&gt;</tt> in this case).
+These lines associate key codes with the names that will be used in
+components such as a <span class="textbf">symbols</span> component.
+
+</p><p>
+
+</p><div align="CENTER"><a name="Fig:KeyNames"></a><a name="246"></a>
+<table>
+<caption align="BOTTOM"><strong>Figure 2:</strong>
+Key Code Naming Conventions</caption>
+<tbody><tr><td><p>
+<img width="1003" height="449" align="BOTTOM" border="0" src="./XKB Configuration Files_files/img3.png" alt="\includegraphics{keycodes.eps}">
+
+</p><p></p></td></tr>
+</tbody></table>
+</div>
+
+<p>
+The convention used is to explicitly name shift and escape-like keys,
+but to name ordinary keys by a positional code.
+Hence, <tt>&lt;AE01&gt;</tt> is actually what would be the <span class="textsf">1/!</span> key on
+an ordinary qwerty keyboard.
+However, the left shift key is denoted by <tt>&lt;LFSH&gt;</tt>.
+This convention is, presumably, so that Dvorak-like keyboards can
+be sensibly specified.
+The keyboard codes are notionally based on a conventional qwerty
+keyboard and are shown in figure&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Fig:KeyNames">2</a>
+
+</p><p>
+The lines of the form <tt>alias &lt;AE00&gt; = &lt;TLDE&gt;;</tt> allow alternate
+names to be associated with the same key.
+In the example given, the tilde key, associated with the key code 49
+in this keyboard can also be referred to as <tt>&lt;AE00&gt;</tt> as well
+as <tt>&lt;TLDE&gt;</tt>.
+This facility is useful if you want to refer, sometimes, to
+``the leftmost key of the top row'' rather than ``the tilde key''.
+
+</p><p>
+The lines of the form <tt>indicator 1 = "Caps Lock";</tt> enumerate
+the indicator LEDs that the keyboard has.
+I <span class="textit">think</span> that the name of the indicator is important, rather
+than the number, since this is referred to in other components,
+such as the <span class="textbf">compat</span> component.
+It's possible that the indicies refer to the numbering of the
+indicators in the keyboard's hardware.
+The problem with this interpretation is that it violates
+the <span class="textit">symbolic = concrete</span> formulation used in the rest
+of the file.
+
+</p><p>
+Virtual indicators are also possible. 
+I have no idea what these do.
+
+</p><p>
+
+</p><h2><a name="SECTION00053000000000000000"></a>
+<a name="Sec:Symbols"></a>
+<br>
+Symbols
+</h2>
+
+<p>
+The <span class="textbf">symbols</span> component maps the symbolic key codes
+created by the <span class="textbf">keycodes</span> component onto whatever
+symbols the user wants to produce.
+It's at this point that peculiarities such as national character
+sets, the position of control keys and other things make an
+appearance.
+The symbols maps also handle the effect of groups and
+levels -- see section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node3.html#Sec:GroupLevel">2.2</a>.
+
+</p><p>
+Some of the symbols generated by a symbols map are not
+used directly, but are passed on to the <span class="textbf">compat</span>
+component for further processing.
+
+</p><p>
+A symbol map file may look something like this:
+
+</p><p>
+</p><pre>partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    name[Group1]= "US/ASCII";
+    key &lt;ESC&gt;  {        [ Escape                        ]       };
+...
+    key &lt;TLDE&gt; {        [ quoteleft,    asciitilde      ]       };
+    key &lt;AE01&gt; {        [         1,    exclam          ]       };
+...
+    modifier_map Shift  { Shift_L, Shift_R };
+...
+};
+</pre>
+
+<p>
+The first part of the symbol map,
+<tt>partial default alphanumeric_keys xkb_symbols "basic"</tt>
+simply declares that this is a symbol map named <span class="textit">basic</span>,
+along with a few options.
+The <tt>partial</tt> option indicates that this map doesn't
+cover a complete keyboard, just some interesting section of it.
+The <tt>alphanumeric_keys</tt> option describes which section of
+the keyboard is being covered.
+Multiple <tt>*_keys</tt> options are allowed, but if none
+are specified, then the map is assumed to cover a complete keyboard.
+
+</p><p>
+The <tt>name[Group1]= "US/ASCII";</tt> statement gives a name
+to one of the keyboard groups.
+Other groups can be specified by using the same syntax but with
+a different group name.
+
+</p><p>
+The line <tt>key &lt;TLDE&gt; { [ quoteleft, asciitilde ] };</tt>
+describes a single mapping from a key code (<tt>&lt;TLDE&gt;</tt> in this
+case) to a group of symbols (<span class="textbf"><span class="textsf">`</span></span> and  in this case).
+Symbols are named, using the symbolic names from the
+<tt>/usr/X11R6/include/X11/keysymdef.h</tt> file, as described
+in section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node3.html#Sec:KeySymbols">2.4</a>.
+A pair of symbols enclosed in brackets indicates a pair of
+symbols separated by a shift level; pressing the <span class="textsf">Shift</span>
+key usually shifts between two levels, but the <span class="textbf">types</span>
+component can override this.
+If a single symbol is enclosed in brackets, then this symbol is
+used always, independent of the level.
+
+</p><p>
+The <tt>key <span class="textit">code</span> { [ <span class="textit">symbol</span>, <span class="textit">symbol</span> ] }</tt>
+syntax is a short form of a more general syntax that allows more
+flexible specification. 
+Inside the braces, it is possible to use the syntax <br><tt>group[<span class="textit">groupname</span>] = [ <span class="textit">symbol</span>, <span class="textit">symbol</span>]</tt>
+instead, with the various statements being separated by commas.
+This syntax is needed when extra information, such as type information
+is being specified for the key -- see section <a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:SymbolsTypes">4.3.2</a>.
+
+</p><p>
+X<small>KB</small> is pretty flexible with respect to modifier keys, pretty
+much allowing anything which looks like a modifier key to be
+used as one.
+The <span class="textbf">types</span> and <span class="textbf">compat</span> components
+handle the interpretation of various combinations of keys.
+However, there are many X11 programs that need to keep
+track of modifier key status (eg. a flight simulator)
+and expect input from the old modifier combinations of 
+<span class="textsf">Lock</span>, <span class="textsf">Shift</span>, <span class="textsf">Control</span> and 
+<span class="textsf">Mod1</span>-<span class="textsf">Mod5</span>.
+The line <tt>modifier_map Shift  { Shift_L, Shift_R };</tt>
+maps the <span class="textsf">left-Shift</span> and <span class="textsf">right-Shift</span> keys
+onto the old-style <span class="textsf">Shift</span> indicator, so that older
+programs have some idea as to what is going on.
+
+</p><p>
+
+</p><h3><a name="SECTION00053100000000000000"></a>
+<a name="Sec:SymbolsGroups"></a>
+<br>
+Handling Groups
+</h3>
+
+<p>
+Multiple groups can be specified by including other lists of
+symbols after the first list, with each list separated by commas.
+Each group needs to be named.
+The resulting configuration looks like:
+
+</p><p>
+</p><pre>name[Group1]= "US/ASCII";
+name[Group2]= "Russian";
+...
+key &lt;AD01&gt; { [ q, Q ],
+             [ Cyrillic_shorti, Cyrillic_SHORTI ] };
+</pre>
+
+<p>
+In this case, two groups are defined.
+For the <span class="textsf">Q</span> key, two lists of symbols are given, one for
+the US/ASCII group and one for the Russian group.
+
+</p><p>
+It is also possible to specify multiple groups using the
+long-form syntax.
+For example:
+
+</p><p>
+</p><pre>key &lt;AE11&gt; {
+    symbols[Group1]= [ minus, underscore ],
+    symbols[Group2]= [ minus, questiondown ]
+};
+</pre>
+
+<p>
+It is also possible to define a partial symbol map that only
+provides mappings for some higher, non-default group.
+In this case, the symbol mappings for the lower-level groups
+are empty.
+These sort of symbol maps can be included in with more basic
+maps, to allow a 
+For example, the following defines a group 3 (only) mapping:
+
+</p><p>
+</p><pre>key &lt;AD01&gt; { [], [], [ q, Q ] };
+</pre>
+
+<p>
+
+</p><h3><a name="SECTION00053200000000000000"></a>
+<a name="Sec:SymbolsTypes"></a>
+<br>
+Handling Levels
+</h3>
+
+<p>
+The <span class="textbf">types</span> component specifies how differing
+levels are to be handled for various keys.
+By default, it would appear to be the case that most keys
+are automatically given a two-level or alphabetic type 
+(see section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Types">4.4</a>).
+
+</p><p>
+In some cases, however, it may become necessary to explicitly
+associate level-behaviour with a key.
+In this case, the type and symbol map needs to be given
+explicitly, for example:
+
+</p><p>
+</p><pre>key &lt;PRSC&gt; {
+    type= "PC_SYSRQ",
+    symbols[Group1]= [ Print, Sys_Req ]
+};
+</pre>
+
+<p>
+In this case, the <tt>&lt;PRSC&gt;</tt> key code is given an
+explicit type (<tt>PC_SYSRQ</tt>).
+The group 1 symbols are then explicitly given, using the
+long syntax.
+
+</p><p>
+
+</p><h3><a name="SECTION00053300000000000000"></a>
+<a name="Sec:SymbolsModifiers"></a>
+<br>
+Handling Modifiers
+</h3>
+
+<p>
+Most modifiers are simply specified by including the suitable
+symbol names; modifier keys have names, the same as any normal
+key.
+For example, the <span class="textsf">left-Control</span> key is called
+<tt>Control_L</tt>.
+In most cases, a separation is maintained between left- and
+right-hand versions of the keys, even if you want them to
+do the same thing.
+
+</p><p>
+The <span class="textbf">compat</span> component expects certain
+<span class="textit">virtual modifiers</span> to be defined, so that certain
+logical behaviours (eg. how to switch groups) can be
+neatly defined -- see section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Compat">4.5</a>.
+If a modifier key contributes to a virtual modifier,
+then that needs to be specified, using a
+<tt>virtualMods = <span class="textit">name</span></tt> statement in a key
+definition.
+The long-form syntax needs to be used, for example:
+
+</p><p>
+</p><pre>key &lt;RALT&gt;  {
+    symbols[Group1]= [ Mode_switch, Multi_key  ],
+    virtualMods= AltGr
+};
+</pre>
+
+<p>
+
+</p><h3><a name="SECTION00053400000000000000"></a>
+<a name="Sec:SymbolsControl"></a>
+<br>
+Control Keys
+</h3>
+
+<p>
+Generally, holding the <span class="textsf">Control</span> key down and typing an
+alphabetic key is expected to produce a low-value control-key
+character, eg. <span class="textsf">Control-H</span> produces ASCII 8.
+Which keys produce which control characters is, essentially, hard-wired
+and specified in appendix A of the X<small>KB</small> protocol.[<a href="http://www.charvolant.org/~doug/xkb/html/node8.html#XKBProtocol:1996">3</a>].
+
+</p><p>
+Which keys are control keys is specified by using the
+<tt>modifier_map</tt> statement to map keys onto the <span class="textsf">Control</span>
+modifier. For example:
+
+</p><p>
+</p><pre>modifier_map Control { Control_L };
+</pre>
+
+<p>
+
+</p><h3><a name="SECTION00053500000000000000"></a>
+<a name="Sec:SymbolsSpecial"></a>
+<br>
+Special Characters
+</h3>
+
+<p>
+There are a huge array of ``symbols'' that are intended, instead, to
+be used to control various parts of X<small>KB</small> or X11.
+The most obvious examples are the modifier keys, discussed in
+section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:SymbolsModifiers">4.3.3</a>.
+In addition, there are lots of symbols designed to do things like launch
+a web browser or be combined with other symbols.
+All of these symbols have character codes.
+
+</p><p>
+
+</p><h4><a name="SECTION00053510000000000000">
+Dead Keys</a>
+</h4>
+These keys are intended to represent accents which are combined
+with other symbols to form an accented symbol.
+As an example, the keyname' key and the <span class="textsf">a</span> key
+can be combined to form the  symbol.
+When a dead key is pressed, nothing immediately appears.
+Instead, X<small>KB</small> waits for the next character and attempts to
+combine it with the accent.
+Dead keys have names like <tt>dead_acute</tt>.
+
+<p>
+
+</p><h4><a name="SECTION00053520000000000000">
+ISO Keys</a>
+</h4>
+The ISO keys provide a grab-bag of features: keys for shifting
+group and level, keys for setting word-processor like features
+(such as margins) and keys for moving about the screen.
+All of these keys have an <tt>ISO_</tt> prefix.
+
+<p>
+
+</p><h4><a name="SECTION00053530000000000000">
+X11 Control Keys</a>
+</h4>
+These keys include control keys to terminate the X server and
+keys to flip between virtual screens.
+
+<p>
+
+</p><h4><a name="SECTION00053540000000000000">
+X<small>KB</small> Control Keys</a>
+</h4>
+X<small>KB</small> provides a number of facilities for ease of use: options
+to handle slow typing, key repeat, sticky keys and using
+keys to move the mouse pointer.
+See section 4 of the X<small>KB</small> protocol document for more information
+on these keys.[<a href="http://www.charvolant.org/~doug/xkb/html/node8.html#XKBProtocol:1996">3</a>]
+
+<p>
+In addition, there are pseudo-keys such as <span class="textsf">Mode_shift</span> that
+are not intended to actually produce symbols.
+These keys are usually consumed by the <span class="textbf">compat</span>
+component to produce actions.
+
+</p><p>
+
+</p><h4><a name="SECTION00053550000000000000">
+Composition Keys</a>
+</h4>
+The <span class="textbf"><span class="textsf">Multi_key</span></span> key can be used to
+build accented characters and the like.
+Holding down the <span class="textbf"><span class="textsf">Multi_key</span></span> key, followed by the accent character,
+followed by the letter will produce the accented character.[<a href="http://www.charvolant.org/~doug/xkb/html/node8.html#Multikey:URL">5</a>].
+The file <tt>/usr/X11R6/lib/X11/locale/<span class="textit">localename</span>/Compose</tt>
+contains the list of compose sequences for a particular locale
+or encoding (eg. iso8859-2) and what they produce.
+(There are other composition keys, such as <span class="textbf"><span class="textsf">Codeinput</span></span>,
+but I don't know what they do.
+
+<p>
+
+</p><h2><a name="SECTION00054000000000000000"></a>
+<a name="Sec:Types"></a>
+<br>
+Types
+</h2>
+
+<p>
+Types provide information as to the levels available for various
+keys and how to shift between the levels.
+Each key can have its own type and have differing numbers of
+levels and differing ways of switching between levels; eg. only
+alphabetic characters are shifted when the <span class="textsf">Caps Lock</span>
+key is on.
+
+</p><p>
+The type that a key has can either be explicitly given in
+the <span class="textbf">symbols</span> component -- see 
+section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:SymbolsTypes">4.3.2</a> -- or assigned automatically.
+If a type is not explicitly specified, then the following rules
+apply:
+
+</p><p>
+
+</p><ul>
+<li>If there is only one symbol listed for the key, then the
+type is ONE_LEVEL.
+There are no level changes.
+</li>
+<li>If the level 1 symbol is a lower-case letter and the level 2
+symbol is an upper-case letter, then the type is ALPHABETIC.
+Either the <span class="textsf">Shift</span> or <span class="textsf">Caps Lock</span> key changes
+levels.
+</li>
+<li>If there is a keypad symbol on any level, then the type is KEYPAD.
+Either the <span class="textsf">Shift</span> or <span class="textsf">Num Lock</span> key changes
+levels.
+</li>
+<li>Otherwise, the type is TWO_LEVEL.
+The <span class="textsf">Shift</span> key changes levels.
+</li>
+</ul>
+
+<p>
+An example <span class="textbf">types</span> component is shown below:
+
+</p><p>
+</p><pre>partial default xkb_types "default" {
+    virtual_modifiers LevelThree;
+
+    type "THREE_LEVEL" {
+        modifiers = Shift+LevelThree;
+        map[None] = Level1;
+        map[Shift] = Level2;
+        map[LevelThree] = Level3;
+        map[Shift+LevelThree] = Level3;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "Level3";
+    };
+};
+</pre>
+
+<p>
+The <tt>virtual_modifiers LevelThree;</tt> line describes
+the virtual modifiers that are to be used.
+These are modifiers that have an equivalent
+<tt>virtualMods = LevelThree</tt> somewhere in the 
+<span class="textbf">symbols</span> component, or a 
+<tt>virtualModifier = LevelThree;</tt> somewhere in
+the <span class="textbf">compat</span> component.
+The standard shift modifiers do not need to be specified.
+
+</p><p>
+The <tt>modifiers = Shift+LevelThree;</tt> line gives
+the set of modifiers that need to be considered for this
+particular type.
+
+</p><p>
+The <tt>map[Shift] = Level2;</tt> line indicates that
+level 2 is to be used when the shift key is down.<a name="tex2html8" href="http://www.charvolant.org/~doug/xkb/html/footnode.html#foot745"><sup><span class="arabic">5</span></sup></a>
+</p><p>
+The lines such as <tt>level_name[Level2] = "Shift";</tt>
+give suitable names to each level.
+These lines are useful when you wish to do things
+like print out key maps.
+Otherwise, they have no direct effect on anything.
+
+</p><p>
+
+</p><h2><a name="SECTION00055000000000000000"></a>
+<a name="Sec:Compat"></a>
+<br>
+Compatibility Maps
+</h2>
+
+<p>
+The <span class="textbf">compat</span> component is a shortening of
+``compatibility map''.
+This seems like a rather odd name for the component that
+is largely concerned with translating certain key combinations
+into <span class="textit">actions</span>, rather than symbols.
+But there you are.
+
+</p><p>
+Compatibility maps intercept certain combinations of keys,
+usually modifier keys of various sorts.
+These keys are translated into various actions, ranging
+from changing the internal state of X<small>KB</small> (eg. selecting
+the current group) to moving the mouse pointer.
+Usually, these key strokes are consumed by the compatibility
+map and disappear -- although they can be passed on to other
+components or into the outside world.
+
+</p><p>
+Compatibility maps also control the various indicator
+lights that are displayed.
+
+</p><p>
+<br></p><p></p>
+<div align="CENTER"><a name="394"></a>
+<table>
+<caption><strong>Table 2:</strong>
+Actions in compatibility maps</caption>
+<tbody><tr><td>
+<div align="CENTER">
+<table cellpadding="3" border="1" align="CENTER">
+<tbody><tr><td align="LEFT">Action</td>
+<td align="LEFT" valign="TOP" width="250">Description</td>
+</tr>
+<tr><td align="LEFT">NoAction</td>
+<td align="LEFT" valign="TOP" width="250">Do nothing.</td>
+</tr>
+<tr><td align="LEFT">SetMods</td>
+<td align="LEFT" valign="TOP" width="250">Set modifier state, while the keys are held down.</td>
+</tr>
+<tr><td align="LEFT">LatchMods</td>
+<td align="LEFT" valign="TOP" width="250">Latch modifier state, until the next key is pressed.</td>
+</tr>
+<tr><td align="LEFT">LockMods</td>
+<td align="LEFT" valign="TOP" width="250">Lock modifier state, until the keys are pressed again.</td>
+</tr>
+<tr><td align="LEFT">SetGroup</td>
+<td align="LEFT" valign="TOP" width="250">Set current group, while the keys are held down.</td>
+</tr>
+<tr><td align="LEFT">LatchGroup</td>
+<td align="LEFT" valign="TOP" width="250">Latch current group, until the next key is pressed.</td>
+</tr>
+<tr><td align="LEFT">LockGroup</td>
+<td align="LEFT" valign="TOP" width="250">Lock current group, until the keys are pressed again.</td>
+</tr>
+<tr><td align="LEFT">MovePtr</td>
+<td align="LEFT" valign="TOP" width="250">Move the mouse pointer.</td>
+</tr>
+<tr><td align="LEFT">PointerButton</td>
+<td align="LEFT" valign="TOP" width="250">Also PtrBtn. 
+	Simulate a mouse button press.</td>
+</tr>
+<tr><td align="LEFT">LockPointerButton</td>
+<td align="LEFT" valign="TOP" width="250">Also LockPtrBtn and LockPtrButton. 
+	Simulate a mouse button press, locked until this key is pressed again.</td>
+</tr>
+<tr><td align="LEFT">SetPointerDefault</td>
+<td align="LEFT" valign="TOP" width="250">Also SetPtrDflt.
+	Set the default select button?</td>
+</tr>
+<tr><td align="LEFT">ISOLock</td>
+<td align="LEFT" valign="TOP" width="250">Convert ordinary modifier key actions into lock actions
+	while this action is active.</td>
+</tr>
+<tr><td align="LEFT">TerminateServer</td>
+<td align="LEFT" valign="TOP" width="250">Also Terminate.
+	Shut down the X server.</td>
+</tr>
+<tr><td align="LEFT">SwitchScreen</td>
+<td align="LEFT" valign="TOP" width="250">Switch virtual X screen.</td>
+</tr>
+<tr><td align="LEFT">SetControls</td>
+<td align="LEFT" valign="TOP" width="250">Set the standard controls, such as slow keys or audible bell.
+	See section 4 of the X<small>KB</small> protocol.[<a href="http://www.charvolant.org/~doug/xkb/html/node8.html#XKBProtocol:1996">3</a>]</td>
+</tr>
+<tr><td align="LEFT">LockControls</td>
+<td align="LEFT" valign="TOP" width="250">Lock the standatd controls.</td>
+</tr>
+<tr><td align="LEFT">MessageAction</td>
+<td align="LEFT" valign="TOP" width="250">Also ActionMessage and Message.
+	Generate an arbitrary special-purpose X<small>KB</small> event.</td>
+</tr>
+<tr><td align="LEFT">RedirectKey</td>
+<td align="LEFT" valign="TOP" width="250">Also Redirect.
+	Emulate the pressing of a key with a different scan code.</td>
+</tr>
+<tr><td align="LEFT">DeviceButton</td>
+<td align="LEFT" valign="TOP" width="250">Also DeviceBtn, DevButton and DevBtn.
+	Emulate an event from an arbitrary input device such as a joystick.</td>
+</tr>
+<tr><td align="LEFT">LockDeviceButton</td>
+<td align="LEFT" valign="TOP" width="250">Also LockDeviceBtn, LockDevButton and LockDevBtn.
+	Emulate an event from an arbitrary input device such as a joystick.</td>
+</tr>
+<tr><td align="LEFT">DeviceValuator</td>
+<td align="LEFT" valign="TOP" width="250">Also DeviceVal, DevValuator and DevVal.
+	Not implemented.</td>
+</tr>
+<tr><td align="LEFT">Private</td>
+<td align="LEFT" valign="TOP" width="250">Generate an arbitrary event with a type and data.</td>
+</tr>
+</tbody></table>
+</div>
+
+<a name="Tab:Actions"></a></td></tr>
+</tbody></table>
+</div><p></p>
+<br>
+
+<p>
+<br></p><p></p>
+<div align="CENTER"><a name="404"></a>
+<table>
+<caption><strong>Table 3:</strong>
+Fields in compatibility maps</caption>
+<tbody><tr><td>
+<div align="CENTER">
+<table cellpadding="3" border="1" align="CENTER">
+<tbody><tr><td align="LEFT">Field</td>
+<td align="LEFT">Type</td>
+<td align="LEFT" valign="TOP" width="250">Description</td>
+</tr>
+<tr><td align="LEFT">clearLocks</td>
+<td align="LEFT">boolean</td>
+<td align="LEFT" valign="TOP" width="250">Clear any locked modifiers when the key is released.</td>
+</tr>
+<tr><td align="LEFT">latchToLock</td>
+<td align="LEFT">boolean</td>
+<td align="LEFT" valign="TOP" width="250">Lock a modifier when the key is released.</td>
+</tr>
+<tr><td align="LEFT">generateKeyEvent</td>
+<td align="LEFT">boolean</td>
+<td align="LEFT" valign="TOP" width="250">Also genKeyEvent.
+	Generate a key event as well as an action.</td>
+</tr>
+<tr><td align="LEFT">report</td>
+<td align="LEFT">key event mask</td>
+<td align="LEFT" valign="TOP" width="250">Send this message on press or release of a key.</td>
+</tr>
+<tr><td align="LEFT">default</td>
+<td align="LEFT">&nbsp;</td>
+<td align="LEFT" valign="TOP" width="250">Not used.</td>
+</tr>
+<tr><td align="LEFT">affect</td>
+<td align="LEFT">modifier group</td>
+<td align="LEFT" valign="TOP" width="250">Alter locking behaviour in which modifiers.</td>
+</tr>
+<tr><td align="LEFT">increment</td>
+<td align="LEFT">&nbsp;</td>
+<td align="LEFT" valign="TOP" width="250">Not used.</td>
+</tr>
+<tr><td align="LEFT">modifiers</td>
+<td align="LEFT">modifier list</td>
+<td align="LEFT" valign="TOP" width="250">The set of modifiers to set, latch, lock or otherwise manipulate.</td>
+</tr>
+<tr><td align="LEFT">group</td>
+<td align="LEFT">1-8</td>
+<td align="LEFT" valign="TOP" width="250">The group to set, latch, lock or otherwise manipulate.</td>
+</tr>
+<tr><td align="LEFT">x</td>
+<td align="LEFT">integer</td>
+<td align="LEFT" valign="TOP" width="250">The mouse pointer position.</td>
+</tr>
+<tr><td align="LEFT">y</td>
+<td align="LEFT">integer</td>
+<td align="LEFT" valign="TOP" width="250">The mouse pointer position.</td>
+</tr>
+<tr><td align="LEFT">accelerate</td>
+<td align="LEFT">boolean</td>
+<td align="LEFT" valign="TOP" width="250">Also accel and repeat.
+	Allow accelerated mouse movement.</td>
+</tr>
+<tr><td align="LEFT">button</td>
+<td align="LEFT">1-5</td>
+<td align="LEFT" valign="TOP" width="250">The mouse button name or number.</td>
+</tr>
+<tr><td align="LEFT">value</td>
+<td align="LEFT">1-5</td>
+<td align="LEFT" valign="TOP" width="250">Appears to be a synonym of button.</td>
+</tr>
+<tr><td align="LEFT">controls</td>
+<td align="LEFT">global control name</td>
+<td align="LEFT" valign="TOP" width="250">Also ctrls.
+	The name of one of the various global controls such as slow keys
+	or overlay.</td>
+</tr>
+<tr><td align="LEFT">type</td>
+<td align="LEFT">0-255</td>
+<td align="LEFT" valign="TOP" width="250">The internal type of a private action.</td>
+</tr>
+<tr><td align="LEFT">count</td>
+<td align="LEFT">0-255</td>
+<td align="LEFT" valign="TOP" width="250">The number of button presses for something like a double-click.</td>
+</tr>
+<tr><td align="LEFT">screen</td>
+<td align="LEFT">0-255</td>
+<td align="LEFT" valign="TOP" width="250">Virtual screen number</td>
+</tr>
+<tr><td align="LEFT">sameServer</td>
+<td align="LEFT">boolean</td>
+<td align="LEFT" valign="TOP" width="250">Also same. 
+	Switch to a server screen, rather than a console screen.</td>
+</tr>
+<tr><td align="LEFT">data</td>
+<td align="LEFT">String</td>
+<td align="LEFT" valign="TOP" width="250">Data for a private action or message action.
+	Instead of a string, data can also be an arbitrary numeric
+	array, set with <tt>data[0] = 113</tt></td>
+</tr>
+<tr><td align="LEFT">device</td>
+<td align="LEFT">1-255</td>
+<td align="LEFT" valign="TOP" width="250">Also dev.
+	The device number for non-mouse input devices.</td>
+</tr>
+<tr><td align="LEFT">keyCode</td>
+<td align="LEFT">key name</td>
+<td align="LEFT" valign="TOP" width="250">Also key and kc. 
+	The key code to emulate.</td>
+</tr>
+<tr><td align="LEFT">clearModifiers</td>
+<td align="LEFT">modifiers</td>
+<td align="LEFT" valign="TOP" width="250">Also clearMods.
+	Modifiers to remove from the current modifier set.</td>
+</tr>
+</tbody></table>
+</div>
+
+<a name="Tab:Fields"></a></td></tr>
+</tbody></table>
+</div><p></p>
+<br>
+
+<p>
+<br></p><p></p>
+<div align="CENTER"><a name="413"></a>
+<table>
+<caption><strong>Table 4:</strong>
+Fields for actions</caption>
+<tbody><tr><td>
+<div align="CENTER">
+<table cellpadding="3" border="1" align="CENTER">
+<tbody><tr><td align="LEFT">Action</td>
+<td align="LEFT">Fields</td>
+</tr>
+<tr><td align="LEFT">NoAction</td>
+<td align="LEFT">&nbsp;</td>
+</tr>
+<tr><td align="LEFT">SetMods</td>
+<td align="LEFT">clearLocks, latchToLock, modifiers</td>
+</tr>
+<tr><td align="LEFT">LatchMods</td>
+<td align="LEFT">clearLocks, latchToLock, modifiers</td>
+</tr>
+<tr><td align="LEFT">LockMods</td>
+<td align="LEFT">modifiers</td>
+</tr>
+<tr><td align="LEFT">SetGroup</td>
+<td align="LEFT">clearLocks, latchToLock, group</td>
+</tr>
+<tr><td align="LEFT">LatchGroup</td>
+<td align="LEFT">clearLocks, latchToLock, group</td>
+</tr>
+<tr><td align="LEFT">LockGroup</td>
+<td align="LEFT">group</td>
+</tr>
+<tr><td align="LEFT">MovePtr</td>
+<td align="LEFT">x, y, accelerate</td>
+</tr>
+<tr><td align="LEFT">PointerButton</td>
+<td align="LEFT">button, count</td>
+</tr>
+<tr><td align="LEFT">LockPointerButton</td>
+<td align="LEFT">button, count</td>
+</tr>
+<tr><td align="LEFT">SetPointerDefault</td>
+<td align="LEFT">affect, button</td>
+</tr>
+<tr><td align="LEFT">ISOLock</td>
+<td align="LEFT">modifiers, group, affect</td>
+</tr>
+<tr><td align="LEFT">TerminateServer</td>
+<td align="LEFT">&nbsp;</td>
+</tr>
+<tr><td align="LEFT">SwitchScreen</td>
+<td align="LEFT">screen, sameServer</td>
+</tr>
+<tr><td align="LEFT">SetControls</td>
+<td align="LEFT">controls</td>
+</tr>
+<tr><td align="LEFT">LockControls</td>
+<td align="LEFT">controls</td>
+</tr>
+<tr><td align="LEFT">MessageAction</td>
+<td align="LEFT">report, generateKeyEvent, data</td>
+</tr>
+<tr><td align="LEFT">RedirectKey</td>
+<td align="LEFT">keycode, modsToClear, modifiers</td>
+</tr>
+<tr><td align="LEFT">DeviceButton</td>
+<td align="LEFT">button, affect, count, device</td>
+</tr>
+<tr><td align="LEFT">LockDeviceButton</td>
+<td align="LEFT">button, affect, count, device</td>
+</tr>
+<tr><td align="LEFT">Private</td>
+<td align="LEFT">type, data</td>
+</tr>
+</tbody></table>
+</div>
+
+<a name="Tab:FieldsActions"></a></td></tr>
+</tbody></table>
+</div><p></p>
+<br>
+
+<p>
+The basic structure of a compatibility map is a set of
+<span class="textit">interpret</span> statements that map combinations of
+keys onto <span class="textit">action</span> statements.
+The action statements usually consist of some kind of
+verb and a set of fields to act upon.
+The actions are listed in table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Actions">2</a> and 
+the fields in table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Fields">3</a>.
+Not every field is used in each action, 
+table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:FieldsActions">4</a> lists the fields available
+for each action.
+
+</p><p>
+A major part of many compatibility maps is the handling
+of modifier keys.
+These keys need to be translated into concrete actions
+-- group and level shifts, etc. -- as well as locked
+or latched.
+A normal (unlocked, unlatched) modifier key has an
+effect only while it is being held down.
+A <span class="textit">locked</span> modifier key is on until another
+key press releases it.
+A <span class="textit">latched</span> modifier key is on until another
+key is pressed, at which point the modifier is
+released.
+
+</p><p>
+A compatibility map looks something like:
+
+</p><p>
+</p><pre>default xkb_compatibility "basic"  {
+    virtual_modifiers NumLock,AltGr;
+...
+    interpret.repeat= False;
+    setMods.clearLocks= True;
+...
+    interpret Shift_Lock+AnyOf(Shift+Lock) {
+        action= LockMods(modifiers=Shift);
+    };
+...
+    group 2 = AltGr;
+...
+    indicator.allowExplicit= False;
+...
+    indicator "Caps Lock" {
+        whichModState= Locked;
+        modifiers= Lock;
+    };
+...
+};
+</pre>
+
+<p>
+The <tt>default xkb_compatibility "basic"</tt> line gives the
+usual option, type and name information, same as any other component.
+
+</p><p>
+The <tt>virtual_modifiers NumLock,AltGr;</tt> line lists any
+virtual modifiers that might be set or examined
+
+</p><p>
+The <tt>interpret.repeat= False;</tt> and
+<tt>setMods.clearLocks= True;</tt> lines set one of the default
+fields for part of the compatibility maps.
+Both actions (eg. <tt>setMods</tt>) and certain syntax
+(eg. <tt>interpret</tt>) can have defaults set.
+
+</p><p>
+The line <tt>interpret Shift_Lock+AnyOf(Shift+Lock)</tt> tells
+the compatibility map what keys trigger actions.
+The first part (<span class="textsf">Shift_Lock</span>) is the name of the
+key that has been pressed.
+The second part gives the modifier keys that need to be
+set to trigger this action.
+In this case, either the <span class="textsf">Shift</span> or <span class="textsf">Lock</span>
+modifier needs to be set.
+Specifying modifier keys is optional, or specified as <tt>Any</tt>.
+If more than one key is possible, as above, then
+<tt>AnyOf</tt>, <tt>AllOf</tt>, <tt>Exactly</tt> or
+<tt>AnyOfOrNone</tt> are possible combinations of modifiers.
+
+</p><p>
+The line <tt>action= LockMods(modifiers=Shift);</tt> gives
+the action that the keys in the <tt>interpret</tt> line are
+supposed to produce.
+In this example, <tt>LockMods</tt> is the action 
+(see table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Actions">2</a>) and <tt>modifiers</tt> is the
+field (see table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Fields">3</a>) to be set.
+Multiple fields can be separated by commas.
+The right hand side of a field assignment can be an
+expression with the usual arithmetic operators.
+For numeric fields, instead of straight <tt>=</tt>
+assignment, a signed value indicates a relative change
+-- eg. <tt>group= +1</tt> increments the current group.
+
+</p><p>
+The line <tt>group 2 = AltGr;</tt> maps a group value onto a
+modifier state.
+This is for the benefit of older programs that know
+nothing of the wonders of X<small>KB</small>.
+In this case, being in group 2 means that the <span class="textsf">AltGr</span>
+modifier is set.
+
+</p><p>
+The <tt>indicator "Caps Lock"</tt> line declares the
+conditions under which an indicator is lit.
+The name of the indicator (``Caps Lock'') in this case
+is mapped onto the indicator names given in the
+<span class="textbf">keycodes</span> component -- see section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node3.html#Sec:KeyCodes">2.3</a>.
+
+</p><p>
+The line <tt>whichModState= Locked;</tt> gives the
+state that the particular modifier needs to be in to activate
+this indicator.
+Possible states are Base, Latched, Locked, Effective, Any or None.
+
+</p><p>
+The line <tt>modifiers= Lock;</tt> gives the list of modifiers
+that need to be in the correct state to activate this indicator.
+
+</p><p>
+
+</p><h2><a name="SECTION00056000000000000000"></a>
+<a name="Sec:Geometry"></a>
+<br>
+Geometry
+</h2>
+
+<p>
+The <span class="textbf">geometry</span> component is probably the most useless 
+part of X<small>KB</small>.
+So we're going to do it last.
+Essentially, this component supplies information on the physical
+layout of certain keyboards, so that programs such as 
+<span class="textbf">xkbprint</span> can produce sensible looking output.
+
+</p><p>
+Naturally, for something so trivial, the <span class="textbf">geometry</span>
+files are some of the most complex.
+A sample file is shown below:
+
+</p><p>
+</p><pre>default xkb_geometry "pc101" {
+
+    description= "Generic 101";
+    width= 470;
+    height= 210;
+...
+    shape.cornerRadius= 1;
+...
+    shape "NORM" { { [ 18,18] }, { [2,1], [ 16,16] } };
+...
+    solid "LedPanel" {
+        shape= "LEDS";
+        top=  52;
+        left= 377;
+        color= "grey10";
+    };
+...
+    indicator "NumLock"     { left= 382; };
+...
+    text "NumLockLabel"     { left= 378; text="Num Lock"; };
+...
+    section "Function" {
+        top= 52;
+        row {
+            top= 1;
+            keys {  { &lt;ESC&gt;, color="grey20" },
+                    { &lt;FK01&gt;, 20 }, &lt;FK02&gt;, &lt;FK03&gt;, &lt;FK04&gt;,
+...
+    alias &lt;AC00&gt; = &lt;CAPS&gt;;
+...
+};
+</pre>
+
+<p>
+The <tt>default xkb_geometry "pc101"</tt> line contains the usual
+options, type and name declaration.
+The <tt>description= "Generic 101";</tt> line gives a descriptive
+name to the keyboard.
+
+</p><p>
+The line <tt>width= 470;</tt> gives the total width of the
+keyboard.
+All lengths in <span class="textbf">geometry</span> declarations are multiples
+of 1mm, so 470 is 47cm.<a name="tex2html12" href="http://www.charvolant.org/~doug/xkb/html/footnode.html#foot466"><sup><span class="arabic">6</span></sup></a>
+</p><p>
+The line <tt>shape.cornerRadius= 1;</tt> defines a default
+setting for a shape field.
+In this case, the corner radius of a join is set to 1mm.
+Other items, such as solids, have other fields, these are
+listed below.
+
+</p><p>
+The <tt>shape "NORM" { { [ 18,18] }, { [2,1], [ 16,16] } };</tt>
+line declares a <span class="textit">shape</span>.
+A shape is a named drawing outline that can be used elsewhere to
+draw something like a key or an indicator.
+This shape defines the look of a normal key.
+All coordinates are from the upper-left corner and increase
+rightwards and downwards.
+The origin of a shape is always <span class="MATH"><img width="39" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img4.png" alt="$(0, 0)$"></span> in the upper-left corner;
+this position is shifted to wherever a shape needs to be drawn.
+A shape consists of a list of outlines, with each outline representing
+a closed figure.
+An outline is a list of coordinates in <span class="MATH"><img width="37" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img5.png" alt="$[x, y]$"></span> form, each list
+enclosed in braces.
+The interpretation of an outline depends on the number of coordinates
+in the list:
+if one coordinate is given, then a box is drawn from <span class="MATH"><img width="39" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img4.png" alt="$(0, 0)$"></span> to
+the coordinate;
+if two coordinates are given, then a box is drawn from the first
+coordinate to the second;
+if three or more coordinates are given, then an arbitrary closed
+figure is drawn, with a vertex at each coordinate.
+In the example above, a box is first drawn from <span class="MATH"><img width="39" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img4.png" alt="$(0, 0)$"></span> to
+<span class="MATH"><img width="55" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img6.png" alt="$(18, 18)$"></span> and then another box from <span class="MATH"><img width="39" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img7.png" alt="$(2, 1)$"></span> to <span class="MATH"><img width="55" height="32" align="MIDDLE" border="0" src="./XKB Configuration Files_files/img8.png" alt="$(16, 16)$"></span> to give
+a suitable-looking key outline.
+
+</p><p>
+The section beginning with <tt>solid "LedPanel"</tt> draws a
+solid area of colour.
+A <span class="textit">solid</span> is an example of a <span class="textit">doodad</span>; a piece
+of decoration designed to fill out the appearance of the keyboard.
+Other doodads are indicators, outlines, text and logos.
+The fields of a solid are <tt>left</tt> and <tt>top</tt>,
+which give the start position of the solid, <tt>shape</tt>, which
+gives a named shape for the solid to draw and <tt>color</tt>,
+which gives the colour of the solid.
+Colours can be any of the named X11 colours.
+The field <tt>priority</tt> presumably gives the drawing
+order for overlaid items.
+
+</p><p>
+The <tt>indicator "NumLock" { left= 382; };</tt> line
+declares an <span class="textit">indicator</span> doodad, suitably named.
+The possible fields for an indicator are:
+<tt>onColor</tt>, <tt>offColor</tt>, <tt>left</tt>, <tt>top</tt>,
+<tt>priority</tt> and <tt>shape</tt>.
+I'm not entirely sure how an indicator is mapped onto an
+appropriate logical indicator from the <span class="textbf">compat</span>
+component or the <span class="textbf">keycodes</span> component.
+It may be related to the numbering of the indicators.
+
+</p><p>
+The <tt>text "NumLockLabel" { left= 378; text="Num Lock"; };</tt>
+line provides a named <span class="textit">text</span> doodad: a piece of text to be
+placed somewhere.
+The possible fields for a text doodad are:
+<tt>width</tt>, <tt>angle</tt>, <tt>height</tt>, <tt>text</tt>,
+<tt>top</tt>, <tt>left</tt>, <tt>font</tt>, <tt>slant</tt>, 
+<tt>weight</tt>, <tt>fontwidth</tt>, <tt>variant</tt>, <tt>encoding</tt>,
+<tt>xfontname</tt>, <tt>fontsize</tt>, <tt>priority</tt> and <tt>color</tt>.
+Most of these fields are concerned with the X11 font system.
+Most fields will assume sensible default values if left alone.
+
+</p><p>
+The <tt>section "Function"</tt> line starts the definition of
+a keyboard <span class="textit">section</span>: a block of keys with similar
+functions.
+Examples of sections are the function keys, the alphanumeric
+keyboard and the numeric keypad.
+Sections have the following fields:
+<tt>priority</tt>, <tt>top</tt>, <tt>left</tt>, <tt>width</tt>,
+<tt>height</tt> and <tt>angle</tt>.
+Most of these will assume sensible defaults if left out.
+Sections are composed of a number of rows.
+
+</p><p>
+The <tt>row</tt> line starts a <span class="textit">row</span>: a row of keys.
+Rows have the following fields: <tt>top</tt>, <tt>left</tt> and
+<tt>vertical</tt>.
+The coordinates of a row are relative to the coordinates
+of the enclosing section.
+Each row consists of a list of keys.
+
+</p><p>
+The <tt>keys</tt> line defines the list of keys in a row.
+Each key is listed in turn, giving the keycode of the key.
+For example, <tt>&lt;FK02&gt;</tt> is the <span class="textsf">F2</span> key.
+Each key has the following fields:
+<tt>gap</tt> the spacing from the previous key, 
+<tt>shape</tt> the named shape of the key,
+<tt>color</tt> the color of the key and
+<tt>name</tt> the symbolic key code.
+Normally, these fields are set to defaults.
+However, if a field needs to be set, the syntax
+<tt>{ &lt;ESC&gt;, color="grey20" }</tt> is used.
+Usually, the fields that need to be set are the gap
+and shape fields.
+The syntax <tt>{ &lt;FK01&gt;, 20 }</tt> is a short form that
+sets the keycode and the gap.
+The syntax <tt>{ &lt;SPCE&gt;, "SPCE" }</tt> is a short form that
+sets the keycode and the shape.
+
+</p><p>
+
+</p><h2><a name="SECTION00057000000000000000"></a>
+<a name="Sec:Directory"></a>
+<br>
+Directory Files
+</h2>
+
+<p>
+To allow rapid lookup of components, X<small>KB</small> keeps
+<span class="textit">directory</span> files in the root X<small>KB</small> configuration
+directory.
+These files have a name of the form <tt><span class="textit">component</span>.dir</tt>.
+For example, the <span class="textbf">compat</span> directory file is called
+<tt>compat.dir</tt>.
+
+</p><p>
+Each possible component and variant has a line in the directory
+file.
+A typical line is as follows:
+
+</p><p>
+</p><pre>-dp----- a------- macintosh/se(basic)
+</pre>
+
+<p>
+The <tt>macintosh/se(basic)</tt> gives the component name.
+The two fields in front give various interesting option
+flags -- see table&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Tab:Options">1</a>..
+The first flag field can be a combination of 
+<code>hdp-----</code> with h for hidden, d for default and
+p for partial.
+The second flag field can be a combination of
+<code>amkfg--</code> with a for alphanumeric, m for modifier,
+k for keypad, f for function keys and g for alternate group;
+although their use seems to be somewhat spotty.
+
+</p><p>
+
+</p><h2><a name="SECTION00058000000000000000">
+Grouping Components</a>
+</h2>
+
+<p>
+As well as the main five components, there are a few grouping
+components designed to allow easier specification of 
+X<small>KB</small> configurations.
+
+</p><p>
+
+</p><h3><a name="SECTION00058100000000000000"></a>
+<a name="Sec:Semantics"></a>
+<br>
+Semantics
+</h3>
+
+<p>
+The <span class="textbf">semantics</span> component provides named
+combinations of the <span class="textbf">types</span> and 
+<span class="textbf">compat</span> components.
+This component doesn't seem to be used very much.
+
+</p><p>
+
+</p><h3><a name="SECTION00058200000000000000"></a>
+<a name="Sec:Keymap"></a>
+<br>
+Key Maps
+</h3>
+
+<p>
+The <span class="textbf">keymap</span> component provides named
+mappings for all the main components, allowing common
+keyboard configurations to be given simple names.
+An example keymap is:
+
+</p><p>
+</p><pre>xkb_keymap "en_US" {
+    xkb_keycodes        { include "xfree86"             };
+    xkb_types           { include "default"             };
+    xkb_compatibility   { include "default"             };
+    xkb_symbols         { include "en_US(pc105)"        };
+    xkb_geometry        { include "pc"                  };
+};
+</pre>
+
+<p>
+This keymap defines the <tt>en_US</tt> keymap.
+Essentially, all that is happening here is that a collection of
+appropriate components have been rolled up and named
+``en_US''.
+
+</p><p>
+Interestingly, the use of ``include''s, rather than simple
+names suggests that the components could be extended within the
+keymap itself, presumably using the same syntax as an ordinary
+component.
+No examples of this exist, however.
+
+</p><p>
+
+</p><h3><a name="SECTION00058300000000000000"></a>
+<a name="Sec:Rules"></a>
+<br>
+Rules
+</h3>
+
+<p>
+The key maps described in section&nbsp;<a href="http://www.charvolant.org/~doug/xkb/html/node5.html#Sec:Keymap">4.8.2</a> are pretty
+much what an end-user would like to see for X<small>KB</small> configuration.
+The more technical aspects of the components are hidden and
+you can select from a few national variants.
+For those with PC keyboards, this is largely all that is needed.
+
+</p><p>
+For those with more specialised needs or unusual keyboards, however,
+the simplicity gets in the way of using the <span class="textbf">keymap</span>
+component.
+The <span class="textbf">rules</span> component provides a more flexible
+approach, allowing a user-centred way of describing keyboard
+layouts while also allowing a more mix-and-match way of
+choosing components.
+A list of parameters are given, such as ``model'' and ``layout''.
+These parameters are matched against a set of rules until a
+match is found and the corresponding components chosen.
+
+</p><p>
+A sample rules file looks like:
+
+</p><p>
+</p><pre>! model         =       keycodes        geometry
+  pc101         =       xfree86         pc(pc101)
+...
+! model         layout  =       symbols
+  pc102         intl    =       us(pc102compose)
+  pc104         *       =       en_US(pc104)+%l%(v)
+  *             *       =       en_US(pc101)+%l%(v)
+...
+! option                =       symbols
+  grp:switch            =       +group(switch)
+...
+</pre>
+
+<p>
+The lines of the form <tt>! model = keycodes geometry</tt> give
+the mapping from the rules parameters on the left (<tt>model</tt>
+in this case) to the components on the right
+(<span class="textbf">keycodes</span> and <span class="textbf">geometry</span> in this case).
+Multiple rules parameters and multiple components are all possible.
+
+</p><p>
+The lines of the form <tt>pc101 = xfree86 pc(pc101)</tt> give
+mappings from the declared rules parameters to the declared
+components.
+In this case, the keyboard model <tt>pc101</tt> is mapped
+onto the default <tt>xfree86</tt> keycodes and the <tt>pc101</tt>
+variant of the <tt>pc</tt> geometry.
+Lines which have a <tt>*</tt> in a rules parameter's spot match
+any value of the parameter.
+
+</p><p>
+Some lines contain parameters of the form
+<tt>+%l%(v)</tt>.
+These lines substitute the layout parameter (%l) and the
+variant parameter (%(v)) to build a suitable inclusion.
+For example, if the configuration had the layout set to
+<tt>ru</tt> and the variant set to <tt>winkeys</tt>
+then the line <tt>en_US(pc104)+%l%(v)</tt> becomes
+<tt>en_US(pc104)+ru(winkeys)</tt>.
+It would appear that the % causes the first alphabetic
+character after the sign to be expanded.
+These parameter forms are used to build sensibly parameterised
+national variants, since the national variants have
+no symbols for things like the keypad keys.
+
+</p><p>
+A line of the form <tt>grp:switch = +group(switch)</tt>
+indicates something that will be added to an existing component
+definition.
+These lines are usually used for options that need to be
+added to a basic <span class="textbf">symbols</span> specification.
+
+</p><p>
+In the <span class="textbf">rules</span> directory, there are also
+files with a <tt>.lst</tt> extension.
+These files contain descriptions of the various rules
+parameters and the values they may have.
+A suitable UI could use these values to be a little more
+user-friendly when displaying values.
+
+</p><p>
+
+</p><div class="navigation"><hr>
+<!--Navigation Panel-->
+<a name="tex2html161" href="http://www.charvolant.org/~doug/xkb/html/node6.html">
+<img width="37" height="24" align="BOTTOM" border="0" alt="next" src="./XKB Configuration Files_files/next.png"></a> 
+<a name="tex2html157" href="http://www.charvolant.org/~doug/xkb/html/xkb.html">
+<img width="26" height="24" align="BOTTOM" border="0" alt="up" src="./XKB Configuration Files_files/up.png"></a> 
+<a name="tex2html151" href="http://www.charvolant.org/~doug/xkb/html/node4.html">
+<img width="63" height="24" align="BOTTOM" border="0" alt="previous" src="./XKB Configuration Files_files/prev.png"></a> 
+<a name="tex2html159" href="http://www.charvolant.org/~doug/xkb/html/node1.html">
+<img width="65" height="24" align="BOTTOM" border="0" alt="contents" src="./XKB Configuration Files_files/contents.png"></a>  
+<br>
+<b> Next:</b> <a name="tex2html162" href="http://www.charvolant.org/~doug/xkb/html/node6.html">XKB Programs</a>
+<b> Up:</b> <a name="tex2html158" href="http://www.charvolant.org/~doug/xkb/html/xkb.html">An Unreliable Guide to</a>
+<b> Previous:</b> <a name="tex2html152" href="http://www.charvolant.org/~doug/xkb/html/node4.html">Choosing an XKB Configuration</a>
+ &nbsp; <b>  <a name="tex2html160" href="http://www.charvolant.org/~doug/xkb/html/node1.html">Contents</a></b> </div>
+<!--End of Navigation Panel-->
+<address>
+Doug Palmer
+2004-10-11
+</address>
+
+
+</body></html>

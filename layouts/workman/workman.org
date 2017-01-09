@@ -1,0 +1,27 @@
+* spacemacs
+  
+  В spacemacs workman может быть настроен через [[https://github.com/syl20bnr/spacemacs/tree/master/layers/%252Bintl/keyboard-layout][keyboard-layout]] слой.
+  На текущий момент поддержка workman присутствует в следующем [[https://github.com/syl20bnr/spacemacs/pull/7335/files/9f9364aa2f3530ce8dd31dde54dbe5dd374b28f9][request'e]]
+  
+  Для этого небходимо:
+  - включить слой, добавив keyboard-layout в dotspacemacs-configuration-layers
+  - Отредактировать ~/.emacs.d/layers/+intl/keyboard-layout/config.el
+  
+  #+BEGIN_SRC
+ ...
+ (defvar kl--base-rebinding-maps
+  '((bepo . (("c" . "h")
+            ...
+    (dvorak . (("h" . "h")
+            ...
+    (workman . (("n" . "h")
+               ("e" . "j")
+               ("o" . "k")
+               ("i" . "l")
+               ;;
+               ("h" . "n")
+               ("j" . "e")
+               ("k" . "o")
+               ("l" . "i"))))
+  #+END+SRC
+
