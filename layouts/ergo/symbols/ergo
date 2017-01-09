@@ -85,13 +85,13 @@ xkb_symbols "cursor" {
 // │ `  │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ ─   │ =   │ BS     │
 // │ ~  │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   │        │
 // ├────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬─────┤
-// │       │     │     │     │     │     │     │     │     │     │     │ Lv4 │     │     │
+// │       │ 0   │ 1   │ 2   │ 3   │ 4   │     │     │     │     │     │ Lv4 │     │     │
 // │       │     │     │     │     │     │     │     │     │     │     │     │     │     │
 // ├───────┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─────┤
-// │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃ Lv3 │Enter    │
+// │         ┃ 5   ┃ 6   ┃ 7   ┃ 8   ┃ 9   │     ┃     ┃     ┃     ┃     ┃ Lv3 │Enter    │
 // │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃     │         │
 // ├─────────┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴──┬──┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴─────────┤
-// │Shift       │     │     │     │     │     │     │     │     │     │     │ Shift      │
+// │Shift       │ <   │ [   │ {   │ (   │     │     │     │     │     │     │ Shift      │
 // │            │     │     │     │     │     │     │     │     │     │     │            │
 // ├──────┬─────┼─────┼─────┼─────┴─────┴─────┴─────┴─────┼─────┼─────┼─────┼────────────┤
 // │Ctrl  │Fn   │Win  │Alt  │ tab                         │AltGr│Menu │Ctrl │            │
@@ -99,16 +99,16 @@ xkb_symbols "cursor" {
 // └──────┴─────┴─────┴─────┴─────────────────────────────┴─────┴─────┴─────┴────────────┘
 
 partial alphanumeric_keys
-xkb_symbols "mouse" {
+xkb_symbols "numbers" {
     
     key.type[group1]="FOUR_LEVEL";
 
     // first row
-    // key  <AD01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
-    // key  <AD02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
-    // key  <AD03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
-    // key  <AD04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
-    //  key <AD05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
+    key  <AD01> { [ NoSymbol, NoSymbol,    0, NoSymbol] };
+    key  <AD02> { [ NoSymbol, NoSymbol,    1, NoSymbol] };
+    key  <AD03> { [ NoSymbol, NoSymbol,    2, NoSymbol] };
+    key  <AD04> { [ NoSymbol, NoSymbol,    3, NoSymbol] };
+     key <AD05> { [ NoSymbol, NoSymbol,    4, NoSymbol] };
 
     //  key <AD06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
     // key  <AD07> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol] };
@@ -120,12 +120,12 @@ xkb_symbols "mouse" {
 
     ////////////////////////////////////////////////////////////////////
     
-    //  key <CAPS> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
-    // key  <AC01> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
-    // key  <AC02> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
-    // key  <AC03> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
-    // key  <AC04> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
-    //  key <AC05> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    // key <CAPS> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
+    key  <AC01> { [ NoSymbol, NoSymbol,        5, NoSymbol ] };
+    key  <AC02> { [ NoSymbol, NoSymbol,        6, NoSymbol ] };
+    key  <AC03> { [ NoSymbol, NoSymbol,        7, NoSymbol ] };
+    key  <AC04> { [ NoSymbol, NoSymbol,        8, NoSymbol ] };
+     key <AC05> { [ NoSymbol, NoSymbol,        9, NoSymbol ] };
 
     //  key <AC06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
     // key  <AC07> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] };
@@ -152,6 +152,9 @@ xkb_symbols "mouse" {
     ///////////////////////////////////////////////////////////////////
     
     // key <SPCE> { [ NoSymbol, NoSymbol, Tab, NoSymbol ] }; // " "
+    
+    // modificators
+    include "ergo(right_level3)"
 };
 
 
@@ -160,10 +163,10 @@ xkb_symbols "mouse" {
 // │ `  │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │ ─   │ =   │ BS     │
 // │ ~  │ !   │ @   │ #   │ $   │ %   │ ^   │ &   │ *   │ (   │ )   │ _   │ +   │        │
 // ├────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬─────┤
-// │esc    │     │     │     │     │     │     │   ↖ │   ↑ │   ↗ │     │     │     │     │
+// │ LV4   │     │     │     │     │     │     │   ↖ │   ↑ │   ↗ │     │     │     │     │
 // │       │     │     │     │     │     │     │     │     │     │     │     │     │     │
 // ├───────┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─┲━━━┷━┳━━━┷━┳━━━┷━┳━━━┷━┱───┴─┬───┴─────┤
-// │AltGr    ┃     ┃     ┃     ┃     ┃     │     ┃   ← ┃     ┃   → ┃     ┃     │Enter    │
+// │         ┃     ┃     ┃     ┃     ┃     │     ┃   ← ┃     ┃   → ┃     ┃     │Enter    │
 // │         ┃     ┃     ┃     ┃     ┃     │     ┃     ┃     ┃     ┃     ┃     │         │
 // ├─────────┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴──┬──┺━━┯━━┻━━┯━━┻━━┯━━┻━━┯━━┹──┬──┴─────────┤
 // │Shift       │     │     │     │     │     │     │   ↙ │   ↓ │   ↘ │     │ Shift      │
