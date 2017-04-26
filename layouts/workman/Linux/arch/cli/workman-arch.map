@@ -5,7 +5,7 @@
 # "dumpkeys -l" for key list
 
 alt_is_meta
-charset "iso-8859-15"  # use a ISO-8859-15 font, e.g.: consolechars -f lat9v-14
+# charset "iso-8859-15"  # use a ISO-8859-15 font, e.g.: consolechars -f lat9v-14
 
 # MOIDFIERS:
 # Shift       1
@@ -17,15 +17,16 @@ charset "iso-8859-15"  # use a ISO-8859-15 font, e.g.: consolechars -f lat9v-14
 # CtrlL      64
 # CtrlR     128
 # CapsShift 256
-keymaps 0,1,2,4,8, 6,12
+keymaps 0,1,2,4,8,256
 
 # include "qwerty-layout"
-include "linux-with-alt-and-altgr"
+# include "linux-keys-bare"
 strings as usual
 
 #             0               1            2                   4                     8                           
 #             PLAIN           SHIFT        ALTGR               CTRL                  ALT                    
 #---------------------------  -----------  ------------------  --------------------  -------------------
+
 keycode  41 = grave           asciitilde   Meta_grave          nul                   Meta_grave
 keycode   2 = one             exclam       Meta_one            nul                   Meta_one
 keycode   3 = two             at           Meta_two            nul                   Meta_two
@@ -39,30 +40,33 @@ keycode  10 = nine            parenleft    Meta_nine           nul              
 keycode  11 = zero            parenright   Meta_zero           nul                   Meta_zero
 keycode  12 = minus           underscore   Meta_minus          nul                   Meta_minus
 keycode  13 = equal           plus         Meta_equal          nul                   Meta_equal
+
 keycode  16 = q               Q            Meta_q              Control_q             Meta_q
 keycode  17 = d               D            Meta_d              Control_d             Meta_d
 keycode  18 = r               R            Meta_r              Control_r             Meta_r
 keycode  19 = w               W            Meta_w              Control_w             Meta_w
 keycode  20 = b               B            Meta_b              Control_b             Meta_b
 keycode  21 = j               J            Meta_j              Control_j             Meta_j
-keycode  22 = f               F            Meta_f              Control_f             Meta_f
-keycode  23 = u               U            Meta_u              Control_u             Meta_u
+keycode  22 = f               F            Meta_f              Control_f             Meta_f 
+keycode  23 = u               U            Meta_u              Control_u             Meta_u         Up
 keycode  24 = p               P            Meta_p              Control_p             Meta_p
 keycode  25 = semicolon       colon        Meta_semicolon      nul                   Meta_semicolon
 keycode  26 = bracketleft     braceleft    Meta_bracketleft    nul                   Meta_bracketleft
 keycode  27 = bracketright    braceright   Meta_bracketright   nul                   Meta_bracketright
 keycode  43 = backslash       bar          Meta_backslash      nul                   Meta_backslash
+
 keycode  30 = a               A            Meta_a              Control_a             Meta_a
 keycode  31 = s               S            Meta_s              Control_s             Meta_s
 keycode  32 = h               H            Meta_h              Control_h             Meta_h
 keycode  33 = t               T            Meta_t              Control_t             Meta_t
 keycode  34 = g               G            Meta_g              Control_g             Meta_g
 keycode  35 = y               Y            Meta_y              Control_y             Meta_y
-keycode  36 = n               N            Left                Control_n             Meta_n
-keycode  37 = e               E            Down                Control_e             Meta_e
-keycode  38 = o               O            Up                  Control_o             Meta_o
-keycode  39 = i               I            Right               Control_i             Meta_i
+keycode  36 = n               N            Meta_n              Control_n             Meta_n         Left
+keycode  37 = e               E            Meta_e              Control_e             Meta_e         Down
+keycode  38 = o               O            Meta_o              Control_o             Meta_o         Right
+keycode  39 = i               I            Meta_i              Control_i             Meta_i
 keycode  40 = apostrophe      quotedbl     Meta_apostrophe     nul                   Meta_apostrophe
+
 keycode  44 = z               Z            Meta_z              Control_z             Meta_z
 keycode  45 = x               X            Meta_x              Control_x             Meta_x
 keycode  46 = m               M            Meta_m              Control_m             Meta_m
@@ -73,10 +77,10 @@ keycode  50 = l               L            Meta_l              Control_l        
 keycode  51 = comma           less         Meta_comma          nul                   Meta_comma
 keycode  52 = period          greater      Meta_period         nul                   Meta_period
 keycode  53 = slash           question     Meta_slash          nul                   Meta_slash
-keycode  58 = BackSpace       BackSpace    Meta_BackSpace      nul                   Meta_BackSpace
 keycode  86 = minus           underscore   Meta_minus          nul                   Meta_minus
 keycode  57 = space           space        Meta_space          nul                   Meta_space
 
+    keycode  58 = CapsShift
 
     keycode   1 = Escape
     keycode  14 = Delete
