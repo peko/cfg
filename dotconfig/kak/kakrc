@@ -1,3 +1,5 @@
+colorscheme lucius 
+
 def -params 1 -docstring "colorscheme <name>: enable named colorscheme" \
   -shell-candidates %{
       localconfdir=${XDG_CONFIG_HOME:-${HOME}/.config}/kak
