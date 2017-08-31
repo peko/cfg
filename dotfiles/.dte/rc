@@ -1,18 +1,19 @@
 # source of this config /usr/local/share/dte/rc
 
 include $PKGDATADIR/binding/default
-include $PKGDATADIR/color/light
+include $PKGDATADIR/color/darkgray
 include $PKGDATADIR/compiler/gcc
 include $PKGDATADIR/compiler/go
 include $PKGDATADIR/filetype
 include $PKGDATADIR/option
 
 alias cl close
-alias o open
-alias q quit
-alias r replace
-alias s save
-alias t tag
+alias o  open
+alias q  quit
+alias qf "quit -f"
+alias r  replace
+alias s  save
+alias t  tag
 alias man "run man"
 alias make "compile gcc make"
 alias read "pass-through cat"
