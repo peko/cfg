@@ -1,50 +1,134 @@
-colorscheme lucius 
 
-def -params 1 -docstring "colorscheme <name>: enable named colorscheme" \
-  -shell-candidates %{
-      localconfdir=${XDG_CONFIG_HOME:-${HOME}/.config}/kak
-      for col in ${kak_runtime}/colors/*.kak ${localconfdir}/colors/*.kak; do
-          candidate=$(basename "${col}" .kak)
-          case ${candidate} in
-             \**) ;;
-             *) echo ${candidate} ;;
-          esac
-      done
-  } \
-  colorscheme %{ %sh{
-    localconfdir=${XDG_CONFIG_HOME:-${HOME}/.config}/kak
-    if [ $# -eq 1 ]; then
-        if [ -f "${localconfdir}/colors/$1.kak" ];then
-            echo "source '${localconfdir}/colors/$1.kak'"
-        else
-            echo "source '${kak_runtime}/colors/$1.kak'"
-        fi
-    else
-        echo "echo -color Error 'Usage: colorscheme <scheme name>'"
-    fi
-}}
+# colcolorscheme lucius 
 
-%sh{
-    autoload_directory() {
-        find -L "$1" -type f -name '*\.kak' \
-            -exec printf 'try %%{ source "%s" } catch %%{ echo -debug Autoload: could not load "%s" }\n' '{}' '{}' \;
-    }
+# map global normal <space> ,
+# map global normal , <space>
 
-    localconfdir=${XDG_CONFIG_HOME:-${HOME}/.config}/kak
+# map global normal n <left>
+# map global normal e <down>
+# map global normal u <up>
+# map global normal o <right>
 
-    echo "colorscheme default"
+# map global normal <c-u> u
 
-    if [ -d "${localconfdir}/autoload" ]; then
-        autoload_directory ${localconfdir}/autoload
-    elif [ -d "${kak_runtime}/autoload" ]; then
-        autoload_directory ${kak_runtime}/autoload
-    fi
+map global normal <a-n> <left>
+map global insert <a-n> <left>
+map global normal <a-o> <right>
+map global insert <a-o> <right>
+map global normal <a-u> <up>
+map global insert <a-u> <up>
+map global normal <a-e> <down>
+map global insert <a-e> <down>
 
-    if [ -f "${kak_runtime}/kakrc.local" ]; then
-        echo "source '${kak_runtime}/kakrc.local'"
-    fi
+# select all
+# map global normal <c-a> %
 
-    if [ -f "${localconfdir}/kakrc" ]; then
-        echo "source '${localconfdir}/kakrc'"
-    fi
+# map global normal <a-N> H
+# map global normal <a-E> J
+# map global normal <a-U> K
+# map global normal <a-O> L
+
+map global normal <c-e> ':'
+map global insert <c-e> '<esc>:'
+
+map global normal <a-s> ':w<ret>'
+map global insert <a-s> '<esc>:w<ret>i'
+
+# map global user r ':source %val{buffile}<ret>'
+# map global user e ':eval %val{selection}<ret>'
+# map global user c ':e ~/.config/kak/kakrc<ret>'
+# map global user h ':e ~/cfg/kakoune.md<ret>'
+
+# Config menu
+map global normal <space> :space-fn<ret>
+# map global user r ':source %val{buffile}<ret>'
+def -hidden -allow-override space-fn %{
+  info -title Config %{
+    s: select
+    c: open config
+    C: open spacefn
+    r: reload config
+    b: buffers
+  }
+  on-key %{ %sh{
+    case $kak_key in
+      s) echo select-fn                                     ;;
+      c) echo edit ~/.config/kak/kakrc                      ;;
+      C) echo edit ~/.config/kak/.spacefn                   ;;
+      r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
+      b) echo buffer-fn                                     ;;
+    esac
+  }}
 }
+
+# Select
+def -hidden -allow-override select-fn %{
+  info -title Select %{
+      a: All
+      p: Paragraph
+      i: Indent
+      e: Eval
+  }
+  on-key %{ %sh{
+    case $kak_key in
+      a) echo exec '<%>'    ;;
+      p) echo exec '<a-a>p' ;;
+      i) echo exec '<a-a>i' ;;
+      e) echo exec ':eval <space>%val{selection}<ret>'     ;;
+    esac
+  }}
+}
+
+# Buffer
+def -hidden -allow-override buffer-fn %{
+  info -title 'Buffer commands' %{
+    <space>: buffer
+    n: next
+    p: previous
+    d: debug
+  }
+  on-key %{ %sh{
+    case $kak_key in
+      '<space>') echo exec ':buffer<space>'  ;;
+      n) echo buffer-next                    ;;
+      p) echo buffer-previous                ;;
+      d) echo buffer '*debug*'               ;;
+    esac
+  }}
+}
+
+# SPACE menu
+# map global normal <space> :space-fn<ret>
+# def -allow-override space-fn %{
+#     %sh{
+#     	categories=()
+#     	keys=()
+#         cmds=()
+#         infos=()
+#         IFS=,
+#         while IFS=, read key cmd info
+#         do
+#             keys+=($key)
+#             cmds+=($cmd)
+#             infos+=($info)
+#         done < ~/.config/kak/.spacefn
+# 
+#         # info popup 
+# 	infopopup=""
+#         for ((i=0;i<${#keys[@]};++i)); do
+#             printf -v line "%s\n" "${infos[i]}"
+#             infopopup+=$line
+#         done
+#         echo "info -title $$ \"$infopopup\""
+# 
+#         # key events
+# 	onkey='on-key %{%sh{ case $kak_key in '
+#         for ((i=0;i<${#keys[@]};++i)); do
+#             printf -v line "(%s) %s ;;" "${keys[i]}" "${cmds[i]}"
+#             onkey+=$line
+#         done
+#         onkey+='esac}}'
+#         echo $onkey
+#     }
+# }
+

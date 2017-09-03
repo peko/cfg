@@ -9,6 +9,7 @@ urgent_on_bell = true
 clickable_url = true
 # https://www.reddit.com/r/archlinux/comments/5mphpu/psa_harfbuzz_update_infinality_breaking_system/dc698h0/
 font = xos4 Terminus Regular 14
+# font = Fira Code 14
 # font = Pragmata Pro 14
 scrollback_lines = 10000
 search_wrap = true
@@ -32,56 +33,32 @@ filter_unmatched_urls = true
 
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
+# Solarized dark color scheme
 
 [colors]
+foreground = #839496
+foreground_bold = #eee8d5
+#foreground_dim = #888888
+background = #002b36
+cursor = #93a1a1
 
-# # special
-# foreground      = #ffffff
-# foreground_bold = #ffffff
-# cursor          = #ffffff
-# background      = #161616
+# if unset, will reverse foreground and background
+#highlight = #839496
 
-# # black
-# color0  = #222222
-# color8  = #666666
-
-# # red
-# color1  = #e84f4f
-# color9  = #d23d3d
-
-# # green
-# color2  = #b7ce42
-# color10 = #bde077
-
-# # yellow
-# color3  = #fea63c
-# color11 = #ffe863
-
-# # blue
-# color4  = #66aabb
-# color12 = #aaccbb
-
-# # magenta
-# color5  = #b7416e
-# color13 = #e16a98
-
-# # cyan
-# color6  = #6d878d
-# color14 = #42717b
-
-# # white
-# color7  = #dddddd
-# color15 = #cccccc
-
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
-
-# vim: ft=dosini cms=#%s
+# colors from color0 to color254 can be set
+color0 = #073642
+color1 = #dc322f
+color2 = #859900
+color3 = #b58900
+color4 = #268bd2
+color5 = #d33682
+color6 = #2aa198
+color7 = #eee8d5
+color8 = #002b36
+color9 = #cb4b16
+color10 = #586e75
+color11 = #657b83
+color12 = #839496
+color13 = #6c71c4
+color14 = #93a1a1
+color15 = #fdf6e3
