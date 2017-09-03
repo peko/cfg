@@ -1,0 +1,2 @@
+'<space>',echo "exec <space>", : Clear selection 
+'a'      ,echo "exec <%>"    ,a: Select all
