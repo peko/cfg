@@ -1,4 +1,36 @@
 
+# Examples
+# /usr/share/kak/
+
+# command line
+map global normal <c-e> ':'
+map global insert <c-e> '<esc>:'
+
+# save
+map global normal <c-s> ':w<ret>'
+map global insert <c-s> '<esc>:w<ret>i'
+
+#close
+map global normal <c-w> ':delete-buffer<ret>'
+map global normal <c-q> ':q!<ret>'
+
+# make from build folder
+# set global makecmd 'cd build; make'
+map global normal <c-m> ':make -C build<ret>'
+
+# search in files
+set global grepcmd 'ag --column'
+map global normal <c-p> ':grep '
+
+# buffers
+map global normal , ':buffer-previous<ret>'
+map global normal . ':buffer-next<ret>'
+
+# map global user r ':source %val{buffile}<ret>'
+# map global user e ':eval %val{selection}<ret>'
+# map global user c ':e ~/.config/kak/kakrc<ret>'
+# map global user h ':e ~/cfg/kakoune.md<ret>'
+
 # colcolorscheme lucius 
 
 # map global normal <space> ,
@@ -11,14 +43,14 @@
 
 # map global normal <c-u> u
 
-map global normal <a-n> <left>
-map global insert <a-n> <left>
-map global normal <a-o> <right>
-map global insert <a-o> <right>
-map global normal <a-u> <up>
-map global insert <a-u> <up>
-map global normal <a-e> <down>
-map global insert <a-e> <down>
+# map global normal <a-n> <left>
+# map global insert <a-n> <left>
+# map global normal <a-o> <right>
+# map global insert <a-o> <right>
+# map global normal <a-u> <up>
+# map global insert <a-u> <up>
+# map global normal <a-e> <down>
+# map global insert <a-e> <down>
 
 # select all
 # map global normal <c-a> %
@@ -28,35 +60,25 @@ map global insert <a-e> <down>
 # map global normal <a-U> K
 # map global normal <a-O> L
 
-map global normal <c-e> ':'
-map global insert <c-e> '<esc>:'
-
-map global normal <a-s> ':w<ret>'
-map global insert <a-s> '<esc>:w<ret>i'
-
-# map global user r ':source %val{buffile}<ret>'
-# map global user e ':eval %val{selection}<ret>'
-# map global user c ':e ~/.config/kak/kakrc<ret>'
-# map global user h ':e ~/cfg/kakoune.md<ret>'
-
-# Config menu
+# Space menu
 map global normal <space> :space-fn<ret>
 # map global user r ':source %val{buffile}<ret>'
 def -hidden -allow-override space-fn %{
-  info -title Config %{
+  info -title config %{
     s: select
     c: open config
-    C: open spacefn
     r: reload config
     b: buffers
+    f: fzf-file
   }
   on-key %{ %sh{
     case $kak_key in
+      '<space>') echo exec "<space>"                        ;;
       s) echo select-fn                                     ;;
       c) echo edit ~/.config/kak/kakrc                      ;;
-      C) echo edit ~/.config/kak/.spacefn                   ;;
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
       b) echo buffer-fn                                     ;;
+      f) echo fzf-file                                      ;;
     esac
   }}
 }
@@ -96,6 +118,30 @@ def -hidden -allow-override buffer-fn %{
     esac
   }}
 }
+
+def -docstring 'invoke fzf to open a file' \
+  fzf-file %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      FILE=$(find * -type f | fzf-tmux -d 15)
+      if [ -n "$FILE" ]; then
+        printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
+      fi
+    fi
+} }
+
+def -docstring 'invoke fzf to select a buffer' \
+  fzf-buffer %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      BUFFER=$(printf %s\\n "${kak_buflist}" | tr : '\n' | fzf-tmux -d 15)
+      if [ -n "$BUFFER" ]; then
+        echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+      fi
+    fi
+} }
 
 # SPACE menu
 # map global normal <space> :space-fn<ret>
