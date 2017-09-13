@@ -2,13 +2,16 @@
 # Examples
 # /usr/share/kak/
 
+set-option global tabstop 4
+set-option global indentwidth 4
+
 # command line
 map global normal <c-e> ':'
 map global insert <c-e> '<esc>:'
 
 # save
 map global normal <c-s> ':w<ret>'
-map global insert <c-s> '<esc>:w<ret>i'
+map global insert <c-s> '<esc>:w<ret>'
 
 #close
 map global normal <c-w> ':delete-buffer<ret>'
@@ -59,6 +62,10 @@ map global normal . ':buffer-next<ret>'
 # map global normal <a-E> J
 # map global normal <a-U> K
 # map global normal <a-O> L
+
+# def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
+def find -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
+map global normal <c-p> ':find '
 
 # Space menu
 map global normal <space> :space-fn<ret>
