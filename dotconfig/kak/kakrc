@@ -26,6 +26,11 @@ map global normal <c-p> ':grep '
 map global normal , ':buffer-previous<ret>'
 map global normal . ':buffer-next<ret>'
 
+map global normal <tab>     '<a-;><gt>'
+map global normal <backtab> '<a-;><lt>'
+map global insert <tab>     '<a-;><gt>'
+map global insert <backtab> '<a-;><lt>'
+
 # map global user r ':source %val{buffile}<ret>'
 # map global user e ':eval %val{selection}<ret>'
 # map global user c ':e ~/.config/kak/kakrc<ret>'
