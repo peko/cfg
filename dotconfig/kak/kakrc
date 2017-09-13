@@ -31,6 +31,9 @@ map global normal <backtab> '<a-;><lt>'
 map global insert <tab>     '<a-;><gt>'
 map global insert <backtab> '<a-;><lt>'
 
+# map global insert <c-h> ':c-family-alternative-file<ret>'
+# map global normal <c-h> ':c-family-alternative-file<ret>'
+
 # map global user r ':source %val{buffile}<ret>'
 # map global user e ':eval %val{selection}<ret>'
 # map global user c ':e ~/.config/kak/kakrc<ret>'
@@ -75,6 +78,7 @@ def -hidden -allow-override space-fn %{
     r: reload config
     b: buffers
     f: fzf-file
+    h: header/source
   }
   on-key %{ %sh{
     case $kak_key in
@@ -84,6 +88,7 @@ def -hidden -allow-override space-fn %{
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
       b) echo buffer-fn                                     ;;
       f) echo fzf-file                                      ;;
+      h) echo exec ':c-family-alternative-file<ret>'        ;;
     esac
   }}
 }
