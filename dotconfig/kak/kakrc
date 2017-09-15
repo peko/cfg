@@ -34,6 +34,8 @@ map global normal <backtab> '<a-;><lt>'
 map global insert <tab>     '<a-;><gt>'
 map global insert <backtab> '<a-;><lt>'
 
+map global normal <c-d> 'bey/<c-r>"<ret>'
+
 # map global insert <c-h> ':c-family-alternative-file<ret>'
 # map global normal <c-h> ':c-family-alternative-file<ret>'
 
