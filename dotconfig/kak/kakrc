@@ -23,11 +23,12 @@ map global normal <c-m> ':make -C build<ret>'
 
 # search in files
 set global grepcmd 'ag --column'
-map global normal <c-p> ':grep '
+map global normal <c-f> ':grep '
+map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
 # buffers
-map global normal , ':buffer-previous<ret>'
-map global normal . ':buffer-next<ret>'
+# map global normal , ':buffer-previous<ret>'
+# map global normal . ':buffer-next<ret>'
 
 map global normal <tab>     '<a-;><gt>'
 map global normal <backtab> '<a-;><lt>'
@@ -115,10 +116,10 @@ def -hidden -allow-override select-fn %{
   }
   on-key %{ %sh{
     case $kak_key in
-      a) echo exec '<%>'    ;;
-      p) echo exec '<a-a>p' ;;
-      i) echo exec '<a-a>i' ;;
-      e) echo exec ':eval <space>%val{selection}<ret>'     ;;
+      a) echo exec '<%>'                               ;;
+      p) echo exec '<a-a>p'                            ;;
+      i) echo exec '<a-a>i'                            ;;
+      e) echo exec ':eval <space>%val{selection}<ret>' ;;
     esac
   }}
 }
@@ -126,17 +127,17 @@ def -hidden -allow-override select-fn %{
 # Buffer
 def -hidden -allow-override buffer-fn %{
   info -title 'Buffer commands' %{
-    <space>: buffer
+    b: buffer
     n: next
     p: previous
     d: debug
   }
   on-key %{ %sh{
     case $kak_key in
-      '<space>') echo exec ':buffer<space>'  ;;
-      n) echo buffer-next                    ;;
-      p) echo buffer-previous                ;;
-      d) echo buffer '*debug*'               ;;
+      b) echo exec ':buffer '  ;;
+      n) echo buffer-next      ;;
+      p) echo buffer-previous  ;;
+      d) echo buffer '*debug*' ;;
     esac
   }}
 }
