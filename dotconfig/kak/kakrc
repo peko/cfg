@@ -22,12 +22,15 @@ map global normal <c-q> ':q!<ret>'
 map global normal <c-m> ':make -C build<ret>'
 
 # search in files
-set global grepcmd 'ag --column'
+set global grepcmd 'ag --ignore tags --column'
 map global normal <c-f> ':grep '
 map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
+# switch buffer
+map global normal <c-b> ':b '
+
 # buffers
-# map global normal , ':buffer-previous<ret>'
+# map global normal  ':buffer-previous<ret>'
 # map global normal . ':buffer-next<ret>'
 
 map global normal <tab>     '<a-;><gt>'
@@ -39,6 +42,9 @@ map global insert <backtab> '<a-;><lt>'
 map global normal <c-d> 'be"/y'
 
 map global normal <c-g> 'be:ctags-search<ret>'
+
+map global normal <c-h> ':c-family-alternative-file<ret>'
+map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
 
 # map global insert <c-h> ':c-family-alternative-file<ret>'
 # map global normal <c-h> ':c-family-alternative-file<ret>'
@@ -90,7 +96,7 @@ def -hidden -allow-override space-fn %{
     c: open config
     r: reload config
     b: buffers
-    f: fzf-file
+    f: format
     h: header/source
   }
   on-key %{ %sh{
@@ -100,7 +106,7 @@ def -hidden -allow-override space-fn %{
       c) echo edit ~/.config/kak/kakrc                      ;;
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
       b) echo buffer-fn                                     ;;
-      f) echo fzf-file                                      ;;
+      f) clang-format -i $kak_buffile                       ;;
       h) echo exec ':c-family-alternative-file<ret>'        ;;
     esac
   }}
@@ -134,7 +140,7 @@ def -hidden -allow-override buffer-fn %{
   }
   on-key %{ %sh{
     case $kak_key in
-      b) echo exec ':buffer '  ;;
+      b) echo exec ':b<space>' ;;
       n) echo buffer-next      ;;
       p) echo buffer-previous  ;;
       d) echo buffer '*debug*' ;;
