@@ -33,10 +33,10 @@ map global normal <c-b> ':b '
 # map global normal  ':buffer-previous<ret>'
 # map global normal . ':buffer-next<ret>'
 
-map global normal <tab>     '<a-;><gt>'
-map global normal <backtab> '<a-;><lt>'
-map global insert <tab>     '<a-;><gt>'
-map global insert <backtab> '<a-;><lt>'
+# map global normal <tab>     '<a-;><gt>'
+# map global normal <backtab> '<a-;><lt>'
+# map global insert <tab>     '<a-;><gt>'
+# map global insert <backtab> '<a-;><lt>'
 
 # select word > yank to search register 
 map global normal <c-d> 'be"/y'

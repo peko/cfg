@@ -8,8 +8,7 @@ dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
 # https://www.reddit.com/r/archlinux/comments/5mphpu/psa_harfbuzz_update_infinality_breaking_system/dc698h0/
-font = xos4 Terminus Regular 18
-#font = Fez 8
+font = xos4 Terminus 14
 # font = Fira Code 14
 # font = Pragmata Pro 14
 scrollback_lines = 10000
