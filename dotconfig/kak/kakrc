@@ -22,7 +22,7 @@ map global normal <c-q> ':q!<ret>'
 map global normal <c-m> ':make -C build<ret>'
 
 # search in files
-set global grepcmd 'ag --ignore tags --column'
+set global grepcmd 'ag --ignore tags --ignore node_modules/ --column'
 map global normal <c-f> ':grep '
 map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
@@ -45,6 +45,9 @@ map global normal <c-g> 'be:ctags-search<ret>'
 
 map global normal <c-h> ':c-family-alternative-file<ret>'
 map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
+
+map global normal <c-/> ':comment-line<ret>'
+map global normal <c-/> '<esc>:comment-line<ret>'
 
 # map global insert <c-h> ':c-family-alternative-file<ret>'
 # map global normal <c-h> ':c-family-alternative-file<ret>'
@@ -92,6 +95,7 @@ map global normal <space> :space-fn<ret>
 # map global user r ':source %val{buffile}<ret>'
 def -hidden -allow-override space-fn %{
   info -title config %{
+    e: edit
     s: select
     c: open config
     r: reload config
@@ -102,6 +106,7 @@ def -hidden -allow-override space-fn %{
   on-key %{ %sh{
     case $kak_key in
       '<space>') echo exec "<space>"                        ;;
+      e) echo exec ':e<space>'                              ;;
       s) echo select-fn                                     ;;
       c) echo edit ~/.config/kak/kakrc                      ;;
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
