@@ -2,8 +2,15 @@
 # Examples
 # /usr/share/kak/
 
+colorscheme gotham
+
+addhl global number_lines -relative
+# addhl global show_whitespaces
+addhl global show_matching
+
 set-option global tabstop 4
 set-option global indentwidth 4
+set global ui_options ncurses_assistant=none
 
 # command line
 map global normal <c-e> ':'
@@ -28,6 +35,11 @@ map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
 # switch buffer
 map global normal <c-b> ':b '
+
+# easy-motion
+# map global user w :easy-motion-w<ret>
+# map global user W :easy-motion-W<ret>
+# map global user j :easy-motion-j<ret>
 
 # buffers
 # map global normal  ':buffer-previous<ret>'
@@ -57,7 +69,6 @@ map global normal <c-/> '<esc>:comment-line<ret>'
 # map global user c ':e ~/.config/kak/kakrc<ret>'
 # map global user h ':e ~/cfg/kakoune.md<ret>'
 
-# colcolorscheme lucius 
 
 # map global normal <space> ,
 # map global normal , <space>
@@ -87,13 +98,13 @@ map global normal <c-/> '<esc>:comment-line<ret>'
 # map global normal <a-O> L
 
 # def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
-def find -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
+def find -override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
 map global normal <c-p> ':find '
 
 # Space menu
 map global normal <space> :space-fn<ret>
 # map global user r ':source %val{buffile}<ret>'
-def -hidden -allow-override space-fn %{
+def -hidden -override space-fn %{
   info -title config %{
     e: edit
     s: select
@@ -118,7 +129,7 @@ def -hidden -allow-override space-fn %{
 }
 
 # Select
-def -hidden -allow-override select-fn %{
+def -hidden -override select-fn %{
   info -title Select %{
       a: All
       p: Paragraph
@@ -136,7 +147,7 @@ def -hidden -allow-override select-fn %{
 }
 
 # Buffer
-def -hidden -allow-override buffer-fn %{
+def -hidden -override buffer-fn %{
   info -title 'Buffer commands' %{
     b: buffer
     n: next
@@ -153,7 +164,7 @@ def -hidden -allow-override buffer-fn %{
   }}
 }
 
-def -docstring 'invoke fzf to open a file' \
+def -override -docstring 'invoke fzf to open a file' \
   fzf-file %{ %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
@@ -165,7 +176,7 @@ def -docstring 'invoke fzf to open a file' \
     fi
 } }
 
-def -docstring 'invoke fzf to select a buffer' \
+def -override -docstring 'invoke fzf to select a buffer' \
   fzf-buffer %{ %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
@@ -179,7 +190,7 @@ def -docstring 'invoke fzf to select a buffer' \
 
 # SPACE menu
 # map global normal <space> :space-fn<ret>
-# def -allow-override space-fn %{
+# def -override space-fn %{
 #     %sh{
 #     	categories=()
 #     	keys=()
