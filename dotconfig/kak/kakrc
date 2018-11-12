@@ -30,8 +30,8 @@ map global normal <c-F> 'bey:grep <c-r>.<ret>'
 map global normal <c-b> ':b '
 
 # buffers
-# map global normal  ':buffer-previous<ret>'
-# map global normal . ':buffer-next<ret>'
+map global normal <a-,> ':buffer-previous<ret>'
+map global normal <a-.> ':buffer-next<ret>'
 
 # map global normal <tab>     '<a-;><gt>'
 # map global normal <backtab> '<a-;><lt>'
@@ -84,13 +84,13 @@ map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
 # map global normal <a-O> L
 
 # def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
-def find -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
+def find -params 1 -shell-script-candidates %{ git ls-files } %{ edit %arg{1} }
 map global normal <c-p> ':find '
 
 # Space menu
 map global normal <space> :space-fn<ret>
 # map global user r ':source %val{buffile}<ret>'
-def -hidden -allow-override space-fn %{
+def -hidden -override space-fn %{
   info -title config %{
     s: select
     c: open config
@@ -99,7 +99,7 @@ def -hidden -allow-override space-fn %{
     f: format
     h: header/source
   }
-  on-key %{ %sh{
+  on-key %{ evaluate-commands %sh{
     case $kak_key in
       '<space>') echo exec "<space>"                        ;;
       s) echo select-fn                                     ;;
@@ -113,14 +113,14 @@ def -hidden -allow-override space-fn %{
 }
 
 # Select
-def -hidden -allow-override select-fn %{
+def -hidden -override select-fn %{
   info -title Select %{
       a: All
       p: Paragraph
       i: Indent
       e: Eval
   }
-  on-key %{ %sh{
+  on-key %{ evaluate-commands %sh{
     case $kak_key in
       a) echo exec '<%>'                               ;;
       p) echo exec '<a-a>p'                            ;;
@@ -131,14 +131,14 @@ def -hidden -allow-override select-fn %{
 }
 
 # Buffer
-def -hidden -allow-override buffer-fn %{
+def -hidden -override buffer-fn %{
   info -title 'Buffer commands' %{
     b: buffer
     n: next
     p: previous
     d: debug
   }
-  on-key %{ %sh{
+  on-key %{ evaluate-commands %sh{
     case $kak_key in
       b) echo exec ':b<space>' ;;
       n) echo buffer-next      ;;
@@ -149,7 +149,7 @@ def -hidden -allow-override buffer-fn %{
 }
 
 def -docstring 'invoke fzf to open a file' \
-  fzf-file %{ %sh{
+  fzf-file %{ evaluate-commands %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -161,7 +161,7 @@ def -docstring 'invoke fzf to open a file' \
 } }
 
 def -docstring 'invoke fzf to select a buffer' \
-  fzf-buffer %{ %sh{
+  fzf-buffer %{ evaluate-commands %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -174,8 +174,8 @@ def -docstring 'invoke fzf to select a buffer' \
 
 # SPACE menu
 # map global normal <space> :space-fn<ret>
-# def -allow-override space-fn %{
-#     %sh{
+# def -override space-fn %{
+#     evaluate-commands %sh{
 #     	categories=()
 #     	keys=()
 #         cmds=()
@@ -197,7 +197,7 @@ def -docstring 'invoke fzf to select a buffer' \
 #         echo "info -title $$ \"$infopopup\""
 # 
 #         # key events
-# 	onkey='on-key %{%sh{ case $kak_key in '
+# 	onkey='on-key %{evaluate-commands %sh{ case $kak_key in '
 #         for ((i=0;i<${#keys[@]};++i)); do
 #             printf -v line "(%s) %s ;;" "${keys[i]}" "${cmds[i]}"
 #             onkey+=$line
