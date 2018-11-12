@@ -4,6 +4,13 @@
 
 set-option global tabstop 4
 set-option global indentwidth 4
+set global ui_options ncurses_assistant=none
+# set global ui_options ncurses_status_on_top=yes
+
+map global normal <tab>     '<a-;><gt>'
+map global normal <s-tab>   '<a-;><lt>'
+map global insert <tab>     '<a-;><gt>'
+map global insert <s-tab>   '<a-;><lt>'
 
 # command line
 map global normal <c-e> ':'
@@ -19,15 +26,25 @@ map global normal <c-q> ':q!<ret>'
 
 # make from build folder
 # set global makecmd 'cd build; make'
-map global normal <c-m> ':make -C build<ret>'
+map global normal <a-m> ':make -C build<ret>'
+map global normal <a-r> ':make -C build run<ret>'
+map global normal <a-=> ':make-next-error<ret>'
+map global normal <a-minus> ':make-previous-error<ret>'
 
 # search in files
-set global grepcmd 'ag --ignore tags --column'
+set global grepcmd 'ag --ignore tags --ignore node_modules/ --column'
 map global normal <c-f> ':grep '
 map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
 # switch buffer
 map global normal <c-b> ':b '
+map global normal <a-,> ':bp<ret>'
+map global normal <a-.> ':bn<ret>'
+
+# easy-motion
+# map global user w :easy-motion-w<ret>
+# map global user W :easy-motion-W<ret>
+# map global user j :easy-motion-j<ret>
 
 # buffers
 map global normal <a-,> ':buffer-previous<ret>'
@@ -43,8 +60,15 @@ map global normal <c-d> 'be"/y'
 
 map global normal <c-g> 'be:ctags-search<ret>'
 
-map global normal <c-h> ':c-family-alternative-file<ret>'
-map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
+# ctrl-h badly supported in terminals, translated tod backspace :(
+# map global normal <c-h> ':alt<ret>'
+# map global insert <c-h> '<esc>:alt<ret>'
+
+map global normal <a-h> ':alt<ret>'
+map global insert <a-h> '<esc>:alt<ret>'
+
+map global normal <c-/> ':comment-line<ret>'
+map global normal <c-/> '<esc>:comment-line<ret>'
 
 # map global insert <c-h> ':c-family-alternative-file<ret>'
 # map global normal <c-h> ':c-family-alternative-file<ret>'
@@ -54,7 +78,6 @@ map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
 # map global user c ':e ~/.config/kak/kakrc<ret>'
 # map global user h ':e ~/cfg/kakoune.md<ret>'
 
-# colcolorscheme lucius 
 
 # map global normal <space> ,
 # map global normal , <space>
@@ -84,7 +107,7 @@ map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
 # map global normal <a-O> L
 
 # def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
-def find -params 1 -shell-script-candidates %{ git ls-files } %{ edit %arg{1} }
+def find -override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
 map global normal <c-p> ':find '
 
 # Space menu
@@ -92,6 +115,7 @@ map global normal <space> :space-fn<ret>
 # map global user r ':source %val{buffile}<ret>'
 def -hidden -override space-fn %{
   info -title config %{
+    e: edit
     s: select
     c: open config
     r: reload config
@@ -99,15 +123,16 @@ def -hidden -override space-fn %{
     f: format
     h: header/source
   }
-  on-key %{ evaluate-commands %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       '<space>') echo exec "<space>"                        ;;
+      e) echo exec ':e<space>'                              ;;
       s) echo select-fn                                     ;;
       c) echo edit ~/.config/kak/kakrc                      ;;
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
       b) echo buffer-fn                                     ;;
       f) clang-format -i $kak_buffile                       ;;
-      h) echo exec ':c-family-alternative-file<ret>'        ;;
+      h) echo exec ':alt<ret>'                              ;;
     esac
   }}
 }
@@ -120,7 +145,7 @@ def -hidden -override select-fn %{
       i: Indent
       e: Eval
   }
-  on-key %{ evaluate-commands %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       a) echo exec '<%>'                               ;;
       p) echo exec '<a-a>p'                            ;;
@@ -138,7 +163,7 @@ def -hidden -override buffer-fn %{
     p: previous
     d: debug
   }
-  on-key %{ evaluate-commands %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       b) echo exec ':b<space>' ;;
       n) echo buffer-next      ;;
@@ -148,8 +173,8 @@ def -hidden -override buffer-fn %{
   }}
 }
 
-def -docstring 'invoke fzf to open a file' \
-  fzf-file %{ evaluate-commands %sh{
+def -override -docstring 'invoke fzf to open a file' \
+  fzf-file %{ eval %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -160,8 +185,8 @@ def -docstring 'invoke fzf to open a file' \
     fi
 } }
 
-def -docstring 'invoke fzf to select a buffer' \
-  fzf-buffer %{ evaluate-commands %sh{
+def -override -docstring 'invoke fzf to select a buffer' \
+  fzf-buffer %{ eval %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -175,7 +200,7 @@ def -docstring 'invoke fzf to select a buffer' \
 # SPACE menu
 # map global normal <space> :space-fn<ret>
 # def -override space-fn %{
-#     evaluate-commands %sh{
+#    eval %sh{
 #     	categories=()
 #     	keys=()
 #         cmds=()
@@ -197,7 +222,7 @@ def -docstring 'invoke fzf to select a buffer' \
 #         echo "info -title $$ \"$infopopup\""
 # 
 #         # key events
-# 	onkey='on-key %{evaluate-commands %sh{ case $kak_key in '
+# 	onkey='on-key %{ eval %sh{ case $kak_key in '
 #         for ((i=0;i<${#keys[@]};++i)); do
 #             printf -v line "(%s) %s ;;" "${keys[i]}" "${cmds[i]}"
 #             onkey+=$line
@@ -207,3 +232,6 @@ def -docstring 'invoke fzf to select a buffer' \
 #     }
 # }
 
+try %{addhl global/ number-lines -relative }
+# try %{addhl global/ show-whitespaces}
+try %{addhl global/ show-matching }

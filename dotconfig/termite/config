@@ -8,7 +8,7 @@ dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
 # https://www.reddit.com/r/archlinux/comments/5mphpu/psa_harfbuzz_update_infinality_breaking_system/dc698h0/
-font = xos4 Terminus 14
+font = xos4 Terminus 18
 # font = Fira Code 14
 # font = Pragmata Pro 14
 scrollback_lines = 10000
@@ -43,7 +43,7 @@ background = #000000
 cursor = #93a1a1
 
 # if unset, will reverse foreground and background
-#highlight = #839496
+highlight = #839496
 
 # colors from color0 to color254 can be set
 color0 = #073642
