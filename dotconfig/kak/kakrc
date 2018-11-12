@@ -107,7 +107,7 @@ map global normal <c-/> '<esc>:comment-line<ret>'
 # map global normal <a-O> L
 
 # def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
-def find -override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} }
+def find -override -params 1 -shell-script-candidates %{ git ls-files } %{ edit %arg{1} }
 map global normal <c-p> ':find '
 
 # Space menu
