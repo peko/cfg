@@ -2,15 +2,15 @@
 # Examples
 # /usr/share/kak/
 
-colorscheme gotham
-
-addhl global number_lines -relative
-# addhl global show_whitespaces
-addhl global show_matching
-
 set-option global tabstop 4
 set-option global indentwidth 4
 set global ui_options ncurses_assistant=none
+# set global ui_options ncurses_status_on_top=yes
+
+map global normal <tab>     '<a-;><gt>'
+map global normal <s-tab>   '<a-;><lt>'
+map global insert <tab>     '<a-;><gt>'
+map global insert <s-tab>   '<a-;><lt>'
 
 # command line
 map global normal <c-e> ':'
@@ -26,7 +26,10 @@ map global normal <c-q> ':q!<ret>'
 
 # make from build folder
 # set global makecmd 'cd build; make'
-map global normal <c-m> ':make -C build<ret>'
+map global normal <a-m> ':make -C build<ret>'
+map global normal <a-r> ':make -C build run<ret>'
+map global normal <a-=> ':make-next-error<ret>'
+map global normal <a-minus> ':make-previous-error<ret>'
 
 # search in files
 set global grepcmd 'ag --ignore tags --ignore node_modules/ --column'
@@ -35,6 +38,8 @@ map global normal <c-F> 'bey:grep <c-r>.<ret>'
 
 # switch buffer
 map global normal <c-b> ':b '
+map global normal <a-,> ':bp<ret>'
+map global normal <a-.> ':bn<ret>'
 
 # easy-motion
 # map global user w :easy-motion-w<ret>
@@ -55,8 +60,12 @@ map global normal <c-d> 'be"/y'
 
 map global normal <c-g> 'be:ctags-search<ret>'
 
-map global normal <c-h> ':c-family-alternative-file<ret>'
-map global insert <c-h> '<esc>:c-family-alternative-file<ret>'
+# ctrl-h badly supported in terminals, translated tod backspace :(
+# map global normal <c-h> ':alt<ret>'
+# map global insert <c-h> '<esc>:alt<ret>'
+
+map global normal <a-h> ':alt<ret>'
+map global insert <a-h> '<esc>:alt<ret>'
 
 map global normal <c-/> ':comment-line<ret>'
 map global normal <c-/> '<esc>:comment-line<ret>'
@@ -114,7 +123,7 @@ def -hidden -override space-fn %{
     f: format
     h: header/source
   }
-  on-key %{ %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       '<space>') echo exec "<space>"                        ;;
       e) echo exec ':e<space>'                              ;;
@@ -123,7 +132,7 @@ def -hidden -override space-fn %{
       r) echo exec ':source<space>~/.config/kak/kakrc<ret>' ;;
       b) echo buffer-fn                                     ;;
       f) clang-format -i $kak_buffile                       ;;
-      h) echo exec ':c-family-alternative-file<ret>'        ;;
+      h) echo exec ':alt<ret>'                              ;;
     esac
   }}
 }
@@ -136,7 +145,7 @@ def -hidden -override select-fn %{
       i: Indent
       e: Eval
   }
-  on-key %{ %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       a) echo exec '<%>'                               ;;
       p) echo exec '<a-a>p'                            ;;
@@ -154,7 +163,7 @@ def -hidden -override buffer-fn %{
     p: previous
     d: debug
   }
-  on-key %{ %sh{
+  on-key %{ eval %sh{
     case $kak_key in
       b) echo exec ':b<space>' ;;
       n) echo buffer-next      ;;
@@ -165,7 +174,7 @@ def -hidden -override buffer-fn %{
 }
 
 def -override -docstring 'invoke fzf to open a file' \
-  fzf-file %{ %sh{
+  fzf-file %{ eval %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -177,7 +186,7 @@ def -override -docstring 'invoke fzf to open a file' \
 } }
 
 def -override -docstring 'invoke fzf to select a buffer' \
-  fzf-buffer %{ %sh{
+  fzf-buffer %{ eval %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
@@ -191,7 +200,7 @@ def -override -docstring 'invoke fzf to select a buffer' \
 # SPACE menu
 # map global normal <space> :space-fn<ret>
 # def -override space-fn %{
-#     %sh{
+#    eval %sh{
 #     	categories=()
 #     	keys=()
 #         cmds=()
@@ -213,7 +222,7 @@ def -override -docstring 'invoke fzf to select a buffer' \
 #         echo "info -title $$ \"$infopopup\""
 # 
 #         # key events
-# 	onkey='on-key %{%sh{ case $kak_key in '
+# 	onkey='on-key %{ eval %sh{ case $kak_key in '
 #         for ((i=0;i<${#keys[@]};++i)); do
 #             printf -v line "(%s) %s ;;" "${keys[i]}" "${cmds[i]}"
 #             onkey+=$line
@@ -223,3 +232,6 @@ def -override -docstring 'invoke fzf to select a buffer' \
 #     }
 # }
 
+try %{addhl global/ number-lines -relative }
+# try %{addhl global/ show-whitespaces}
+try %{addhl global/ show-matching }
