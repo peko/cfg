@@ -48,8 +48,8 @@ map global normal <a-.> ':bn<ret>'
 # map global user j :easy-motion-j<ret>
 
 # buffers
-# map global normal  ':buffer-previous<ret>'
-# map global normal . ':buffer-next<ret>'
+map global normal <a-,> ':buffer-previous<ret>'
+map global normal <a-.> ':buffer-next<ret>'
 
 # map global normal <tab>     '<a-;><gt>'
 # map global normal <backtab> '<a-;><lt>'
@@ -106,7 +106,6 @@ map global normal <c-/> '<esc>:comment-line<ret>'
 # map global normal <a-E> J
 # map global normal <a-U> K
 # map global normal <a-O> L
-
 
 # cammelCaseBold
 addhl shared/c/code/camel group

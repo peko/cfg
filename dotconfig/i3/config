@@ -30,6 +30,9 @@ font pango: xos4 Terminus Regular 16
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindsym $mod+plus exec mocp -f
+bindsym $mod+minus exec mocp -r
+
 # start a terminal
 bindsym $mod+Return exec alacritty
 # bindsym $mod+t exec ~/tls/Telegram/Telegram
