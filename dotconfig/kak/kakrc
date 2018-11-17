@@ -108,8 +108,9 @@ map global normal <c-/> '<esc>:comment-line<ret>'
 # map global normal <a-O> L
 
 # camel case stylesd
-addhl shared/c/code/und regex _ 0:rgb:555555
-addhl shared/c/code/cam regex ([a-z])([a-z])([A-Z]) 1:rgb:b5b8b6 2:rgb:a5a8a6 3:rgb:d5d8d6
+addhl shared/c/code/und regex '_|;|,|\{|\}' 0:rgb:555555
+addhl shared/c/code/cam regex ([a-z])([a-z])(?=[A-Z]) 1:rgb:a5a8a6 2:rgb:858886
+addhl shared/c/code/cap regex [A-Z]+ 0:rgb:d5d8d6
 
 # hilight tab cols
 addhl shared/c/code/tabs group
